@@ -1,0 +1,13 @@
+{
+    "name": "devcontainer",
+    "dockerComposeFile": ["docker-compose.yaml", "../docker/docker-compose.dev.yaml"],
+    "service": "devcontainer",
+    "workspaceFolder": "/workspace",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "dbaeumer.vscode-eslint"
+            ]
+        }
+    }
+}

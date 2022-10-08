@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+  install-node:
+    image: node:16.16.0-alpine3.15
+    container_name: install-node
+    volumes:
+      - ..:/code
+    working_dir: /code
+    command: ["npm", "install"]
+
+  test-backend:
+    image: node:16.16.0-alpine3.15
+    container_name: test-backend
+    volumes:
+      - ..:/code
+    working_dir: /code/backend
+    command: ["npm", "run", "test"]
+
+  build-backend:
+    image: node:16.16.0-alpine3.15
+    container_name: build-backend
+    volumes:
+      - ..:/code
+    working_dir: /code/backend
+    command: ["npm", "run", "build"]
+
+  test-frontend:
+    image: node:16.16.0-alpine3.15
+    container_name: test-frontend
+    volumes:
+      - ..:/code
+    working_dir: /code/frontend
+    command: ["npm", "run", "test"]
+
+  build-frontend:
+    image: node:16.16.0-alpine3.15
+    container_name: build-frontend
+    volumes:
+      - ..:/code
+    working_dir: /code/frontend
+    command: ["npm", "run", "build"]

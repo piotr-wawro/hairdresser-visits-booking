@@ -1,0 +1,14 @@
+FROM node:16.16.0-alpine3.15
+
+ENV NODE_ENV=production
+EXPOSE 3000
+
+COPY ./frontend/dist /code/frontend/dist
+COPY ./frontend/server /code/frontend/server
+COPY ./frontend/package.json /code/frontend/package.json
+COPY ./package.json /code
+
+WORKDIR /code
+RUN npm install
+
+CMD [ "node", "/code/frontend/server/index.js" ]
