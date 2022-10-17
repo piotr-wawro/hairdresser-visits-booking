@@ -1,5 +1,6 @@
 {
   "include": ["src/**/*"],
+  "include": ["src", "index.d.ts"],
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig to read more about this file */
 
@@ -100,5 +101,11 @@
     /* Completeness */
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
+
+
+   // declare module "*.jpg";
+   // declare module "*.png";
+   // declare module "*.jpeg";
+   // declare module "*.gif";
   }
 }

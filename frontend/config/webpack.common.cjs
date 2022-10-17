@@ -18,6 +18,10 @@ module.exports = {
           plugins: ["@babel/plugin-transform-runtime"],
         },
       },
+      {
+        test: /\.(png|jpg|jpeg|gif)$/i,
+        type: "asset/resource",
+      },
     ],
   },
   resolve: {
