@@ -1,4 +1,4 @@
-//import image from '../src/logo1.jpg'; -- nie dziala 
+import logo from './logo.jpg' 
 
 
 function MainButton1(){
@@ -121,23 +121,23 @@ function App() {
       <header className="App-header" >
 
 
-          <div id="mainbox" style={{backgroundColor: "blue"}}>
+          <div id="mainbox" style={{backgroundColor: "lightblue"}}>
 
 
         
-          <div id="Header1" style={{display: 'flex', justifyContent: 'center'}}>
+          <div id="Header1" style={{display: 'flex', justifyContent: 'center',backgroundColor: "blue"}}>
 
           <h1 id="mainheader" style={{ color:"white", height: 30}}>Hairdresser visits booking!</h1>
 
     </div>
 
-    <div className="logo" style={{backgroundColor: "white"}}>
+    <div className="logo" style={{backgroundColor: "lightblue", display: 'flex', justifyContent: 'center', marginTop:30}}>
       
-          <img src="logo1.jpg"/> {/*nie dziala */}
+    <img src={logo} style={{height:150, width: 150}}/> 
           
     </div>
 
-<div >
+<div style={{marginTop: 50, backgroundColor: "lightblue"}}>
   <MainButton1/> 
 </div>
 
