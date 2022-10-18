@@ -1,4 +1,12 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  Relation,
+} from "typeorm";
+import { Visit } from "./Visit.js";
 
 @Entity()
 export class User extends BaseEntity {
@@ -16,4 +24,7 @@ export class User extends BaseEntity {
 
   @Column({ default: "" })
   phoneNumber!: string;
+
+  @OneToMany(() => Visit, (visit) => visit.user)
+  visits!: Relation<Visit[]>;
 }

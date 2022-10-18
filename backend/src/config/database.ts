@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
 
-const AppDataSource = new DataSource({
+export const dataSource = new DataSource({
   type: "postgres",
   host: process.env.DATABASE_HOST || "localhost",
   port: 5432,
@@ -15,7 +15,8 @@ const AppDataSource = new DataSource({
   migrations: [],
 });
 
-AppDataSource.initialize()
+dataSource
+  .initialize()
   .then(() => {
     console.log("Data Source has been initialized!");
   })
