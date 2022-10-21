@@ -1,173 +1,177 @@
-import logo from './logo.jpg' 
+import logo from "./graphics/logo1.jpg";
+import graphic1 from "./graphics/graphic1.jpg";
+import graphic2 from "./graphics/graphic2.jpg";
+import graphic3 from "./graphics/graphic3.jpg";
+import background from "./graphics/background.jpg";
 
-
-function MainButton1(){
+function Navbar() {
   return (
-      <div className="navbar" style={{display: 'flex', justifyContent: 'center', backgroundColor: "lightblue", height: 80}}>
-          <div className="navbarbox" style={{}}>
+    <div className="navbar">
+      <div
+        className="navbarbox"
+        style={{
+          justifyContent: "space-between",
+          marginLeft: 300,
+          marginTop: 15,
+        }}
+      >
+        <span className="navbarlogo"></span>
 
-              <span className="navbarlogo"></span>
-
-
-              <div className="navbaritems" style={{height: 30, fontWeight:"bold"}}>
-
-              
-              <button className="navbarbutton" style={{height: 50, width: 200, fontWeight:"bold",padding: 5, cursor:"pointer", color:"blue", fontSize: 18}}>Rezerwacja</button>
-             
-                  
-              
-              </div>
-
-          </div>
-      
+        <div className="navbaritems" style={{ height: 30, fontWeight: "bold" }}>
+          <button
+            className="navbarbutton"
+            style={{
+              height: 50,
+              width: 200,
+              fontWeight: "bold",
+              padding: 5,
+              cursor: "pointer",
+              color: "black",
+              fontSize: 18,
+            }}
+          >
+            Zaloguj się
+          </button>
+        </div>
       </div>
-          
-  )
+    </div>
+  );
 }
 
-function MainButton2(){
+function MainBox1() {
   return (
-      <div className="navbar" style={{display: 'flex', justifyContent: 'center', backgroundColor: "lightblue", height: 80}}>
-          <div className="navbarbox" style={{}}>
-              <span className="navbarlogo"></span>
-              <div className="navbaritems" style={{height: 30, fontWeight:"bold"}}>
-
-              
-              
-              <button className="navbarbutton" style={{height: 50, width: 200, fontWeight:"bold",padding: 5, cursor:"pointer", color:"blue", fontSize: 18}}>Dodaj klienta</button>
-            
-                
-              
-              </div>
-
-          </div>
-      
-      </div>
-          
-  )
+    <div id="box1">
+      <img src={graphic1} style={{ height: 300, width: 400 }} />
+      <h2
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          marginLeft: 100,
+          color: "blue",
+          width: 230,
+        }}
+      >
+        Rezerwacji wizyty
+      </h2>
+    </div>
+  );
 }
 
-function MainButton3(){
+function MainBox2() {
   return (
-      <div className="navbar" style={{display: 'flex', justifyContent: 'center', backgroundColor: "lightblue", height: 80}}>
-          <div className="navbarbox" style={{}}>
-              <span className="navbarlogo"></span>
-              <div className="navbaritems" style={{height: 30, fontWeight:"bold"}}>
-
-              
-              
-              <button className="navbarbutton" style={{height: 50, width: 200, fontWeight:"bold",padding: 5, cursor:"pointer", color:"blue", fontSize: 18}}>Dodaj pracownika</button>
-             
-              
-              </div>
-
-          </div>
-      
-      </div>
-          
-  )
+    <div id="box1">
+      <img src={graphic3} style={{ height: 300, width: 400 }} />
+      <h2
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          marginLeft: 100,
+          color: "blue",
+          width: 230,
+        }}
+      >
+        Dodania pracownika
+      </h2>
+    </div>
+  );
 }
 
-
-function MainButton4(){
+function MainBox3() {
   return (
-      <div className="navbar" style={{display: 'flex', justifyContent: 'center', backgroundColor: "lightblue", height: 80}}>
-          <div className="navbarbox" style={{}}>
-              <span className="navbarlogo"></span>
-              <div className="navbaritems" style={{height: 30, fontWeight:"bold"}}>
-
-              
-              
-              <button className="navbarbutton" style={{height: 50, width: 200, fontWeight:"bold",padding: 5, cursor:"pointer", color:"blue", fontSize: 18}}>Dodaj czas i miejsce</button>
-              
-                 
-              
-              </div>
-
-          </div>
-      
-      </div>
-          
-  )
+    <div id="box1">
+      <img src={graphic2} style={{ height: 300, width: 400 }} />
+      <h2
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          marginLeft: 100,
+          color: "blue",
+          width: 230,
+        }}
+      >
+        Edycji danych wizyty
+      </h2>
+    </div>
+  );
 }
-
-function MainButton5(){
-  return (
-      <div className="navbar" style={{display: 'flex', justifyContent: 'center', backgroundColor: "lightblue", height: 80}}>
-          <div className="navbarbox" style={{}}>
-              <span className="navbarlogo"></span>
-              <div className="navbaritems" style={{height: 30, fontWeight:"bold"}}>
-
-              
-              
-              <button className="navbarbutton" style={{height: 50, width: 200, fontWeight:"bold",padding: 5, cursor:"pointer", color:"blue", fontSize: 18}}>Logowanie</button>
-              
-              </div>
-
-          </div>
-      
-      </div>
-          
-  )
-}
-
-
 
 function App() {
   return (
+    <div className="App" style={{ backgroundColor: "lightblue" }}>
+      <header className="App-header">
+        <div
+          id="mainbox"
+          style={{ backgroundColor: "lightblue", height: "100%" }}
+        >
+          <div
+            id="Header1"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              backgroundColor: "blue",
+            }}
+          >
+            <div
+              className="logo"
+              style={{
+                backgroundColor: "lightblue",
+                display: "flex",
+                justifyContent: "left",
+                marginTop: 3,
+                marginRight: 25,
+              }}
+            >
+              <img src={logo} style={{ height: 80, width: 80 }} />
+            </div>
 
-    <div className="App" style={{color: "lightblue"}}>
+            <h1
+              id="mainheader"
+              style={{ color: "white", height: 30, fontWeight: "bold" }}
+            >
+              Hairdresser visits booking!
+            </h1>
 
-      <header className="App-header" >
-
-
-          <div id="mainbox" style={{backgroundColor: "lightblue"}}>
-
-
-        
-          <div id="Header1" style={{display: 'flex', justifyContent: 'center',backgroundColor: "blue"}}>
-
-          <h1 id="mainheader" style={{ color:"white", height: 30}}>Hairdresser visits booking!</h1>
-
-    </div>
-
-    <div className="logo" style={{backgroundColor: "lightblue", display: 'flex', justifyContent: 'center', marginTop:30}}>
-      
-    <img src={logo} style={{height:150, width: 150}}/> 
-          
-    </div>
-
-<div style={{marginTop: 50, backgroundColor: "lightblue"}}>
-  <MainButton1/> 
-</div>
-
-<div>
-  <MainButton2/> 
-</div>
-
-<div>
-  <MainButton3/> 
-</div>
-
-<div>
-  <MainButton4/> 
-</div>
-
-<div>
-  <MainButton5/> 
-</div>
-
-<div style={{backgroundColor: "lightblue", height: 150}}>
-   
-</div>
-
-
-
+            <Navbar />
+          </div>
         </div>
-        
-          
-        
       </header>
+
+      <div
+        id="MainBox"
+        style={{ height: 600, backgroundImage: `url(${background})` }}
+      >
+        <h1
+          id="mainheader"
+          style={{
+            color: "white",
+            height: 35,
+            justifyContent: "center",
+            display: "flex ",
+            backgroundColor: "green",
+            fontSize: 25,
+          }}
+        >
+          Zaloguj się do:
+        </h1>
+
+        <div
+          id="mainboxitems"
+          style={{
+            marginTop: 80,
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            marginRight: 30,
+            marginLeft: 30,
+          }}
+        >
+          <MainBox1 />
+
+          <MainBox2 />
+
+          <MainBox3 />
+        </div>
+      </div>
     </div>
   );
 }
