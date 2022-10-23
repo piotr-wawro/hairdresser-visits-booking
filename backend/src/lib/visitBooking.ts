@@ -54,7 +54,10 @@ export const patchVisit = (oldVisit: Visit, patch: VisitPatch) => {
       end: MoreThan(patch.start),
     });
 
-    if (visits.length > 1 || visits[0].id !== oldVisit.id) {
+    if (
+      visits.length > 1 ||
+      (visits.length === 1 && visits[0].id !== oldVisit.id)
+    ) {
       return false;
     } else {
       const patchedVisit = manager.merge(Visit, oldVisit, patch);

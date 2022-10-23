@@ -20,8 +20,14 @@ export class Visit extends BaseEntity {
   end!: Date;
 
   @Column({ nullable: true })
-  userId!: string;
+  bookedById!: string;
+
+  @Column({ nullable: true })
+  servicedById!: string;
 
   @ManyToOne(() => User, (user) => user.visits)
-  user!: Relation<User>;
+  bookedBy!: Relation<User>;
+
+  @ManyToOne(() => User, (user) => user.services)
+  servicedBy!: Relation<User>;
 }
