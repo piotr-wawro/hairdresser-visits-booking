@@ -8,7 +8,7 @@
     "method": "GET",
     "sortNum": 0,
     "created": "2022-10-22T16:41:16.472Z",
-    "modified": "2022-10-22T16:41:16.808Z",
+    "modified": "2022-10-23T09:58:48.223Z",
     "headers": [
       {
         "name": "Accept",
@@ -24,7 +24,7 @@
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"email\": \"test@test.com\"\n}",
+      "raw": "{\n  \"email\": \"emp3@test.com\"\n}",
       "form": []
     },
     "tests": []
@@ -69,10 +69,10 @@
     "containerId": "",
     "name": "localhost:3001/visit",
     "url": "localhost:3001/visit",
-    "method": "POST",
+    "method": "GET",
     "sortNum": 0,
     "created": "2022-10-22T16:52:29.702Z",
-    "modified": "2022-10-22T16:53:08.493Z",
+    "modified": "2022-10-22T22:59:25.968Z",
     "headers": [
       {
         "name": "Accept",
@@ -92,7 +92,67 @@
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"start\": 1666457024000,\n  \"type\": \"haircut\"\n}",
+      "raw": "{\n  \"start\": 1666457024000,\n  \"end\": 1666457040000\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "039a7aca-d044-42d0-a857-bac1bf26dd7e",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:3001/login",
+    "url": "localhost:3001/login",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-10-22T21:41:42.346Z",
+    "modified": "2022-10-22T21:41:42.459Z",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"email\": \"emp1@test.com\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "8eb4038b-1ca5-4acf-a6ee-4d97a6334013",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:3001/user/log-in",
+    "url": "localhost:3001/user/log-in",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-10-22T22:23:42.458Z",
+    "modified": "2022-10-22T22:23:42.466Z",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"email\": \"emp3@test.com\"\n}",
       "form": []
     },
     "tests": []
