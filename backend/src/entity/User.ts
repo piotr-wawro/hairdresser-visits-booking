@@ -6,6 +6,7 @@ import {
   PrimaryGeneratedColumn,
   Relation,
 } from "typeorm";
+import { Schedule } from "./Schedule.js";
 import { Visit } from "./Visit.js";
 
 export enum Roles {
@@ -39,4 +40,7 @@ export class User extends BaseEntity {
 
   @OneToMany(() => Visit, (visit) => visit.servicedBy)
   services!: Relation<Visit[]>;
+
+  @OneToMany(() => Schedule, (schedule) => schedule.for)
+  schedules!: Relation<Visit[]>;
 }

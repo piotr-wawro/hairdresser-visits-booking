@@ -4,7 +4,9 @@ import { transporter } from "../config/email.js";
 import { User } from "../entity/User.js";
 import { Visit } from "../entity/Visit.js";
 import { loginEmail } from "../lib/email.js";
+import schedule from "./schedule.js";
 import user from "./user.js";
+import visit from "./visit.js";
 
 const router = express.Router();
 router.use(express.json());
@@ -58,5 +60,7 @@ router.get("/visit", async (req, res, next) => {
 });
 
 router.use("/user", user);
+router.use("/visit", visit);
+router.use("/schedule", schedule);
 
 export default router;

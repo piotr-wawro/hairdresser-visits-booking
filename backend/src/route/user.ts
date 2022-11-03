@@ -1,5 +1,5 @@
 import express from "express";
-import { LessThan, Like, MoreThan, QueryFailedError } from "typeorm";
+import { LessThan, MoreThan, QueryFailedError } from "typeorm";
 import { Roles, User } from "../entity/User.js";
 import { Visit } from "../entity/Visit.js";
 import { ApiError } from "../lib/ApiError.js";
