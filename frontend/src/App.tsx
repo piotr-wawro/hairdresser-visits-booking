@@ -9,14 +9,14 @@ import Navbar from "./components/Navbar.js";
 
 function App() {
   return (
-    <div className="App" style={{ backgroundColor: "lightblue" }}>
+    <div className="App" style={{ backgroundColor: "white" }}>
       <header className="App-header">
         <Navbar />
       </header>
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="log" element={<LogIn />} />
+        <Route path="/log-in" element={<LogIn />} />
       </Routes>
     </div>
   );

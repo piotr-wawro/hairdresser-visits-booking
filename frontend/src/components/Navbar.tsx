@@ -64,7 +64,7 @@ function Navbar() {
                   flex: 0.25,
                   marginRight: 60,
                 }}
-                onClick={() => navigate("log-in")}
+                onClick={() => navigate("/log-in")}
               >
                 Logowanie
               </button>
