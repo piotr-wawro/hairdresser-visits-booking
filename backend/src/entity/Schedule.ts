@@ -19,6 +19,9 @@ export class Schedule extends BaseEntity {
   @Column()
   end!: Date;
 
+  @Column({ nullable: true })
+  forId!: string;
+
   @ManyToOne(() => User, (user) => user.visits)
   for!: Relation<User>;
 }

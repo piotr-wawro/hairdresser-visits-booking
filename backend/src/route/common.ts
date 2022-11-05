@@ -1,11 +1,10 @@
 import express from "express";
-import { LessThan, MoreThan } from "typeorm";
 import { transporter } from "../config/email.js";
 import { User } from "../entity/User.js";
-import { Visit } from "../entity/Visit.js";
 import { loginEmail } from "../lib/email.js";
+import employee from "./employee.js";
 import schedule from "./schedule.js";
-import user from "./user.js";
+import user from "./user/index.js";
 import visit from "./visit.js";
 
 const router = express.Router();
@@ -30,36 +29,8 @@ router.get("/log-in", async (req, res, next) => {
   }
 });
 
-router.get("/visit", async (req, res, next) => {
-  const { start, end } = req.body;
-
-  try {
-    const visits = await Visit.find({
-      select: {
-        start: true,
-        end: true,
-        servicedBy: {
-          firstName: true,
-          email: false,
-          phoneNumber: false,
-        },
-      },
-      relations: {
-        servicedBy: true,
-      },
-      where: {
-        start: LessThan(new Date(end)),
-        end: MoreThan(new Date(start)),
-      },
-    });
-
-    res.status(200).send(visits);
-  } catch (error) {
-    next(error);
-  }
-});
-
 router.use("/user", user);
+router.use("/employee", employee);
 router.use("/visit", visit);
 router.use("/schedule", schedule);
 

@@ -1,6 +1,8 @@
 import { LessThan, MoreThan } from "typeorm";
 import { dataSource } from "../config/database.js";
+import { Schedule } from "../entity/Schedule.js";
 import { Visit } from "../entity/Visit.js";
+import { ApiError } from "./ApiError.js";
 
 export const serviceToTime = (type: string) => {
   if (type === "haircut") {
@@ -17,7 +19,7 @@ export const repeat = async <T>(fun: () => Promise<T>, repeat: number) => {
     try {
       return await fun();
     } catch (error) {
-      if (i + 1 === repeat) {
+      if (i + 1 === repeat || error instanceof ApiError) {
         throw error;
       }
     }
@@ -34,17 +36,29 @@ export const addVisit = (newVisit: Visit) => {
     });
 
     if (visits) {
-      return false;
-    } else {
-      await manager.save(newVisit);
-      return true;
+      throw ApiError.badRequset("Booked by someone else.");
     }
+
+    const schedules = await manager.count(Schedule, {
+      where: {
+        start: LessThan(newVisit.start),
+        end: MoreThan(newVisit.end),
+        forId: newVisit.servicedById,
+      },
+    });
+
+    if (!schedules) {
+      throw ApiError.badRequset("No employee to service.");
+    }
+
+    await manager.save(newVisit);
   });
 };
 
 type VisitPatch = {
   start: Date;
   end: Date;
+  servicedById: string;
 };
 
 export const patchVisit = (oldVisit: Visit, patch: VisitPatch) => {
@@ -58,11 +72,22 @@ export const patchVisit = (oldVisit: Visit, patch: VisitPatch) => {
       visits.length > 1 ||
       (visits.length === 1 && visits[0].id !== oldVisit.id)
     ) {
-      return false;
-    } else {
-      const patchedVisit = manager.merge(Visit, oldVisit, patch);
-      await manager.save(patchedVisit);
-      return true;
+      throw ApiError.badRequset("Booked by someone else.");
     }
+
+    const schedules = await manager.count(Schedule, {
+      where: {
+        start: LessThan(patch.start),
+        end: MoreThan(patch.end),
+        forId: patch.servicedById ?? oldVisit.servicedById,
+      },
+    });
+
+    if (!schedules) {
+      throw ApiError.badRequset("No employee to service.");
+    }
+
+    const patchedVisit = manager.merge(Visit, oldVisit, patch);
+    await manager.save(patchedVisit);
   });
 };

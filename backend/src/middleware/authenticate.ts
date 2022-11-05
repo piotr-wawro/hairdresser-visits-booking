@@ -1,6 +1,5 @@
 import { RequestHandler } from "express";
 import { User } from "../entity/User.js";
-import { ApiError } from "../lib/ApiError.js";
 import { verifyJwt } from "../lib/jwt.js";
 
 export const authenticate: RequestHandler = async (req, res, next) => {
@@ -13,6 +12,6 @@ export const authenticate: RequestHandler = async (req, res, next) => {
 
     next();
   } catch (error) {
-    next(ApiError.unauthorized("Unauthorized"));
+    next(error);
   }
 };

@@ -10,9 +10,9 @@ import { Schedule } from "./Schedule.js";
 import { Visit } from "./Visit.js";
 
 export enum Roles {
-  MANAGER,
-  EMPLOYEE,
-  USER,
+  MANAGER = "manager",
+  EMPLOYEE = "employee",
+  USER = "user",
 }
 
 @Entity()
@@ -20,7 +20,11 @@ export class User extends BaseEntity {
   @PrimaryGeneratedColumn("uuid")
   id!: string;
 
-  @Column({ default: Roles.USER })
+  @Column({
+    type: "enum",
+    enum: Roles,
+    default: Roles.USER,
+  })
   role!: Roles;
 
   @Column({ default: "" })
@@ -29,7 +33,7 @@ export class User extends BaseEntity {
   @Column({ default: "" })
   lastName!: string;
 
-  @Column()
+  @Column({ unique: true })
   email!: string;
 
   @Column({ default: "" })

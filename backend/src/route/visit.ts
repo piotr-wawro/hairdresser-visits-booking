@@ -1,8 +1,14 @@
 import express from "express";
-import { LessThan, MoreThan } from "typeorm";
+import { LessThan, MoreThan, QueryFailedError } from "typeorm";
 import { Roles, User } from "../entity/User.js";
 import { Visit } from "../entity/Visit.js";
 import { ApiError } from "../lib/ApiError.js";
+import {
+  addVisit,
+  patchVisit,
+  repeat,
+  serviceToTime,
+} from "../lib/visitBooking.js";
 import { authenticate } from "../middleware/authenticate.js";
 import { verifyRole } from "../middleware/verifyRole.js";
 
@@ -10,7 +16,6 @@ const router = express.Router();
 
 router.get("/all", async (req, res, next) => {
   const { start, end } = req.body;
-  const user = req.user;
 
   try {
     const visits = await Visit.findBy({
@@ -26,87 +31,96 @@ router.get("/all", async (req, res, next) => {
 router.post(
   "/",
   authenticate,
-  verifyRole(Roles.MANAGER),
+  verifyRole(Roles.USER),
   async (req, res, next) => {
-    const { start, end, userId, employeeId } = req.body;
+    const { start, type, servicedBy } = req.body;
+    const user = req.user;
+
+    const newVisit = new Visit();
+    newVisit.bookedBy = user;
+    newVisit.start = new Date(start);
+    newVisit.end = new Date(newVisit.start.getTime() + serviceToTime(type));
+    newVisit.servicedById = servicedBy;
 
     try {
-      const user = await User.findOneByOrFail({ id: userId });
-      if (user?.role != Roles.USER) {
-        next(ApiError.badRequset("User is not an user"));
+      const employee = await User.findOneByOrFail({ id: servicedBy });
+      if (employee.role !== Roles.EMPLOYEE) {
+        return next(ApiError.badRequset("Select employee."));
       }
 
-      const employee = await User.findOneByOrFail({ id: employeeId });
-      if (employee?.role != Roles.EMPLOYEE) {
-        next(ApiError.badRequset("User is not an employee"));
-      }
-
-      const visits = new Visit();
-      visits.start = start;
-      visits.end = end;
-      visits.bookedBy = user;
-      visits.servicedBy = employee;
-      visits.save();
-
-      res.status(200).send(visits);
+      await repeat(() => addVisit(newVisit), 3);
+      res.status(200).send();
     } catch (error) {
       next(error);
     }
   }
 );
+
+router.get("/", async (req, res, next) => {
+  const { id } = req.body;
+
+  try {
+    const visits = await Visit.findOneBy({ id });
+    res.status(200).send(visits);
+  } catch (error) {
+    next(error);
+  }
+});
 
 router.patch(
   "/",
   authenticate,
-  verifyRole(Roles.MANAGER),
+  verifyRole(Roles.USER),
   async (req, res, next) => {
-    const { id, start, end, userId, employeeId } = req.body;
+    const { id, start, type, servicedBy } = req.body;
+    const user = req.user;
+
+    const patch = {
+      start: new Date(start),
+      end: new Date(new Date(start).getTime() + serviceToTime(type)),
+      servicedById: servicedBy,
+    };
 
     try {
-      let user = null;
-      if (userId) {
-        user = await User.findOneByOrFail({ id: userId });
-        if (user?.role != Roles.USER) {
-          next(ApiError.badRequset("User is not an user"));
-        }
-      }
+      const oldVisit = await Visit.findOneByOrFail({
+        id: id,
+        bookedById: user.id,
+      });
 
-      let employee = null;
-      if (employeeId) {
-        employee = await User.findOneByOrFail({ id: employeeId });
-        if (employee?.role != Roles.EMPLOYEE) {
-          next(ApiError.badRequset("User is not an employee"));
-        }
-      }
-
-      const visits = await Visit.findOneByOrFail({ id });
-      if (start) visits.start = start;
-      if (end) visits.end = end;
-      if (user) visits.bookedBy = user;
-      if (employee) visits.servicedBy = employee;
-      await visits.save();
-
-      res.status(200).send(visits);
+      await repeat(() => patchVisit(oldVisit, patch), 3);
+      res.status(200).send();
     } catch (error) {
       next(error);
     }
   }
 );
 
-router.post(
+router.delete(
   "/",
   authenticate,
-  verifyRole(Roles.MANAGER),
+  verifyRole(Roles.USER),
   async (req, res, next) => {
     const { id } = req.body;
+    const user = req.user;
 
     try {
-      const visits = await Visit.findOneByOrFail({ id });
-      await visits.remove();
+      const oldVisit = await Visit.findOneByOrFail({ id, bookedById: user.id });
 
-      res.status(200).send(visits);
+      await oldVisit.remove();
+      res.status(200).send();
     } catch (error) {
-      next(error);
+      if (
+        error instanceof QueryFailedError &&
+        error.driverError.code === "40001"
+      ) {
+        next(
+          ApiError.conflict(
+            "Could not serialize access due to read/write dependencies among transactions."
+          )
+        );
+      } else {
+        next(error);
+      }
     }
   }
 );
