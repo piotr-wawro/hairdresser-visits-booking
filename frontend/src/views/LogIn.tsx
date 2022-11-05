@@ -1,4 +1,6 @@
-import Texfield from "./textfield.js";
+//import Texfield from "./textfield.js";
+
+import { TextField } from "@mui/material";
 
 const LogIn = () => {
   return (
@@ -19,11 +21,46 @@ const LogIn = () => {
           justifyContent: "center",
           height: 400,
           alignItems: "center", //
-          backgroundColor: "lightgray",
+          backgroundColor: "#f5f5f5",
+          flexDirection: "column",
         }}
-      ></div>
+      >
+        <label
+          id="loginheader"
+          style={{
+            textAlign: "center",
+            fontSize: 30,
+            fontStyle: "bold",
+          }}
+        >
+          Nowy użytkownik:
+        </label>
+        <TextField
+          id="filled-basic"
+          label="Podaj e-mail:"
+          variant="outlined"
+          style={{
+            marginTop: 40,
+            width: 500,
+            background: "lightgrey",
+          }}
+        />
 
-      <TextField id="filled-basic" label="Filled" variant="filled" />
+        <button
+          id="adduserbutton"
+          style={{
+            marginTop: 30,
+            justifyContent: "center",
+            cursor: "pointer",
+            height: 50,
+            width: 300,
+            fontSize: 20,
+            backgroundColor: "lightgrey",
+          }}
+        >
+          Dodaj
+        </button>
+      </div>
     </div>
   );
 };
