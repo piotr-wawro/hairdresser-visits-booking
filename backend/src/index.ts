@@ -1,6 +1,6 @@
 import express from "express";
 import common from "./route/common.js";
-import { apiErrorHandler } from "./middleware/apiErrorHandler.js";
+import errorHandlers from "./middleware/errorHandlers/index.js";
 
 import "./config/dotenv.js";
 import "./config/database.js";
@@ -11,7 +11,7 @@ const port = 3001;
 
 app.use("/", common);
 
-app.use(apiErrorHandler);
+app.use(errorHandlers);
 
 app.listen(port, () => {
   console.log(
