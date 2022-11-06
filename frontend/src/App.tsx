@@ -5,6 +5,7 @@ import graphic3 from "./assets/graphic3.jpg";
 import { Route, Routes } from "react-router-dom";
 import Home from "./views/Home.js";
 import LogIn from "./views/LogIn.js";
+import MainMenu from "./views/MainMenu.js";
 import Navbar from "./components/Navbar.js";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/log-in" element={<LogIn />} />
+        <Route path="/main-menu" element={<MainMenu />} />
       </Routes>
     </div>
   );

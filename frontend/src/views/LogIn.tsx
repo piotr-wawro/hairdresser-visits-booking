@@ -1,8 +1,10 @@
 //import Texfield from "./textfield.js";
 
 import { TextField } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const LogIn = () => {
+  const navigate = useNavigate();
   return (
     <div
       id="LoginBox"
@@ -57,6 +59,7 @@ const LogIn = () => {
             fontSize: 20,
             backgroundColor: "lightgrey",
           }}
+          onClick={() => navigate("/main-menu")}
         >
           Dodaj
         </button>
