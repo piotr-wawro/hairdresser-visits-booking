@@ -1,13 +1,11 @@
-//import Texfield from "./textfield.js";
-
 import { TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-const LogIn = () => {
+const AddUser = () => {
   const navigate = useNavigate();
   return (
     <div
-      id="LoginBox"
+      id="addUserBox"
       style={{
         height: "100%",
         backgroundColor: "white",
@@ -15,20 +13,36 @@ const LogIn = () => {
         alignItems: "center",
       }}
     >
+      {/*
+      <label
+        id="loginheader"
+        style={{
+          textAlign: "center",
+          fontSize: 30,
+          fontStyle: "bold",
+          background: "lightgrey",
+          padding: 15,
+          width: 40,
+        }}
+      >
+        Rezerwacja miejsc:
+      </label>
+  */}
+
       <div
-        id="loginbox"
+        id="login2box"
         style={{
           marginTop: 50,
           display: "flex",
           justifyContent: "center",
-          height: 400,
+          height: 550,
           alignItems: "center", //
           backgroundColor: "#f5f5f5",
           flexDirection: "column",
         }}
       >
         <label
-          id="loginheader"
+          id="login2header"
           style={{
             textAlign: "center",
             fontSize: 30,
@@ -38,8 +52,41 @@ const LogIn = () => {
           Nowy użytkownik:
         </label>
         <TextField
-          id="textEmail"
-          label="Podaj e-mail:"
+          id="nameText"
+          label="Podaj imię:"
+          variant="outlined"
+          style={{
+            marginTop: 40,
+            width: 500,
+            background: "lightgrey",
+          }}
+        />
+
+        <TextField
+          id="secondNameText"
+          label="Podaj nazwisko:"
+          variant="outlined"
+          style={{
+            marginTop: 40,
+            width: 500,
+            background: "lightgrey",
+          }}
+        />
+
+        <TextField
+          id="phoneNumber"
+          label="Podaj numer telefonu:"
+          variant="outlined"
+          style={{
+            marginTop: 40,
+            width: 500,
+            background: "lightgrey",
+          }}
+        />
+
+        <TextField
+          id="textEmail2Text"
+          label="Podaj adres e-mail:"
           variant="outlined"
           style={{
             marginTop: 40,
@@ -49,7 +96,7 @@ const LogIn = () => {
         />
 
         <button
-          id="addMailUserButton"
+          id="adduserbutton"
           style={{
             marginTop: 30,
             justifyContent: "center",
@@ -68,4 +115,4 @@ const LogIn = () => {
   );
 };
 
-export default LogIn;
+export default AddUser;
