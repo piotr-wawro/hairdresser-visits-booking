@@ -1,11 +1,11 @@
 import { TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-const EditUser = () => {
+const ProfileOfUser = () => {
   const navigate = useNavigate();
   return (
     <div
-      id="editUserBox"
+      id="profileUserBox"
       style={{
         height: "100%",
         backgroundColor: "white",
@@ -13,8 +13,24 @@ const EditUser = () => {
         alignItems: "center",
       }}
     >
+      {/*
+      <label
+        id="loginheader"
+        style={{
+          textAlign: "center",
+          fontSize: 30,
+          fontStyle: "bold",
+          background: "lightgrey",
+          padding: 15,
+          width: 40,
+        }}
+      >
+        Rezerwacja miejsc:
+      </label>
+  */}
+
       <div
-        id="editBox"
+        id="profileBox"
         style={{
           marginTop: 50,
           display: "flex",
@@ -26,7 +42,7 @@ const EditUser = () => {
         }}
       >
         <label
-          id="editHeader"
+          id="profileHeader"
           style={{
             marginTop: 30,
             textAlign: "center",
@@ -34,11 +50,11 @@ const EditUser = () => {
             fontStyle: "bold",
           }}
         >
-          Edytuj użytkownika:
+          Profil:
         </label>
         <TextField
-          id="editNameText"
-          label="Zmień imię:"
+          id="profileNameText"
+          label="Podaj imię:"
           variant="outlined"
           style={{
             marginTop: 40,
@@ -48,8 +64,8 @@ const EditUser = () => {
         />
 
         <TextField
-          id="editSecondNameText"
-          label="Zmień nazwisko:"
+          id="profileSecondNameText"
+          label="Podaj nazwisko:"
           variant="outlined"
           style={{
             marginTop: 40,
@@ -59,8 +75,8 @@ const EditUser = () => {
         />
 
         <TextField
-          id="editPhoneNumber"
-          label="Zmień numer telefonu:"
+          id="profilePhoneNumber"
+          label="Podaj numer telefonu:"
           variant="outlined"
           style={{
             marginTop: 40,
@@ -70,8 +86,8 @@ const EditUser = () => {
         />
 
         <TextField
-          id="editTextEmail2Text"
-          label="Zmień adres e-mail:"
+          id="profileTextEmail2Text"
+          label="Podaj adres e-mail:"
           variant="outlined"
           style={{
             marginTop: 40,
@@ -81,7 +97,7 @@ const EditUser = () => {
         />
 
         <div
-          id="editButtons"
+          id="profileButtons"
           style={{
             justifyContent: "center",
             height: 550,
@@ -89,7 +105,7 @@ const EditUser = () => {
           }}
         >
           <button
-            id="editUserbutton"
+            id="profileUserbutton"
             style={{
               marginTop: 30,
               justifyContent: "center",
@@ -104,7 +120,7 @@ const EditUser = () => {
             Edytuj
           </button>
           <button
-            id="cancelEditButton"
+            id="cancelProfileButton"
             style={{
               marginTop: 30,
               justifyContent: "center",
@@ -125,4 +141,4 @@ const EditUser = () => {
   );
 };
 
-export default EditUser;
+export default ProfileOfUser;

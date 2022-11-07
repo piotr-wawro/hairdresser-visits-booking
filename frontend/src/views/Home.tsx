@@ -11,51 +11,30 @@ const Home = () => {
   const navigate = useNavigate();
 
   return (
-
-    
     <div className="Container">
-<div className="navbar">
-      
-            
-              
-      <img src={logo}  id="logo" />
-   
+      <div className="navbar">
+        <img src={logo} id="logo" />
 
-    <h1 className="booking">
-      Hairdresser visits booking!
-    </h1>
+        <h1 className="booking">Hairdresser visits booking!</h1>
 
-    <button
-      className="navbarbutton"
-      onClick={() => navigate("/log-in")}
-    >
-      Logowanie
-    </button>
-  
-</div>
-      <div className='card' >
-        <div className="imageholder">
-        <img src={graphic1} />
-
-      <img src={graphic2}  />
-
-
-        </div>
-     
-      
+        <button className="navbarbutton" onClick={() => navigate("/log-in")}>
+          Logowanie
+        </button>
       </div>
+      <div className="card">
+        <div className="imageholder">
+          <img src={graphic1} />
 
+          <img src={graphic2} />
+        </div>
+      </div>
     </div>
-
-
-
-
-    
   );
 };
 
 export default Home;
-{/* <div
+{
+  /* <div
       id="MainBox"
       style={{ height: 650, backgroundImage: `url(${background})` }}
     >
@@ -90,4 +69,5 @@ export default Home;
 
         <MainBox graphic={graphic2} text="Edycji danych" />
       </div>
-    </div>*/}
+    </div>*/
+}
