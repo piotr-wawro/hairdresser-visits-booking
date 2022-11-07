@@ -4,12 +4,39 @@ import graphic1 from "../assets/graphic1.jpg";
 import graphic2 from "../assets/graphic2.jpg";
 import graphic3 from "../assets/graphic3.jpg";
 import { useNavigate } from "react-router-dom";
+import "./Style.css";
 
 const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <div
+
+    
+    <div className="Container">
+
+      <div className='card' >
+        <div className="imageholder">
+        <img src={graphic1} />
+
+      <img src={graphic2}  />
+
+
+        </div>
+     
+      
+      </div>
+
+    </div>
+
+
+
+
+    
+  );
+};
+
+export default Home;
+{/* <div
       id="MainBox"
       style={{ height: 650, backgroundImage: `url(${background})` }}
     >
@@ -44,8 +71,4 @@ const Home = () => {
 
         <MainBox graphic={graphic2} text="Edycji danych" />
       </div>
-    </div>
-  );
-};
-
-export default Home;
+    </div>*/}
