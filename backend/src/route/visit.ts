@@ -3,7 +3,7 @@ import {
   delteVisit,
   getAllVisits,
   getVisit,
-  pathcVisit,
+  patchVisit,
   postVisit,
 } from "../controller/visit.js";
 import { Roles } from "../entity/User.js";
@@ -18,7 +18,7 @@ router.post("/", authenticate, verifyRole(Roles.USER), postVisit);
 
 router.get("/", getVisit);
 
-router.patch("/", authenticate, verifyRole(Roles.USER), pathcVisit);
+router.patch("/", authenticate, verifyRole(Roles.USER), patchVisit);
 
 router.delete("/", authenticate, verifyRole(Roles.USER), delteVisit);
 

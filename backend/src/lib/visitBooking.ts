@@ -4,16 +4,6 @@ import { Schedule } from "../entity/Schedule.js";
 import { Visit } from "../entity/Visit.js";
 import { ApiError } from "./ApiError.js";
 
-export const serviceToTime = (type: string) => {
-  if (type === "haircut") {
-    return 60 * 60 * 1000;
-  } else if (type === "hair-dyeing") {
-    return 2 * 60 * 60 * 1000;
-  } else {
-    return 30 * 60 * 1000;
-  }
-};
-
 export const repeat = async <T>(fun: () => Promise<T>, repeat: number) => {
   for (let i = 0; i < repeat; i++) {
     try {

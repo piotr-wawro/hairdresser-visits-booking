@@ -1,8 +1,7 @@
 import express from "express";
 import {
   deleteEmpoyee,
-  getAllEmpoyyes,
-  getAllEmpoyyesAsManager,
+  getAllEmpoyeesAsManager,
   getEmpoyee,
   patchEmpoyee,
   postEmpoyee,
@@ -17,10 +16,10 @@ router.get(
   "/all",
   authenticate,
   verifyRole(Roles.MANAGER),
-  getAllEmpoyyesAsManager
+  getAllEmpoyeesAsManager
 );
 
-router.get("/all", getAllEmpoyyes);
+router.get("/all", getEmpoyee);
 
 router.post("/", authenticate, verifyRole(Roles.MANAGER), postEmpoyee);
 
