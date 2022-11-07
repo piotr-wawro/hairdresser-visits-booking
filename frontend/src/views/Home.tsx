@@ -5,6 +5,7 @@ import graphic2 from "../assets/graphic2.jpg";
 import graphic3 from "../assets/graphic3.jpg";
 import { useNavigate } from "react-router-dom";
 import "./Style.css";
+import logo from "../assets/logo1.jpg";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -13,7 +14,25 @@ const Home = () => {
 
     
     <div className="Container">
+<div className="navbar">
+      
+            
+              
+      <img src={logo}  id="logo" />
+   
 
+    <h1 className="booking">
+      Hairdresser visits booking!
+    </h1>
+
+    <button
+      className="navbarbutton"
+      onClick={() => navigate("/log-in")}
+    >
+      Logowanie
+    </button>
+  
+</div>
       <div className='card' >
         <div className="imageholder">
         <img src={graphic1} />
