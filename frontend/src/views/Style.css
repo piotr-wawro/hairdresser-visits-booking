@@ -1,11 +1,8 @@
 *{
     margin: 0px;
     
-    
 }
-.root{
-   
-}
+
 .container{
     display: flex;
     flex-direction: column;
