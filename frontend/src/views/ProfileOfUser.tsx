@@ -20,7 +20,7 @@ const ProfileOfUser = () => {
   `;
 
   const ProfileUserHeader = styled.label`
-    textalign: center;
+    text-align: center;
     font-size: 30px;
     font-weight: bold;
     margin-top: 40px;
@@ -68,7 +68,7 @@ const ProfileOfUser = () => {
   const ProfileButtonBox = styled.div`
     justify-content: center;
     height: 550px;
-    alignitems: center;
+    align-items: center;
     margin-top: 30px;
     display:flex;
     width:80%;
@@ -76,11 +76,11 @@ const ProfileOfUser = () => {
 
   const ProfileUserCancelButton = styled.button`
     margin-top: 40px;
-    justifycontent: "center";
+    justify-content: "center";
     cursor: pointer;
     height: 40px;
     width: 200px;
-    fontsize: 20px;
+    font-size: 20px;
     background: lightgrey;
     font-weight: bold;
     margin-left: 40px;
@@ -88,11 +88,11 @@ const ProfileOfUser = () => {
 
   const ProfileUserApplyButton = styled.button`
     margin-top: 40px;
-    justifycontent: "center";
+    justify-content: "center";
     cursor: pointer;
     height: 40px;
     width: 200px;
-    fontsize: 20px;
+    font-size: 20px;
     background: lightgrey;
     font-weight: bold;
   `;
