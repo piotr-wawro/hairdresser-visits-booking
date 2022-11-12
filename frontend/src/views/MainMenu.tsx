@@ -34,7 +34,7 @@ const MainMenu = () => {
     margin-top: 0px;
     padding: 10px;
     text-align: center;
-    padding: 25px ;
+    padding: 25px;
     width: 100%;
   `;
 
@@ -72,13 +72,13 @@ const MainMenu = () => {
   const MainMenuButtonBox = styled.div`
     justify-content: center;
     height: 550px;
-    
+
     margin-top: 30px;
-    display:flex;
-    width:80%;
-    gap:10%;
-    margin-right:auto;
-    margin-left:auto;
+    display: flex;
+    width: 80%;
+    gap: 10%;
+    margin-right: auto;
+    margin-left: auto;
   `;
 
   const MainMenuAddWorkerButton = styled.button`
@@ -103,7 +103,6 @@ const MainMenu = () => {
     background: lightgrey;
     font-weight: bold;
     text-align: center;
-    
   `;
 
   const ImageHolder = styled.div`
@@ -126,7 +125,7 @@ const MainMenu = () => {
 
       <Card>
         <MainMenuButtonBox>
-          <MainMenuAddWorkerButton onClick={() => navigate("/add-user")}>
+          <MainMenuAddWorkerButton onClick={() => navigate("/do-reservation")}>
             Dodaj pracownika
           </MainMenuAddWorkerButton>
 

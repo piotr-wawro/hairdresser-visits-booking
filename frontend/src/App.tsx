@@ -10,6 +10,7 @@ import Navbar from "./components/Navbar.js";
 import AddUser from "./views/AddUser.js";
 import ProfileOfUser from "./views/ProfileOfUser.js";
 import EditUser from "./views/EditUser.js";
+import DoReservation from "./views/DoReservation.js";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/add-user" element={<AddUser />} />
         <Route path="/edit-user" element={<EditUser />} />
         <Route path="/profile-user" element={<ProfileOfUser />} />
+        <Route path="/do-reservation" element={<DoReservation />} />
       </Routes>
     </div>
   );
