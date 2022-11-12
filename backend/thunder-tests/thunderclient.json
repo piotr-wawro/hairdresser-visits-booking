@@ -68,11 +68,11 @@
     "method": "GET",
     "sortNum": 10000,
     "created": "2022-10-23T10:23:05.182Z",
-    "modified": "2022-11-04T18:32:48.128Z",
+    "modified": "2022-11-12T11:41:05.334Z",
     "headers": [
       {
         "name": "Authorization",
-        "value": "{{token-emp1}}"
+        "value": "{{token}}"
       },
       {
         "name": "Accept",
@@ -97,11 +97,11 @@
     "method": "GET",
     "sortNum": 10000,
     "created": "2022-10-23T10:26:29.097Z",
-    "modified": "2022-11-04T18:36:19.277Z",
+    "modified": "2022-11-12T11:58:48.546Z",
     "headers": [
       {
         "name": "Authorization",
-        "value": "{{token-usr1}}"
+        "value": "{{token}}"
       },
       {
         "name": "Accept",
@@ -131,11 +131,11 @@
     "method": "POST",
     "sortNum": 30000,
     "created": "2022-10-23T10:59:22.535Z",
-    "modified": "2022-10-23T11:49:27.577Z",
+    "modified": "2022-11-12T11:44:38.737Z",
     "headers": [
       {
         "name": "Authorization",
-        "value": "{{token-test}}"
+        "value": "{{token}}"
       },
       {
         "name": "Accept",
@@ -151,7 +151,7 @@
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"start\": \"2022-10-22 20:00:00\",\n  \"type\": \"haircut\",\n  \"servicedBy\": \"04c8a573-2abe-4e4f-bf6b-f2c6b4e8bc80\"\n}",
+      "raw": "{\n  \"start\": \"2022-12-01 9:40:00\",\n  \"type\": \"haircut\",\n  \"servicedBy\": \"634dc798-9608-405e-8e95-94095d91fb73\"\n}",
       "form": []
     },
     "tests": []
@@ -195,11 +195,11 @@
     "method": "PATCH",
     "sortNum": 40000,
     "created": "2022-10-23T11:51:11.937Z",
-    "modified": "2022-10-23T11:51:51.193Z",
+    "modified": "2022-11-12T11:53:21.911Z",
     "headers": [
       {
         "name": "Authorization",
-        "value": "{{token-test}}"
+        "value": "{{token}}"
       },
       {
         "name": "Accept",
@@ -215,7 +215,7 @@
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"id\": \"74122c36-f066-4c2b-af95-f36959157e82\",\n  \"start\": \"2022-10-22 20:00:00\",\n  \"type\": \"haircut\",\n  \"servicedBy\": \"04c8a573-2abe-4e4f-bf6b-f2c6b4e8bc80\"\n}",
+      "raw": "{\n  \"id\": \"a88987c1-59ab-4e0e-a205-9de7c0458b0e\",\n  \"start\": \"2022-12-01 08:10:00\",\n  \"type\": \"haircut\",\n  \"servicedBy\": \"634dc798-9608-405e-8e95-94095d91fb73\"\n}",
       "form": []
     },
     "tests": []
@@ -229,11 +229,11 @@
     "method": "DELETE",
     "sortNum": 50000,
     "created": "2022-10-23T12:03:21.350Z",
-    "modified": "2022-10-23T12:03:32.972Z",
+    "modified": "2022-11-12T11:45:39.079Z",
     "headers": [
       {
         "name": "Authorization",
-        "value": "{{token-test}}"
+        "value": "{{token}}"
       },
       {
         "name": "Accept",
@@ -249,7 +249,7 @@
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"id\": \"74122c36-f066-4c2b-af95-f36959157e82\"\n}",
+      "raw": "{\n  \"id\": \"a88987c1-59ab-4e0e-a205-9de7c0458b0e\"\n}",
       "form": []
     },
     "tests": []
@@ -353,11 +353,11 @@
     "method": "POST",
     "sortNum": 15000,
     "created": "2022-11-04T12:50:18.922Z",
-    "modified": "2022-11-04T12:55:56.315Z",
+    "modified": "2022-11-12T11:41:12.493Z",
     "headers": [
       {
         "name": "Authorization",
-        "value": "{{token-mng}}"
+        "value": "{{token}}"
       },
       {
         "name": "Accept",
@@ -387,11 +387,11 @@
     "method": "PATCH",
     "sortNum": 20000,
     "created": "2022-11-04T13:13:44.661Z",
-    "modified": "2022-11-04T18:15:57.513Z",
+    "modified": "2022-11-12T11:41:08.718Z",
     "headers": [
       {
         "name": "Authorization",
-        "value": "{{token-emp1}}"
+        "value": "{{token}}"
       },
       {
         "name": "Accept",
@@ -421,11 +421,11 @@
     "method": "GET",
     "sortNum": 10000,
     "created": "2022-11-04T19:02:39.100Z",
-    "modified": "2022-11-04T19:05:13.638Z",
+    "modified": "2022-11-12T11:45:56.910Z",
     "headers": [
       {
         "name": "Authorization",
-        "value": "{{token-mng}}"
+        "value": "{{token}}"
       },
       {
         "name": "Accept",
@@ -450,11 +450,11 @@
     "method": "POST",
     "sortNum": 20000,
     "created": "2022-11-04T19:05:35.649Z",
-    "modified": "2022-11-04T20:01:21.926Z",
+    "modified": "2022-11-12T11:46:17.342Z",
     "headers": [
       {
         "name": "Authorization",
-        "value": "{{token-mng}}"
+        "value": "{{token}}"
       },
       {
         "name": "Accept",
@@ -470,7 +470,7 @@
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"firstName\": \"\",\n  \"lastName\": \"\",\n  \"email\": \"emp4@EKRABSCSBIJIUEDPXVVK.com\",\n  \"phoneNumber\": \"\"\n}",
+      "raw": "{\n  \"firstName\": \"\",\n  \"lastName\": \"\",\n  \"email\": \"emp3@EKRABSCSBIJIUEDPXVVK.com\",\n  \"phoneNumber\": \"\"\n}",
       "form": []
     },
     "tests": []
@@ -484,11 +484,11 @@
     "method": "GET",
     "sortNum": 30000,
     "created": "2022-11-04T19:37:36.264Z",
-    "modified": "2022-11-04T19:48:28.395Z",
+    "modified": "2022-11-12T11:46:40.590Z",
     "headers": [
       {
         "name": "Authorization",
-        "value": "{{token-mng}}"
+        "value": "{{token}}"
       },
       {
         "name": "Accept",
@@ -504,7 +504,7 @@
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"id\": \"3591b035-a0d8-4d37-bf1b-6276c6711238\"\n}",
+      "raw": "{\n  \"id\": \"244e757c-9d58-4be3-bc21-ac46953be644\"\n}",
       "form": []
     },
     "tests": []
@@ -518,11 +518,11 @@
     "method": "PATCH",
     "sortNum": 40000,
     "created": "2022-11-04T19:59:11.109Z",
-    "modified": "2022-11-04T20:00:04.967Z",
+    "modified": "2022-11-12T11:47:05.070Z",
     "headers": [
       {
         "name": "Authorization",
-        "value": "{{token-mng}}"
+        "value": "{{token}}"
       },
       {
         "name": "Accept",
@@ -538,7 +538,7 @@
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"id\": \"3591b035-a0d8-4d37-bf1b-6276c6711238\",\n  \"firstName\": \"Kaja\",\n  \"lastName\": \"Sobczak\",\n  \"phoneNumber\": \"537267514\"\n}",
+      "raw": "{\n  \"id\": \"244e757c-9d58-4be3-bc21-ac46953be644\",\n  \"firstName\": \"Kaja\",\n  \"lastName\": \"Sobczak\",\n  \"phoneNumber\": \"537267514\"\n}",
       "form": []
     },
     "tests": []
@@ -552,11 +552,11 @@
     "method": "DELETE",
     "sortNum": 50000,
     "created": "2022-11-04T20:00:16.176Z",
-    "modified": "2022-11-04T20:03:16.884Z",
+    "modified": "2022-11-12T11:47:25.373Z",
     "headers": [
       {
         "name": "Authorization",
-        "value": "{{token-mng}}"
+        "value": "{{token}}"
       },
       {
         "name": "Accept",
@@ -572,7 +572,7 @@
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"id\": \"25496909-77cd-48c1-be26-4f33cfee8c01\"\n}",
+      "raw": "{\n  \"id\": \"244e757c-9d58-4be3-bc21-ac46953be644\"\n}",
       "form": []
     },
     "tests": []
@@ -586,11 +586,11 @@
     "method": "GET",
     "sortNum": 10000,
     "created": "2022-11-05T10:21:40.222Z",
-    "modified": "2022-11-05T10:29:51.201Z",
+    "modified": "2022-11-12T11:47:39.632Z",
     "headers": [
       {
         "name": "Authorization",
-        "value": "{{token-mng}}"
+        "value": "{{token}}"
       },
       {
         "name": "Accept",
@@ -620,11 +620,11 @@
     "method": "POST",
     "sortNum": 20000,
     "created": "2022-11-05T10:25:33.623Z",
-    "modified": "2022-11-05T10:25:33.623Z",
+    "modified": "2022-11-12T11:49:49.770Z",
     "headers": [
       {
         "name": "Authorization",
-        "value": "{{token-mng}}"
+        "value": "{{token}}"
       },
       {
         "name": "Accept",
@@ -640,7 +640,7 @@
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"start\": \"2022-12-01 08:00:00\",\n  \"end\": \"2022-12-01 16:00:00\",\n  \"userId\": \"d6ee061a-d9fd-4410-b640-cb3e5ed3011e\"\n}",
+      "raw": "{\n  \"start\": \"2022-12-02 08:00:00\",\n  \"end\": \"2022-12-02 16:00:00\",\n  \"userId\": \"634dc798-9608-405e-8e95-94095d91fb73\"\n}",
       "form": []
     },
     "tests": []
@@ -654,11 +654,11 @@
     "method": "DELETE",
     "sortNum": 30000,
     "created": "2022-11-05T10:31:12.739Z",
-    "modified": "2022-11-05T11:06:21.754Z",
+    "modified": "2022-11-12T11:51:07.641Z",
     "headers": [
       {
         "name": "Authorization",
-        "value": "{{token-mng}}"
+        "value": "{{token}}"
       },
       {
         "name": "Accept",
@@ -674,7 +674,7 @@
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"id\": \"0d6f7417-ec8b-4cdb-9a7c-9886a2d985df\"\n}",
+      "raw": "{\n  \"id\": \"b5926670-6e3b-4c84-8a14-d907ca072d07\"\n}",
       "form": []
     },
     "tests": []
@@ -688,11 +688,11 @@
     "method": "PATCH",
     "sortNum": 25000,
     "created": "2022-11-05T11:15:36.712Z",
-    "modified": "2022-11-05T11:17:32.879Z",
+    "modified": "2022-11-12T11:58:12.712Z",
     "headers": [
       {
         "name": "Authorization",
-        "value": "{{token-mng}}"
+        "value": "{{token}}"
       },
       {
         "name": "Accept",
@@ -708,7 +708,7 @@
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"id\": \"6fff89dc-3647-4b6f-a11b-0a9eadcb4d93\",\n  \"start\": \"2022-12-01 08:00:00\",\n  \"end\": \"2022-12-01 14:00:00\",\n  \"userId\": \"d6ee061a-d9fd-4410-b640-cb3e5ed3011e\"\n}",
+      "raw": "{\n  \"id\": \"b5926670-6e3b-4c84-8a14-d907ca072d07\",\n  \"start\": \"2022-12-01 08:00:00\",\n  \"end\": \"2022-12-01 12:00:00\",\n  \"userId\": \"634dc798-9608-405e-8e95-94095d91fb73\"\n}",
       "form": []
     },
     "tests": []
@@ -722,11 +722,11 @@
     "method": "GET",
     "sortNum": 22500,
     "created": "2022-11-05T11:20:29.217Z",
-    "modified": "2022-11-05T11:20:49.694Z",
+    "modified": "2022-11-12T11:50:13.739Z",
     "headers": [
       {
         "name": "Authorization",
-        "value": "{{token-mng}}"
+        "value": "{{token}}"
       },
       {
         "name": "Accept",
@@ -742,7 +742,7 @@
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"id\": \"6fff89dc-3647-4b6f-a11b-0a9eadcb4d93\"\n}",
+      "raw": "{\n  \"id\": \"b5926670-6e3b-4c84-8a14-d907ca072d07\"\n}",
       "form": []
     },
     "tests": []
@@ -756,11 +756,11 @@
     "method": "POST",
     "sortNum": 20000,
     "created": "2022-11-05T11:26:41.928Z",
-    "modified": "2022-11-05T12:14:42.319Z",
+    "modified": "2022-11-12T11:52:06.872Z",
     "headers": [
       {
         "name": "Authorization",
-        "value": "{{token-usr1}}"
+        "value": "{{token}}"
       },
       {
         "name": "Accept",
@@ -776,7 +776,7 @@
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"start\": \"2022-12-01 09:00:00\",\n  \"type\": \"haircut\",\n  \"servicedBy\": \"d6ee061a-d9fd-4410-b640-cb3e5ed3011e\"\n}",
+      "raw": "{\n  \"start\": \"2022-12-01 9:40:00\",\n  \"type\": \"haircut\",\n  \"servicedBy\": \"634dc798-9608-405e-8e95-94095d91fb73\"\n}",
       "form": []
     },
     "tests": []
@@ -790,11 +790,11 @@
     "method": "DELETE",
     "sortNum": 30000,
     "created": "2022-11-05T12:17:40.242Z",
-    "modified": "2022-11-05T12:18:06.066Z",
+    "modified": "2022-11-12T11:56:37.227Z",
     "headers": [
       {
         "name": "Authorization",
-        "value": "{{token-usr1}}"
+        "value": "{{token}}"
       },
       {
         "name": "Accept",
@@ -810,7 +810,7 @@
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"id\": \"5657a28e-2601-4ca4-863f-72c3462d1cc1\"\n}",
+      "raw": "{\n  \"id\": \"a88987c1-59ab-4e0e-a205-9de7c0458b0e\"\n}",
       "form": []
     },
     "tests": []
@@ -824,11 +824,11 @@
     "method": "GET",
     "sortNum": 25000,
     "created": "2022-11-05T12:20:40.730Z",
-    "modified": "2022-11-05T12:21:14.193Z",
+    "modified": "2022-11-12T11:52:36.191Z",
     "headers": [
       {
         "name": "Authorization",
-        "value": "{{token-usr1}}"
+        "value": "{{token}}"
       },
       {
         "name": "Accept",
@@ -844,7 +844,7 @@
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"id\": \"ee4d8676-64fb-468d-9008-aa77a5a3810a\"\n}",
+      "raw": "{\n  \"id\": \"a88987c1-59ab-4e0e-a205-9de7c0458b0e\"\n}",
       "form": []
     },
     "tests": []
@@ -858,11 +858,11 @@
     "method": "PATCH",
     "sortNum": 27500,
     "created": "2022-11-05T12:47:03.122Z",
-    "modified": "2022-11-05T12:53:04.440Z",
+    "modified": "2022-11-12T11:58:24.226Z",
     "headers": [
       {
         "name": "Authorization",
-        "value": "{{token-usr1}}"
+        "value": "{{token}}"
       },
       {
         "name": "Accept",
@@ -878,7 +878,7 @@
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"id\": \"ee4d8676-64fb-468d-9008-aa77a5a3810a\",\n  \"start\": \"2022-12-01 10:00:00\",\n  \"type\": \"haircut\"\n}",
+      "raw": "{\n  \"id\": \"a88987c1-59ab-4e0e-a205-9de7c0458b0e\",\n  \"start\": \"2022-12-01 08:10:00\",\n  \"type\": \"haircut\",\n  \"servicedBy\": \"634dc798-9608-405e-8e95-94095d91fb73\"\n}",
       "form": []
     },
     "tests": []

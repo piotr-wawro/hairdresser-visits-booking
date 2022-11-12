@@ -1,6 +1,7 @@
 import { RequestHandler } from "express";
 import { User } from "../entity/User.js";
 import { verifyJwt } from "../lib/jwt.js";
+import { ApiError } from "../utils/ApiError.js";
 
 export const authenticate: RequestHandler = async (req, res, next) => {
   try {
@@ -12,6 +13,6 @@ export const authenticate: RequestHandler = async (req, res, next) => {
 
     next();
   } catch (error) {
-    next(error);
+    next(ApiError.unauthorized("Invalid token."));
   }
 };
