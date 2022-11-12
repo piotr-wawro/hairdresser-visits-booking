@@ -7,84 +7,130 @@ import graphic2 from "../assets/graphic2.jpg";
 import graphic3 from "../assets/graphic3.jpg";
 import "./Style.css";
 import logo from "../assets/logo1.jpg";
+import styled from "styled-components";
 
 const MainMenu = () => {
   const navigate = useNavigate();
+
+  const Header1 = styled.h1``;
+
+  const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: auto;
+    margin-right: auto;
+    width: max-content;
+    width: 100%;
+  `;
+
+  const Navbar = styled.div`
+    background: #47a8bd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    padding: 10px;
+    text-align: center;
+    padding: 25px 48px;
+    width: 100%;
+  `;
+
+  const Logo = styled.img`
+    height: 80px;
+    width: 80px;
+  `;
+
+  const NavbarButton = styled.button`
+    width: 250px;
+    height: 81px;
+    left: 1111px;
+    top: 34px;
+    background: #ff9b71;
+    border-radius: 20px;
+    margin-right: 50px;
+  `;
+
+  const Card = styled.div`
+    margin-top: 50px;
+    background-color: #17567c;
+    border-radius: 24px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 64px;
+    gap: 40px;
+    width: 1000px;
+    height: 460px;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+  `;
+  const MainMenuButtonBox = styled.div`
+    justifycontent: center;
+    height: 550px;
+    alignitems: center;
+    margin-top: 30px;
+  `;
+
+  const MainMenuAddWorkerButton = styled.button`
+    margin-top: 40px;
+    justifycontent: "center";
+    cursor: pointer;
+    height: 40px;
+    width: 200px;
+    fontsize: 20px;
+    background: lightgrey;
+    font-weight: bold;
+    margin-left: 40px;
+    text-align: center;
+  `;
+
+  const MainMenuEditWorkerButton = styled.button`
+    margin-top: 40px;
+    justifycontent: "center";
+    cursor: pointer;
+    height: 40px;
+    width: 200px;
+    fontsize: 20px;
+    background: lightgrey;
+    font-weight: bold;
+    text-align: center;
+    margin-left: 40px;
+  `;
+
+  const ImageHolder = styled.div`
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 40px;
+  `;
+
   return (
-    <div className="Container">
-      <div className="navbar">
-        <img src={logo} id="logo" />
+    <Container>
+      <Navbar>
+        <Logo src={logo}></Logo>
+        <Header1>Zapisz się do fryzjera już dziś!</Header1>
 
-        <h1 className="booking">Zapisz się do fryzjera już dziś!</h1>
-
-        <button
-          className="navbarbutton"
-          onClick={() => navigate("/profile-user")}
-        >
+        <NavbarButton onClick={() => navigate("/profile-user")}>
           Profil
-        </button>
-      </div>
+        </NavbarButton>
+      </Navbar>
 
-      <div className="card">
-        <label
-          id="dodajLabel"
-          style={{
-            textAlign: "center",
-            display: "flex",
-            fontSize: 30,
-            fontStyle: "bold",
-            color: "white",
-            marginLeft: 80,
-          }}
-        >
-          Dodaj pracowników:
-        </label>
+      <Card>
+        <MainMenuButtonBox>
+          <MainMenuAddWorkerButton onClick={() => navigate("/add-user")}>
+            Dodaj pracownika
+          </MainMenuAddWorkerButton>
 
-        <label
-          id="edytujLabel"
-          style={{
-            textAlign: "center",
-            display: "flex",
-            fontSize: 30,
-            fontStyle: "bold",
-            color: "white",
-            marginLeft: 220,
-          }}
-        >
-          Edytuj pracowników:
-        </label>
-
-        <button
-          id="addWorkerButton"
-          style={{
-            cursor: "pointer",
-            height: 40,
-            width: 200,
-            fontSize: 15,
-            backgroundColor: "lightgrey",
-            marginLeft: 80,
-          }}
-          onClick={() => navigate("/add-user")}
-        >
-          Dodaj pracownika
-        </button>
-
-        <button
-          id="editWorkerButton"
-          style={{
-            cursor: "pointer",
-            height: 40,
-            width: 200,
-            fontSize: 15,
-            backgroundColor: "lightgrey",
-            marginLeft: 80,
-          }}
-          onClick={() => navigate("/edit-user")}
-        >
-          Edytuj pracownika
-        </button>
-      </div>
-    </div>
+          <MainMenuEditWorkerButton onClick={() => navigate("/edit-user")}>
+            Edytuj pracownika
+          </MainMenuEditWorkerButton>
+        </MainMenuButtonBox>
+      </Card>
+    </Container>
   );
 };
 

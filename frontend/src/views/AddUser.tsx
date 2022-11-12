@@ -1,117 +1,94 @@
 import { TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
 const AddUser = () => {
   const navigate = useNavigate();
+
+  const AddUserBox = styled.div`
+    margin-top: 50px;
+    justify-content: center;
+    height: 600px;
+    align-items: center;
+    background: #f5f5f5;
+    flex-direction: column;
+    text-align: center;
+    display: flex;
+  `;
+
+  const AddUserHeader = styled.label`
+    textalign: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 40px;
+  `;
+
+  const AddNameTextField = styled(TextField)`
+    background: lightgrey;
+    width: 500px;
+    margin-top: 40px;
+    padding: 0.25em 1em;
+  `;
+
+  const AddSurnameTextField = styled(TextField)`
+    background: lightgrey;
+    margin-top: 40px;
+    width: 500px;
+  `;
+
+  const AddPhoneTextField = styled(TextField)`
+    background: lightgrey;
+    margin-top: 40px;
+    width: 500px;
+  `;
+
+  const AddEmailTextField = styled(TextField)`
+    background: lightgrey;
+    margin-top: 40px;
+    width: 500px;
+  `;
+
+  const AddUserButton = styled.button`
+    margin-top: 40px;
+    justifycontent: "center";
+    cursor: pointer;
+    height: 40px;
+    width: 200px;
+    fontsize: 20px;
+    background: lightgrey;
+    font-weight: bold;
+  `;
   return (
-    <div
-      id="addUserBox"
-      style={{
-        height: "100%",
-        backgroundColor: "white",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      {/*
-      <label
-        id="loginheader"
-        style={{
-          textAlign: "center",
-          fontSize: 30,
-          fontStyle: "bold",
-          background: "lightgrey",
-          padding: 15,
-          width: 40,
-        }}
-      >
-        Rezerwacja miejsc:
-      </label>
-  */}
+    <AddUserBox>
+      <AddUserHeader>Nowy użytkownik:</AddUserHeader>
+      <AddNameTextField
+        style={{ marginBottom: 40 }}
+        label="Podaj imię:"
+        variant="outlined"
+      ></AddNameTextField>
 
-      <div
-        id="login2box"
-        style={{
-          marginTop: 50,
-          display: "flex",
-          justifyContent: "center",
-          height: 550,
-          alignItems: "center", //
-          backgroundColor: "#f5f5f5",
-          flexDirection: "column",
-        }}
-      >
-        <label
-          id="login2header"
-          style={{
-            textAlign: "center",
-            fontSize: 30,
-            fontStyle: "bold",
-          }}
-        >
-          Nowy użytkownik:
-        </label>
-        <TextField
-          id="nameText"
-          label="Podaj imię:"
-          variant="outlined"
-          style={{
-            marginTop: 40,
-            width: 500,
-            background: "lightgrey",
-          }}
-        />
+      <AddSurnameTextField
+        style={{ marginBottom: 40 }}
+        label="Podaj nazwisko:"
+        variant="outlined"
+      ></AddSurnameTextField>
 
-        <TextField
-          id="secondNameText"
-          label="Podaj nazwisko:"
-          variant="outlined"
-          style={{
-            marginTop: 40,
-            width: 500,
-            background: "lightgrey",
-          }}
-        />
+      <AddPhoneTextField
+        style={{ marginBottom: 40 }}
+        label="Podaj numer telefonu:"
+        variant="outlined"
+      ></AddPhoneTextField>
 
-        <TextField
-          id="phoneNumber"
-          label="Podaj numer telefonu:"
-          variant="outlined"
-          style={{
-            marginTop: 40,
-            width: 500,
-            background: "lightgrey",
-          }}
-        />
+      <AddEmailTextField
+        style={{ marginBottom: 40 }}
+        label="Podaj e-mail"
+        variant="outlined"
+      ></AddEmailTextField>
 
-        <TextField
-          id="textEmail2Text"
-          label="Podaj adres e-mail:"
-          variant="outlined"
-          style={{
-            marginTop: 40,
-            width: 500,
-            background: "lightgrey",
-          }}
-        />
-
-        <button
-          id="adduserbutton"
-          style={{
-            marginTop: 30,
-            justifyContent: "center",
-            cursor: "pointer",
-            height: 50,
-            width: 300,
-            fontSize: 20,
-            backgroundColor: "lightgrey",
-          }}
-          onClick={() => navigate("/main-menu")}
-        >
-          Dodaj
-        </button>
-      </div>
-    </div>
+      <AddUserButton onClick={() => navigate("/main-menu")}>
+        Dodaj
+      </AddUserButton>
+    </AddUserBox>
   );
 };
 

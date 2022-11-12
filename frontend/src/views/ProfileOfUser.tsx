@@ -1,143 +1,118 @@
 import { TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
 const ProfileOfUser = () => {
   const navigate = useNavigate();
+
+  const ProfileUserBox = styled.div`
+    margin-top: 50px;
+    justify-content: center;
+    height: 600px;
+    align-items: center;
+    background: #f5f5f5;
+    flex-direction: column;
+    text-align: center;
+    display: flex;
+  `;
+
+  const ProfileUserHeader = styled.label`
+    textalign: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  `;
+
+  const ProfileNameTextField = styled(TextField)`
+    background: lightgrey;
+    width: 500px;
+    margin-top: 40px;
+    padding: 0.25em 1em;
+  `;
+
+  const ProfileSurnameTextField = styled(TextField)`
+    background: lightgrey;
+    margin-top: 40px;
+    width: 500px;
+  `;
+
+  const ProfilePhoneTextField = styled(TextField)`
+    background: lightgrey;
+    margin-top: 40px;
+    width: 500px;
+  `;
+
+  const ProfileEmailTextField = styled(TextField)`
+    background: lightgrey;
+    margin-top: 40px;
+    width: 500px;
+  `;
+
+  const ProfileButtonBox = styled.div`
+    justifycontent: center;
+    height: 550px;
+    alignitems: center;
+    margin-top: 30px;
+  `;
+
+  const ProfileUserCancelButton = styled.button`
+    margin-top: 40px;
+    justifycontent: "center";
+    cursor: pointer;
+    height: 40px;
+    width: 200px;
+    fontsize: 20px;
+    background: lightgrey;
+    font-weight: bold;
+    margin-left: 40px;
+  `;
+
+  const ProfileUserApplyButton = styled.button`
+    margin-top: 40px;
+    justifycontent: "center";
+    cursor: pointer;
+    height: 40px;
+    width: 200px;
+    fontsize: 20px;
+    background: lightgrey;
+    font-weight: bold;
+  `;
   return (
-    <div
-      id="profileUserBox"
-      style={{
-        height: "100%",
-        backgroundColor: "white",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      {/*
-      <label
-        id="loginheader"
-        style={{
-          textAlign: "center",
-          fontSize: 30,
-          fontStyle: "bold",
-          background: "lightgrey",
-          padding: 15,
-          width: 40,
-        }}
-      >
-        Rezerwacja miejsc:
-      </label>
-  */}
+    <ProfileUserBox>
+      <ProfileUserHeader>Profil:</ProfileUserHeader>
+      <ProfileNameTextField
+        label="Podaj imię:"
+        variant="outlined"
+      ></ProfileNameTextField>
 
-      <div
-        id="profileBox"
-        style={{
-          marginTop: 50,
-          display: "flex",
-          justifyContent: "center",
-          height: 550,
-          alignItems: "center", //
-          backgroundColor: "#f5f5f5",
-          flexDirection: "column",
-        }}
-      >
-        <label
-          id="profileHeader"
-          style={{
-            marginTop: 30,
-            textAlign: "center",
-            fontSize: 30,
-            fontStyle: "bold",
-          }}
-        >
-          Profil:
-        </label>
-        <TextField
-          id="profileNameText"
-          label="Podaj imię:"
-          variant="outlined"
-          style={{
-            marginTop: 40,
-            width: 500,
-            background: "lightgrey",
-          }}
-        />
+      <ProfileSurnameTextField
+        style={{ marginTop: 40 }}
+        label="Podaj nazwisko:"
+        variant="outlined"
+      ></ProfileSurnameTextField>
 
-        <TextField
-          id="profileSecondNameText"
-          label="Podaj nazwisko:"
-          variant="outlined"
-          style={{
-            marginTop: 40,
-            width: 500,
-            background: "lightgrey",
-          }}
-        />
+      <ProfilePhoneTextField
+        style={{ marginTop: 40 }}
+        label="Podaj numer telefonu:"
+        variant="outlined"
+      ></ProfilePhoneTextField>
 
-        <TextField
-          id="profilePhoneNumber"
-          label="Podaj numer telefonu:"
-          variant="outlined"
-          style={{
-            marginTop: 40,
-            width: 500,
-            background: "lightgrey",
-          }}
-        />
+      <ProfileEmailTextField
+        style={{ marginTop: 40 }}
+        label="Podaj e-mail:"
+        variant="outlined"
+      ></ProfileEmailTextField>
 
-        <TextField
-          id="profileTextEmail2Text"
-          label="Podaj adres e-mail:"
-          variant="outlined"
-          style={{
-            marginTop: 40,
-            width: 500,
-            background: "lightgrey",
-          }}
-        />
-
-        <div
-          id="profileButtons"
-          style={{
-            justifyContent: "center",
-            height: 550,
-            alignItems: "center",
-          }}
-        >
-          <button
-            id="profileUserbutton"
-            style={{
-              marginTop: 30,
-              justifyContent: "center",
-              cursor: "pointer",
-              height: 40,
-              width: 200,
-              fontSize: 15,
-              backgroundColor: "lightgrey",
-            }}
-            onClick={() => navigate("/main-menu")}
-          >
-            Edytuj
-          </button>
-          <button
-            id="cancelProfileButton"
-            style={{
-              marginTop: 30,
-              justifyContent: "center",
-              cursor: "pointer",
-              height: 40,
-              width: 200,
-              fontSize: 15,
-              backgroundColor: "lightgrey",
-              marginLeft: 80,
-            }}
-            onClick={() => navigate("/main-menu")}
-          >
-            Anuluj
-          </button>
-        </div>
-      </div>
-    </div>
+      <ProfileButtonBox>
+        <ProfileUserApplyButton onClick={() => navigate("/main-menu")}>
+          Edytuj
+        </ProfileUserApplyButton>
+        <ProfileUserCancelButton onClick={() => navigate("/main-menu")}>
+          Anuluj
+        </ProfileUserCancelButton>
+      </ProfileButtonBox>
+    </ProfileUserBox>
   );
 };
 

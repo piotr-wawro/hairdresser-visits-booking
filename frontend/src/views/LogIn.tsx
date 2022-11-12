@@ -1,70 +1,59 @@
 //import Texfield from "./textfield.js";
 
+import styled from "styled-components";
 import { TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 const LogIn = () => {
   const navigate = useNavigate();
-  return (
-    <div
-      id="LoginBox"
-      style={{
-        height: "100%",
-        backgroundColor: "white",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <div
-        id="loginbox"
-        style={{
-          marginTop: 50,
-          display: "flex",
-          justifyContent: "center",
-          height: 400,
-          alignItems: "center", //
-          backgroundColor: "#f5f5f5",
-          flexDirection: "column",
-        }}
-      >
-        <label
-          id="loginheader"
-          style={{
-            textAlign: "center",
-            fontSize: 30,
-            fontStyle: "bold",
-          }}
-        >
-          Nowy użytkownik:
-        </label>
-        <TextField
-          id="textEmail"
-          label="Podaj e-mail:"
-          variant="outlined"
-          style={{
-            marginTop: 40,
-            width: 500,
-            background: "lightgrey",
-          }}
-        />
 
-        <button
-          id="addMailUserButton"
-          style={{
-            marginTop: 30,
-            justifyContent: "center",
-            cursor: "pointer",
-            height: 50,
-            width: 300,
-            fontSize: 20,
-            backgroundColor: "lightgrey",
-          }}
-          onClick={() => navigate("/main-menu")}
-        >
-          Dodaj
-        </button>
-      </div>
-    </div>
+  const LoginBoxDiv = styled.div`
+    margin-top: 50px;
+    justify-content: center;
+    height: 400px;
+    align-items: center;
+    background: #f5f5f5;
+    flex-direction: column;
+    text-align: center;
+    display: flex;
+  `;
+
+  const LoginHeader = styled.label`
+    textalign: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 40px;
+  `;
+
+  const EmailTextField = styled(TextField)`
+    background: lightgrey;
+    margin-top: 40px;
+    width: 500px;
+  `;
+
+  const AddMailUserButton = styled.button`
+    margin-top: 35px;
+    justifycontent: "center";
+    cursor: pointer;
+    height: 40px;
+    width: 200px;
+    fontsize: 20px;
+    background: lightgrey;
+  `;
+
+  return (
+    <LoginBoxDiv>
+      <LoginHeader>Nowy użytkownik:</LoginHeader>
+
+      <EmailTextField
+        variant="outlined"
+        label="Podaj e-mail..."
+      ></EmailTextField>
+
+      <AddMailUserButton onClick={() => navigate("/main-menu")}>
+        Dodaj
+      </AddMailUserButton>
+    </LoginBoxDiv>
   );
 };
 
