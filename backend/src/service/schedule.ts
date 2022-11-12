@@ -1,7 +1,7 @@
 import { LessThan, MoreThan } from "typeorm";
 import { Schedule } from "../entity/Schedule.js";
 import { Roles, User } from "../entity/User.js";
-import { ApiError } from "../lib/ApiError.js";
+import { ApiError } from "../utils/ApiError.js";
 import { addSchedule, repeat } from "../lib/serializableRequest.js";
 
 export const findAllSchedules = (start: string, end: string) => {

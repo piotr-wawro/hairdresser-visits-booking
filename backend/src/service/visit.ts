@@ -1,7 +1,7 @@
 import { LessThan, MoreThan } from "typeorm";
 import { Roles, User } from "../entity/User.js";
 import { Visit } from "../entity/Visit.js";
-import { ApiError } from "../lib/ApiError.js";
+import { ApiError } from "../utils/ApiError.js";
 import { addVisit, patchVisit, repeat } from "../lib/serializableRequest.js";
 
 export const serviceToTime = (type: string) => {

@@ -1,5 +1,5 @@
 import { Roles, User } from "../entity/User.js";
-import { ApiError } from "../lib/ApiError.js";
+import { ApiError } from "../utils/ApiError.js";
 import { addUser, repeat } from "../lib/serializableRequest.js";
 import { isEmailValid } from "../lib/validateEmail.js";
 

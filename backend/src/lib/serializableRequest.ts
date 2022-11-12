@@ -3,7 +3,7 @@ import { dataSource } from "../config/database.js";
 import { Schedule } from "../entity/Schedule.js";
 import { User } from "../entity/User.js";
 import { Visit } from "../entity/Visit.js";
-import { ApiError } from "./ApiError.js";
+import { ApiError } from "../utils/ApiError.js";
 
 export const repeat = async <T>(fun: () => Promise<T>, repeat: number) => {
   for (let i = 0; i < repeat; i++) {
