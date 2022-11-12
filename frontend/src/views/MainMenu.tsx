@@ -51,6 +51,7 @@ const MainMenu = () => {
     background: #ff9b71;
     border-radius: 20px;
     margin-right: 50px;
+    font-size: 32px;
   `;
 
   const Card = styled.div`

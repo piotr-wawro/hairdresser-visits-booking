@@ -50,6 +50,7 @@ const Home = () => {
     background: #ff9b71;
     border-radius: 20px;
     margin-right: 50px;
+    font-size: 32px;
   `;
 
   const Card = styled.div`
@@ -77,7 +78,7 @@ const Home = () => {
   `;
 
   const Img = styled.img`
-    height: 200px;
+    height: 250px;
     width: 40%;
   `;
 

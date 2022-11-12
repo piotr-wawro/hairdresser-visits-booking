@@ -16,6 +16,9 @@ const LogIn = () => {
     flex-direction: column;
     text-align: center;
     display: flex;
+    width:75vw;
+    margin-right:auto;
+    margin-left:auto;
   `;
 
   const LoginHeader = styled.label`
@@ -23,12 +26,16 @@ const LogIn = () => {
     font-size: 30px;
     font-weight: bold;
     margin-bottom: 40px;
+    
   `;
 
   const EmailTextField = styled(TextField)`
     background: lightgrey;
     margin-top: 40px;
-    width: 500px;
+    width:75%;
+    margin-right:auto;
+    margin-left:auto;
+    max-width: 600px;
   `;
 
   const AddMailUserButton = styled.button`
@@ -39,6 +46,8 @@ const LogIn = () => {
     width: 200px;
     fontsize: 20px;
     background: lightgrey;
+    width:35%;
+    max-width: 250px;
   `;
 
   return (
