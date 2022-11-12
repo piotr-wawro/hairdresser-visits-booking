@@ -14,6 +14,9 @@ const ProfileOfUser = () => {
     flex-direction: column;
     text-align: center;
     display: flex;
+    width:75vw;
+    margin-right:auto;
+    margin-left:auto;
   `;
 
   const ProfileUserHeader = styled.label`
@@ -22,38 +25,53 @@ const ProfileOfUser = () => {
     font-weight: bold;
     margin-top: 40px;
     margin-bottom: 40px;
+
   `;
 
   const ProfileNameTextField = styled(TextField)`
     background: lightgrey;
-    width: 500px;
     margin-top: 40px;
     padding: 0.25em 1em;
+    width:75%;
+    margin-right:auto;
+    margin-left:auto;
+    max-width: 600px;
   `;
 
   const ProfileSurnameTextField = styled(TextField)`
     background: lightgrey;
     margin-top: 40px;
-    width: 500px;
+    width:75%;
+    margin-right:auto;
+    margin-left:auto;
+    max-width: 600px;
   `;
 
   const ProfilePhoneTextField = styled(TextField)`
     background: lightgrey;
     margin-top: 40px;
-    width: 500px;
+    width:75%;
+    margin-right:auto;
+    margin-left:auto;
+    max-width: 600px;
   `;
 
   const ProfileEmailTextField = styled(TextField)`
     background: lightgrey;
     margin-top: 40px;
-    width: 500px;
+    width:75%;
+    margin-right:auto;
+    margin-left:auto;
+    max-width: 600px;
   `;
 
   const ProfileButtonBox = styled.div`
-    justifycontent: center;
+    justify-content: center;
     height: 550px;
     alignitems: center;
     margin-top: 30px;
+    display:flex;
+    width:80%;
   `;
 
   const ProfileUserCancelButton = styled.button`

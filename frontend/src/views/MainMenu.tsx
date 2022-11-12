@@ -34,7 +34,7 @@ const MainMenu = () => {
     margin-top: 0px;
     padding: 10px;
     text-align: center;
-    padding: 25px 48px;
+    padding: 25px ;
     width: 100%;
   `;
 
@@ -63,8 +63,8 @@ const MainMenu = () => {
     align-items: center;
     padding: 64px;
     gap: 40px;
-    width: 1000px;
-    height: 460px;
+    width: 70vw;
+    height: 60vh;
     margin-left: auto;
     margin-right: auto;
     justify-content: center;

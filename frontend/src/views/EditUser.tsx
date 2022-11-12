@@ -8,16 +8,19 @@ const EditUser = () => {
   const EditUserBox = styled.div`
     margin-top: 50px;
     justify-content: center;
-    height: 600px;
+    height: 60vh;
     align-items: center;
     background: #f5f5f5;
+    display: flex;
     flex-direction: column;
     text-align: center;
-    display: flex;
+    width:75vw;
+    margin-right:auto;
+    margin-left:auto;
   `;
 
   const EditUserHeader = styled.label`
-    textalign: center;
+    text-align: center;
     font-size: 30px;
     font-weight: bold;
     margin-top: 40px;
@@ -26,7 +29,10 @@ const EditUser = () => {
 
   const EditNameTextField = styled(TextField)`
     background: lightgrey;
-    width: 500px;
+    width:75%;
+    margin-right:auto;
+    margin-left:auto;
+    max-width: 600px;
     margin-top: 40px;
     padding: 0.25em 1em;
   `;
@@ -34,26 +40,37 @@ const EditUser = () => {
   const EditSurnameTextField = styled(TextField)`
     background: lightgrey;
     margin-top: 40px;
-    width: 500px;
+    width:75%;
+    margin-right:auto;
+    margin-left:auto;
+    max-width: 600px;
   `;
 
   const EditPhoneTextField = styled(TextField)`
     background: lightgrey;
     margin-top: 40px;
-    width: 500px;
+    width:75%;
+    margin-right:auto;
+    margin-left:auto;
+    max-width: 600px;
   `;
 
   const EditEmailTextField = styled(TextField)`
     background: lightgrey;
     margin-top: 40px;
-    width: 500px;
+    width:75%;
+    margin-right:auto;
+    margin-left:auto;
+    max-width: 600px;
   `;
 
   const EditButtonBox = styled.div`
-    justifycontent: center;
+    justify-content: center;
     height: 550px;
     alignitems: center;
     margn-top: 30px;
+    display:flex;
+    width:80%;
   `;
   const EditUserCancelButton = styled.button`
     margin-top: 40px;
@@ -69,7 +86,7 @@ const EditUser = () => {
 
   const EditUserApplyButton = styled.button`
     margin-top: 40px;
-    justifycontent: "center";
+    justify-content: "center";
     cursor: pointer;
     height: 40px;
     width: 200px;
