@@ -74,6 +74,8 @@ const MainMenu = () => {
     height: 550px;
     alignitems: center;
     margin-top: 30px;
+    display:flex;
+    width:80%;
   `;
 
   const MainMenuAddWorkerButton = styled.button`
