@@ -50,7 +50,7 @@ const AddUser = () => {
 
   const AddUserButton = styled.button`
     margin-top: 40px;
-    justifycontent: "center";
+    justify-content: "center";
     cursor: pointer;
     height: 40px;
     width: 200px;

@@ -67,18 +67,18 @@ const EditUser = () => {
   const EditButtonBox = styled.div`
     justify-content: center;
     height: 550px;
-    alignitems: center;
+    align-items: center;
     margn-top: 30px;
     display:flex;
     width:80%;
   `;
   const EditUserCancelButton = styled.button`
     margin-top: 40px;
-    justifycontent: "center";
+    justify-content: "center";
     cursor: pointer;
     height: 40px;
     width: 200px;
-    fontsize: 20px;
+    font-size: 20px;
     background: lightgrey;
     font-weight: bold;
     margin-left: 40px;
@@ -90,7 +90,7 @@ const EditUser = () => {
     cursor: pointer;
     height: 40px;
     width: 200px;
-    fontsize: 20px;
+    font-size: 20px;
     background: lightgrey;
     font-weight: bold;
   `;

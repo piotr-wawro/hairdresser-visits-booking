@@ -22,7 +22,7 @@ const LogIn = () => {
   `;
 
   const LoginHeader = styled.label`
-    textalign: center;
+    text-align: center;
     font-size: 30px;
     font-weight: bold;
     margin-bottom: 40px;
@@ -40,11 +40,11 @@ const LogIn = () => {
 
   const AddMailUserButton = styled.button`
     margin-top: 35px;
-    justifycontent: "center";
+    justify-content: "center";
     cursor: pointer;
     height: 40px;
     width: 200px;
-    fontsize: 20px;
+    font-size: 20px;
     background: lightgrey;
     width:35%;
     max-width: 250px;
