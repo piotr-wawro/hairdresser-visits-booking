@@ -70,9 +70,9 @@ const MainMenu = () => {
     justify-content: center;
   `;
   const MainMenuButtonBox = styled.div`
-    justifycontent: center;
+    justify-content: center;
     height: 550px;
-    alignitems: center;
+    align-items: center;
     margin-top: 30px;
     display:flex;
     width:80%;
@@ -80,11 +80,11 @@ const MainMenu = () => {
 
   const MainMenuAddWorkerButton = styled.button`
     margin-top: 40px;
-    justifycontent: "center";
+    justify-content: "center";
     cursor: pointer;
     height: 40px;
     width: 200px;
-    fontsize: 20px;
+    font-size: 20px;
     background: lightgrey;
     font-weight: bold;
     margin-left: 40px;
@@ -93,11 +93,11 @@ const MainMenu = () => {
 
   const MainMenuEditWorkerButton = styled.button`
     margin-top: 40px;
-    justifycontent: "center";
+    justify-content: "center";
     cursor: pointer;
     height: 40px;
     width: 200px;
-    fontsize: 20px;
+    font-size: 20px;
     background: lightgrey;
     font-weight: bold;
     text-align: center;
