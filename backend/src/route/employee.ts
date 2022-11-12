@@ -8,6 +8,7 @@ import {
 } from "../controller/employee.js";
 import { Roles } from "../entity/User.js";
 import { authenticate } from "../middleware/authenticate.js";
+import { routeUnauthorized } from "../middleware/errorHandlers/routeUnauthorized.js";
 import { verifyRole } from "../middleware/verifyRole.js";
 
 const router = express.Router();
@@ -16,7 +17,8 @@ router.get(
   "/all",
   authenticate,
   verifyRole(Roles.MANAGER),
-  getAllEmpoyeesAsManager
+  getAllEmpoyeesAsManager,
+  routeUnauthorized
 );
 
 router.get("/all", getEmpoyee);
