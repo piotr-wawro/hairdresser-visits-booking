@@ -72,11 +72,13 @@ const MainMenu = () => {
   const MainMenuButtonBox = styled.div`
     justify-content: center;
     height: 550px;
-    align-items: center;
+    
     margin-top: 30px;
     display:flex;
     width:80%;
     gap:10%;
+    margin-right:auto;
+    margin-left:auto;
   `;
 
   const MainMenuAddWorkerButton = styled.button`
