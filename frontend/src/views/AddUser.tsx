@@ -17,7 +17,7 @@ const AddUser = () => {
   `;
 
   const AddUserHeader = styled.label`
-    textalign: center;
+    text-align: center;
     font-size: 30px;
     font-weight: bold;
     margin-bottom: 40px;
@@ -54,7 +54,7 @@ const AddUser = () => {
     cursor: pointer;
     height: 40px;
     width: 200px;
-    fontsize: 20px;
+    font-size: 20px;
     background: lightgrey;
     font-weight: bold;
   `;
