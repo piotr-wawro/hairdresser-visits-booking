@@ -76,6 +76,7 @@ const MainMenu = () => {
     margin-top: 30px;
     display:flex;
     width:80%;
+    gap:10%;
   `;
 
   const MainMenuAddWorkerButton = styled.button`
@@ -87,7 +88,6 @@ const MainMenu = () => {
     font-size: 20px;
     background: lightgrey;
     font-weight: bold;
-    margin-left: 40px;
     text-align: center;
   `;
 
@@ -101,7 +101,7 @@ const MainMenu = () => {
     background: lightgrey;
     font-weight: bold;
     text-align: center;
-    margin-left: 40px;
+    
   `;
 
   const ImageHolder = styled.div`
