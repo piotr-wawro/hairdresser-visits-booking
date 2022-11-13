@@ -1,9 +1,11 @@
 //@import url("https://cdn.syncfusion.com/ej2/material.css")
-import { TextField } from "@mui/material";
+import { TextField, TextFieldProps } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import DateTimePicker from "react-datetime-picker";
 import React, { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const DoReservation = () => {
   const navigate = useNavigate();
@@ -24,9 +26,9 @@ const DoReservation = () => {
     flex-direction: column;
     text-align: center;
     display: flex;
-    width:80vw;
-    margin-right:auto;
-    margin-left:auto;
+    width: 80vw;
+    margin-right: auto;
+    margin-left: auto;
   `;
 
   const ReservationButtonBox = styled.div`
@@ -82,17 +84,35 @@ const DoReservation = () => {
   const WorkerChoiceInput = styled.input`
     margin-top: 20px;
   `;
-  const [value, onChange] = useState(new Date());
+
+  const TimeChoice = styled.datalist``;
+  const TimeChoiceInput = styled.input`
+    margin-top: 6px;
+    width: 55px;
+  `;
+  const [startDate, setStartDate] = useState(new Date());
+
   return (
     <DoReservationBox>
       <Header1>Zarezerwuj termin!</Header1>
-      <Header3>Data i czas:</Header3>
-      <DateTimePicker
-        onChange={(newValue) => {
-          //setValue(newValue);
-        }}
-        value={value}
-      ></DateTimePicker>
+      <Header3>Data:</Header3>
+      <DatePicker
+        selected={startDate}
+        onChange={(date: Date) => setStartDate(date)}
+      />
+      <Header3>Godzina:</Header3>
+      <TimeChoiceInput list="timeChoice"></TimeChoiceInput>
+      <TimeChoice id="timeChoice">
+        <option value="8:00"></option>
+        <option value="9:00"></option>
+        <option value="10:00"></option>
+        <option value="11:00"></option>
+        <option value="12:00"></option>
+        <option value="13:00"></option>
+        <option value="14:00"></option>
+        <option value="15:00"></option>
+        <option value="16:00"></option>
+      </TimeChoice>
       <Header3>Typ wizyty:</Header3>
       <TypeChoiceInput list="typeChoice"></TypeChoiceInput>
       <TypeChoice id="typeChoice">
