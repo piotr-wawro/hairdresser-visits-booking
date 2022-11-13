@@ -1,14 +1,18 @@
+//@import url("https://cdn.syncfusion.com/ej2/material.css")
 import { TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import DateTimePicker from "react-datetime-picker";
+import React, { useState } from "react";
 
-const EditUser = () => {
+const DoReservation = () => {
   const navigate = useNavigate();
   const Header1 = styled.h1`
     margin-top: 30px;
   `;
   const Header3 = styled.h3`
     margin-top: 30px;
+    margin-bottom: 10px;
   `;
 
   const DoReservationBox = styled.div`
@@ -78,10 +82,17 @@ const EditUser = () => {
   const WorkerChoiceInput = styled.input`
     margin-top: 20px;
   `;
+  const [value, onChange] = useState(new Date());
   return (
     <DoReservationBox>
       <Header1>Zarezerwuj termin!</Header1>
       <Header3>Data i czas:</Header3>
+      <DateTimePicker
+        onChange={(newValue) => {
+          //setValue(newValue);
+        }}
+        value={value}
+      ></DateTimePicker>
       <Header3>Typ wizyty:</Header3>
       <TypeChoiceInput list="typeChoice"></TypeChoiceInput>
       <TypeChoice id="typeChoice">
@@ -112,4 +123,4 @@ const EditUser = () => {
   );
 };
 
-export default EditUser;
+export default DoReservation;
