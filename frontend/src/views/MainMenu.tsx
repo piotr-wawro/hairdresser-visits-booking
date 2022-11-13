@@ -32,15 +32,16 @@ const MainMenu = () => {
     margin-left: auto;
     margin-right: auto;
     margin-top: 0px;
-    padding: 10px;
+   
     text-align: center;
-    padding: 25px;
+    padding: 25px 0 15px 0;
     width: 100%;
   `;
 
   const Logo = styled.img`
     height: 80px;
     width: 80px;
+    padding-left:10px;
   `;
 
   const NavbarButton = styled.button`
