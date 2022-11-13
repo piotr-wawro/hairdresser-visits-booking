@@ -24,6 +24,9 @@ const DoReservation = () => {
     flex-direction: column;
     text-align: center;
     display: flex;
+    width:80vw;
+    margin-right:auto;
+    margin-left:auto;
   `;
 
   const ReservationButtonBox = styled.div`
@@ -40,7 +43,6 @@ const DoReservation = () => {
     justify-content: "center";
     cursor: pointer;
     height: 40px;
-    width: 200px;
     font-size: 20px;
     background: lightgrey;
     width: 35%;
@@ -53,7 +55,6 @@ const DoReservation = () => {
     justify-content: "center";
     cursor: pointer;
     height: 40px;
-    width: 200px;
     font-size: 20px;
     background: lightgrey;
     width: 35%;
@@ -66,7 +67,6 @@ const DoReservation = () => {
     justify-content: "center";
     cursor: pointer;
     height: 40px;
-    width: 200px;
     font-size: 20px;
     background: lightgrey;
     width: 35%;
