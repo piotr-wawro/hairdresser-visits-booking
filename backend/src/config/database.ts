@@ -11,12 +11,15 @@ export const dataSource = new DataSource({
   database: process.env.DATABASE_NAME || "",
   synchronize: process.env.ENVIRONMENT == "dev" ? true : false,
   logging: process.env.ENVIRONMENT == "dev" ? true : false,
-  entities: ["./src/entity/**/*.ts"],
+  entities:
+    process.env.ENVIRONMENT == "dev"
+      ? ["./src/entity/**/*.ts"]
+      : ["./dist/entity/**/*.js"],
   subscribers: [],
   migrations:
     process.env.ENVIRONMENT == "dev"
       ? ["./src/migration/testing/**/*.ts"]
-      : ["./src/migration/production/**/*.ts"],
+      : ["./dist/migration/production/**/*.js"],
 });
 
 await dataSource.initialize();
