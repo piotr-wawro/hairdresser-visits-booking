@@ -1,7 +1,3 @@
-import "./config/dotenv.js";
-import "./config/database.js";
-import "./config/email.js";
-
 import express from "express";
 import route from "./route/index.js";
 import errorHandlers from "./middleware/errorHandlers/index.js";
