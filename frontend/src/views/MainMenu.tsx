@@ -183,42 +183,58 @@ const MainMenu = () => {
         >
           <Grid item>
             <DivsReserved>
-              <HoursLabel>Godzina: 8:00-9:00</HoursLabel>
+              <HoursLabel onClick={() => navigate("/edit-reservation")}>
+                Godzina: 8:00-9:00
+              </HoursLabel>
             </DivsReserved>
           </Grid>
           <Grid item>
             <DivsReserved>
-              <HoursLabel>Godzina: 9:00-10:00</HoursLabel>
+              <HoursLabel onClick={() => navigate("/edit-reservation")}>
+                Godzina: 9:00-10:00
+              </HoursLabel>
             </DivsReserved>
           </Grid>
           <Grid item>
             <DivsReserved>
-              <HoursLabel>Godzina: 10:00-11:00</HoursLabel>
+              <HoursLabel onClick={() => navigate("/edit-reservation")}>
+                Godzina: 10:00-11:00
+              </HoursLabel>
             </DivsReserved>
           </Grid>
           <Grid item>
             <DivsReserved>
-              <HoursLabel>Godzina: 11:00-12:00</HoursLabel>
+              <HoursLabel onClick={() => navigate("/edit-reservation")}>
+                Godzina: 11:00-12:00
+              </HoursLabel>
             </DivsReserved>
           </Grid>
           <Grid item>
             <DivsReserved style={{ background: "red" }}>
-              <HoursLabel>Godzina: 12:00-13:00</HoursLabel>
+              <HoursLabel onClick={() => navigate("/edit-reservation")}>
+                Godzina: 12:00-13:00
+              </HoursLabel>
             </DivsReserved>
           </Grid>
           <Grid item>
             <DivsReserved>
-              <HoursLabel>Godzina: 13:00-14:00</HoursLabel>
+              <HoursLabel onClick={() => navigate("/edit-reservation")}>
+                Godzina: 13:00-14:00
+              </HoursLabel>
             </DivsReserved>
           </Grid>
           <Grid item>
             <DivsReserved style={{ background: "red" }}>
-              <HoursLabel>Godzina: 14:00-15:00</HoursLabel>
+              <HoursLabel onClick={() => navigate("/edit-reservation")}>
+                Godzina: 14:00-15:00
+              </HoursLabel>
             </DivsReserved>
           </Grid>
           <Grid item>
             <DivsReserved>
-              <HoursLabel>Godzina: 15:00-16:00</HoursLabel>
+              <HoursLabel onClick={() => navigate("/edit-reservation")}>
+                Godzina: 15:00-16:00
+              </HoursLabel>
             </DivsReserved>
           </Grid>
         </Grid>

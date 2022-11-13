@@ -6,7 +6,7 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-const DoReservation = () => {
+const EditReservation = () => {
   const navigate = useNavigate();
   const Header1 = styled.h1`
     margin-top: 30px;
@@ -93,25 +93,12 @@ const DoReservation = () => {
 
   return (
     <DoReservationBox>
-      <Header1>Zarezerwuj termin!</Header1>
+      <Header1>Szczegóły rezerwacji:</Header1>
       <Header3>Data:</Header3>
-      <DatePicker
-        selected={startDate}
-        onChange={(date: Date) => setStartDate(date)}
-      />
+      <label>15.11.2022</label>
       <Header3>Godzina:</Header3>
-      <TimeChoiceInput list="timeChoice"></TimeChoiceInput>
-      <TimeChoice id="timeChoice">
-        <option value="8:00"></option>
-        <option value="9:00"></option>
-        <option value="10:00"></option>
-        <option value="11:00"></option>
-        <option value="12:00"></option>
-        <option value="13:00"></option>
-        <option value="14:00"></option>
-        <option value="15:00"></option>
-        <option value="16:00"></option>
-      </TimeChoice>
+      <label>10:00</label>
+
       <Header3>Typ wizyty:</Header3>
       <TypeChoiceInput list="typeChoice"></TypeChoiceInput>
       <TypeChoice id="typeChoice">
@@ -129,17 +116,15 @@ const DoReservation = () => {
 
       <ReservationButtonBox>
         <DoReservationButton onClick={() => navigate("/main-menu")}>
-          Zapisz
+          Edytuj i zapisz
         </DoReservationButton>
-        <EditReservationButton onClick={() => navigate("/main-menu")}>
-          Edytuj
-        </EditReservationButton>
+
         <CancelReservationButton onClick={() => navigate("/main-menu")}>
-          Usuń
+          Usuń rezerwację
         </CancelReservationButton>
       </ReservationButtonBox>
     </DoReservationBox>
   );
 };
 
-export default DoReservation;
+export default EditReservation;
