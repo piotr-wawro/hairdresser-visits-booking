@@ -1,4 +1,4 @@
-import { TextField } from "@mui/material";
+import { Grid, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import MainBox from "../components/MainBox.js";
 import background from "../assets/background.jpg";
@@ -8,11 +8,20 @@ import graphic3 from "../assets/graphic3.jpg";
 import "./Style.css";
 import logo from "../assets/logo1.jpg";
 import styled from "styled-components";
+import DateTimePicker from "react-datetime-picker";
+import React, { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const MainMenu = () => {
   const navigate = useNavigate();
 
   const Header1 = styled.h1``;
+
+  const Header2 = styled.h2`
+    color: white;
+    width: 300px;
+  `;
 
   const Container = styled.div`
     display: flex;
@@ -32,7 +41,7 @@ const MainMenu = () => {
     margin-left: auto;
     margin-right: auto;
     margin-top: 0px;
-   
+
     text-align: center;
     padding: 25px 0 15px 0;
     width: 100%;
@@ -41,7 +50,7 @@ const MainMenu = () => {
   const Logo = styled.img`
     height: 80px;
     width: 80px;
-    padding-left:10px;
+    padding-left: 10px;
   `;
 
   const NavbarButton = styled.button`
@@ -60,7 +69,7 @@ const MainMenu = () => {
     background-color: #17567c;
     border-radius: 24px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     padding: 64px;
     gap: 40px;
@@ -72,12 +81,11 @@ const MainMenu = () => {
   `;
   const MainMenuButtonBox = styled.div`
     justify-content: center;
-    height: 550px;
-
-    margin-top: 30px;
+    height: 50px;
     display: flex;
     width: 80%;
     gap: 10%;
+    margin-top: 50px;
     margin-right: auto;
     margin-left: auto;
   `;
@@ -87,7 +95,7 @@ const MainMenu = () => {
     justify-content: "center";
     cursor: pointer;
     height: 40px;
-    width: 200px;
+    width: 250px;
     font-size: 20px;
     background: lightgrey;
     font-weight: bold;
@@ -99,7 +107,19 @@ const MainMenu = () => {
     justify-content: "center";
     cursor: pointer;
     height: 40px;
-    width: 200px;
+    width: 250px;
+    font-size: 20px;
+    background: lightgrey;
+    font-weight: bold;
+    text-align: center;
+  `;
+
+  const DoReservationButton = styled.button`
+    margin-top: 40px;
+    justify-content: "center";
+    cursor: pointer;
+    height: 40px;
+    width: 250px;
     font-size: 20px;
     background: lightgrey;
     font-weight: bold;
@@ -113,6 +133,28 @@ const MainMenu = () => {
     gap: 40px;
   `;
 
+  const DateOfReservationBox = styled.div`
+    justify-content: center;
+    height: 50px;
+    margin-top: 5px;
+    display: flex;
+    width: 80%;
+    gap: 10%;
+    margin-right: auto;
+    margin-left: auto;
+  `;
+
+  const DivsReserved = styled.div`
+    background: white;
+    padding: 10px;
+    width: 80px;
+    height: 50px;
+  `;
+
+  const HoursLabel = styled.label``;
+
+  const [startDate, setStartDate] = useState(new Date());
+
   return (
     <Container>
       <Navbar>
@@ -125,8 +167,68 @@ const MainMenu = () => {
       </Navbar>
 
       <Card>
+        <DateOfReservationBox>
+          <Header2>Wybierz datę:</Header2>
+          <DatePicker
+            selected={startDate}
+            onChange={(date: Date) => setStartDate(date)}
+          />
+        </DateOfReservationBox>
+        <Grid
+          container
+          spacing={1}
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Grid item>
+            <DivsReserved>
+              <HoursLabel>Godzina: 8:00-9:00</HoursLabel>
+            </DivsReserved>
+          </Grid>
+          <Grid item>
+            <DivsReserved>
+              <HoursLabel>Godzina: 9:00-10:00</HoursLabel>
+            </DivsReserved>
+          </Grid>
+          <Grid item>
+            <DivsReserved>
+              <HoursLabel>Godzina: 10:00-11:00</HoursLabel>
+            </DivsReserved>
+          </Grid>
+          <Grid item>
+            <DivsReserved>
+              <HoursLabel>Godzina: 11:00-12:00</HoursLabel>
+            </DivsReserved>
+          </Grid>
+          <Grid item>
+            <DivsReserved style={{ background: "red" }}>
+              <HoursLabel>Godzina: 12:00-13:00</HoursLabel>
+            </DivsReserved>
+          </Grid>
+          <Grid item>
+            <DivsReserved>
+              <HoursLabel>Godzina: 13:00-14:00</HoursLabel>
+            </DivsReserved>
+          </Grid>
+          <Grid item>
+            <DivsReserved style={{ background: "red" }}>
+              <HoursLabel>Godzina: 14:00-15:00</HoursLabel>
+            </DivsReserved>
+          </Grid>
+          <Grid item>
+            <DivsReserved>
+              <HoursLabel>Godzina: 15:00-16:00</HoursLabel>
+            </DivsReserved>
+          </Grid>
+        </Grid>
+
+        <DoReservationButton onClick={() => navigate("/do-reservation")}>
+          Dodaj rezerwację
+        </DoReservationButton>
+
         <MainMenuButtonBox>
-          <MainMenuAddWorkerButton onClick={() => navigate("/do-reservation")}>
+          <MainMenuAddWorkerButton onClick={() => navigate("/add-user")}>
             Dodaj pracownika
           </MainMenuAddWorkerButton>
 
