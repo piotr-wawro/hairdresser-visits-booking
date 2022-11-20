@@ -1,16 +1,21 @@
-process.env.DATABASE_NAME = "userTest";
-
 import "../src/config/dotenv.js";
 import request from "supertest";
 import app from "../src/app.js";
 import { dataSource } from "../src/config/database.js";
 import { User } from "../src/entity/User.js";
+import { initializeDatabase } from "./initializeDatabase.js";
 
 const mngToken = process.env.TOKEN_MNG || "";
 const usr1Token = process.env.TOKEN_USR1 || "";
 
-beforeEach(async () => {
+beforeAll(async () => {
+  await initializeDatabase("user_test");
   await dataSource.initialize();
+});
+
+beforeEach(async () => {
+  await dataSource.dropDatabase();
+  await dataSource.synchronize();
   await dataSource.runMigrations();
 });
 
