@@ -3,4 +3,6 @@
         "source.fixAll.eslint": true
     },
     "files.eol": "\n",
+    "thunder-client.saveToWorkspace": true,
+    "thunder-client.workspaceRelativePath": "./backend/",
 }

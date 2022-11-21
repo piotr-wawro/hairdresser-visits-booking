@@ -1,0 +1,886 @@
+[
+  {
+    "_id": "d8f239a3-fdfa-481f-84dc-b1b1b2d465a9",
+    "colId": "dd7aff03-c5d9-4dca-adf3-1d7377d28d9c",
+    "containerId": "10042771-3e7c-4a7d-8ff0-f6297c0deebd",
+    "name": "emp2@EKRABSCSBIJIUEDPXVVK.com",
+    "url": "localhost:3001/log-in",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2022-10-23T09:59:13.143Z",
+    "modified": "2022-11-04T10:31:02.369Z",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"email\": \"emp2@EKRABSCSBIJIUEDPXVVK.com\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "55a17f38-2502-4af5-8017-988bde99c20a",
+    "colId": "2c163172-3c4c-4ed6-aed4-5474f108419b",
+    "containerId": "",
+    "name": "localhost:3001/visit/all",
+    "url": "localhost:3001/visit/all",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2022-10-23T10:11:02.800Z",
+    "modified": "2022-11-05T11:25:03.252Z",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"start\": \"2022-10-01 00:00:00\",\n  \"end\": \"2022-12-31 23:59:59\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "5ca04e78-47ad-406a-9b95-40a3678560cd",
+    "colId": "50c18df6-7db2-4032-a38c-d0bf6f00badf",
+    "containerId": "3250ea55-de88-464c-941b-c091759fe6a8",
+    "name": "localhost:3001/user/profile",
+    "url": "localhost:3001/user/profile",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2022-10-23T10:23:05.182Z",
+    "modified": "2022-11-12T11:41:05.334Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "{{token}}"
+      },
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "efac4e63-4103-4ee0-a90b-7c6ddc4e4e93",
+    "colId": "50c18df6-7db2-4032-a38c-d0bf6f00badf",
+    "containerId": "55ef84d3-aedb-487b-b596-105246bd0169",
+    "name": "localhost:3001/user/visit",
+    "url": "localhost:3001/user/visit",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2022-10-23T10:26:29.097Z",
+    "modified": "2022-11-12T11:58:48.546Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "{{token}}"
+      },
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"start\": \"2022-10-01 00:00:00\",\n  \"end\": \"2022-12-31 23:59:59\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "75caf863-75a9-4b9d-bf9a-ebb619bc573f",
+    "colId": "50c18df6-7db2-4032-a38c-d0bf6f00badf",
+    "containerId": "",
+    "name": "localhost:3001/user/visit",
+    "url": "localhost:3001/user/visit",
+    "method": "POST",
+    "sortNum": 30000,
+    "created": "2022-10-23T10:59:22.535Z",
+    "modified": "2022-11-12T11:44:38.737Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "{{token}}"
+      },
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"start\": \"2022-12-01 9:40:00\",\n  \"type\": \"haircut\",\n  \"servicedBy\": \"634dc798-9608-405e-8e95-94095d91fb73\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "96c48329-0645-456d-96ca-4124163fd369",
+    "colId": "dd7aff03-c5d9-4dca-adf3-1d7377d28d9c",
+    "containerId": "10042771-3e7c-4a7d-8ff0-f6297c0deebd",
+    "name": "emp1@EKRABSCSBIJIUEDPXVVK.com",
+    "url": "localhost:3001/log-in",
+    "method": "GET",
+    "sortNum": 5000,
+    "created": "2022-10-23T11:46:05.607Z",
+    "modified": "2022-11-04T10:30:29.663Z",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"email\": \"emp1@EKRABSCSBIJIUEDPXVVK.com\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "e4341727-c5fa-459f-b35d-a71e20fe3558",
+    "colId": "50c18df6-7db2-4032-a38c-d0bf6f00badf",
+    "containerId": "",
+    "name": "localhost:3001/user/visit",
+    "url": "localhost:3001/user/visit",
+    "method": "PATCH",
+    "sortNum": 40000,
+    "created": "2022-10-23T11:51:11.937Z",
+    "modified": "2022-11-12T11:53:21.911Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "{{token}}"
+      },
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"id\": \"a88987c1-59ab-4e0e-a205-9de7c0458b0e\",\n  \"start\": \"2022-12-01 08:10:00\",\n  \"type\": \"haircut\",\n  \"servicedBy\": \"634dc798-9608-405e-8e95-94095d91fb73\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "151c4a0b-4316-48a8-9bdb-4273a1ff5614",
+    "colId": "50c18df6-7db2-4032-a38c-d0bf6f00badf",
+    "containerId": "",
+    "name": "localhost:3001/user/visit",
+    "url": "localhost:3001/user/visit",
+    "method": "DELETE",
+    "sortNum": 50000,
+    "created": "2022-10-23T12:03:21.350Z",
+    "modified": "2022-11-12T11:45:39.079Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "{{token}}"
+      },
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"id\": \"a88987c1-59ab-4e0e-a205-9de7c0458b0e\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "640d407f-ca1c-4096-9da7-3f4c12ddffdc",
+    "colId": "dd7aff03-c5d9-4dca-adf3-1d7377d28d9c",
+    "containerId": "10042771-3e7c-4a7d-8ff0-f6297c0deebd",
+    "name": "mng@EKRABSCSBIJIUEDPXVVK.com",
+    "url": "localhost:3001/log-in",
+    "method": "GET",
+    "sortNum": 2500,
+    "created": "2022-11-04T10:30:49.861Z",
+    "modified": "2022-11-04T12:48:52.276Z",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"email\": \"mng@EKRABSCSBIJIUEDPXVVK.com\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "1b6d449f-c898-4244-b3f2-0797642cbfcd",
+    "colId": "dd7aff03-c5d9-4dca-adf3-1d7377d28d9c",
+    "containerId": "10042771-3e7c-4a7d-8ff0-f6297c0deebd",
+    "name": "usr1@EKRABSCSBIJIUEDPXVVK.com",
+    "url": "localhost:3001/log-in",
+    "method": "GET",
+    "sortNum": 30000,
+    "created": "2022-11-04T10:31:44.400Z",
+    "modified": "2022-11-04T10:31:56.234Z",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"email\": \"usr1@EKRABSCSBIJIUEDPXVVK.com\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "80532acc-604f-4a7f-a15a-6fe985714ed2",
+    "colId": "dd7aff03-c5d9-4dca-adf3-1d7377d28d9c",
+    "containerId": "10042771-3e7c-4a7d-8ff0-f6297c0deebd",
+    "name": "usr2@EKRABSCSBIJIUEDPXVVK.com Copy Copy",
+    "url": "localhost:3001/log-in",
+    "method": "GET",
+    "sortNum": 40000,
+    "created": "2022-11-04T10:31:46.648Z",
+    "modified": "2022-11-04T10:32:11.970Z",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"email\": \"usr2@EKRABSCSBIJIUEDPXVVK.com\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "921401a1-fcfe-47cf-a997-d287e8d85402",
+    "colId": "50c18df6-7db2-4032-a38c-d0bf6f00badf",
+    "containerId": "",
+    "name": "localhost:3001/user/",
+    "url": "localhost:3001/user/",
+    "method": "POST",
+    "sortNum": 15000,
+    "created": "2022-11-04T12:50:18.922Z",
+    "modified": "2022-11-12T11:41:12.493Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "{{token}}"
+      },
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"firstName\": \"Kaja\",\n  \"lastName\": \"Sobczak\",\n  \"email\": \"KajaSobczak@EKRABSCSBIJIUEDPXVVK.com\",\n  \"phoneNumber\": \"537267514\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "f47bd25d-8162-4dfb-bde7-81f163a9164a",
+    "colId": "50c18df6-7db2-4032-a38c-d0bf6f00badf",
+    "containerId": "3250ea55-de88-464c-941b-c091759fe6a8",
+    "name": "localhost:3001/user/profile",
+    "url": "localhost:3001/user/profile",
+    "method": "PATCH",
+    "sortNum": 20000,
+    "created": "2022-11-04T13:13:44.661Z",
+    "modified": "2022-11-12T11:41:08.718Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "{{token}}"
+      },
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"firstName\": \"Kaja\",\n  \"lastName\": \"Sobczak\",\n  \"phoneNumber\": \"537267514\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "7f42bd6e-5596-46b6-940c-4a55d9f675e4",
+    "colId": "47cdb51b-a660-4d98-9205-0bdca2ddcc3a",
+    "containerId": "",
+    "name": "localhist:3001/employee/all",
+    "url": "localhost:3001/employee/all",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2022-11-04T19:02:39.100Z",
+    "modified": "2022-11-12T11:45:56.910Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "{{token}}"
+      },
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "d2fd6235-30ba-481a-af95-90aeb58a56be",
+    "colId": "47cdb51b-a660-4d98-9205-0bdca2ddcc3a",
+    "containerId": "",
+    "name": "localhist:3001/employee",
+    "url": "localhost:3001/employee",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2022-11-04T19:05:35.649Z",
+    "modified": "2022-11-12T11:46:17.342Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "{{token}}"
+      },
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"firstName\": \"\",\n  \"lastName\": \"\",\n  \"email\": \"emp3@EKRABSCSBIJIUEDPXVVK.com\",\n  \"phoneNumber\": \"\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "cf88fb65-7a7b-46e6-8632-d0f4bef65580",
+    "colId": "47cdb51b-a660-4d98-9205-0bdca2ddcc3a",
+    "containerId": "",
+    "name": "localhist:3001/employee",
+    "url": "localhost:3001/employee",
+    "method": "GET",
+    "sortNum": 30000,
+    "created": "2022-11-04T19:37:36.264Z",
+    "modified": "2022-11-12T11:46:40.590Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "{{token}}"
+      },
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"id\": \"244e757c-9d58-4be3-bc21-ac46953be644\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "9b098744-0b65-4551-a224-68611741c484",
+    "colId": "47cdb51b-a660-4d98-9205-0bdca2ddcc3a",
+    "containerId": "",
+    "name": "localhist:3001/employee",
+    "url": "localhost:3001/employee",
+    "method": "PATCH",
+    "sortNum": 40000,
+    "created": "2022-11-04T19:59:11.109Z",
+    "modified": "2022-11-12T11:47:05.070Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "{{token}}"
+      },
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"id\": \"244e757c-9d58-4be3-bc21-ac46953be644\",\n  \"firstName\": \"Kaja\",\n  \"lastName\": \"Sobczak\",\n  \"phoneNumber\": \"537267514\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "73951d34-1cb4-4537-905c-64ed3151c20a",
+    "colId": "47cdb51b-a660-4d98-9205-0bdca2ddcc3a",
+    "containerId": "",
+    "name": "localhist:3001/employee",
+    "url": "localhost:3001/employee",
+    "method": "DELETE",
+    "sortNum": 50000,
+    "created": "2022-11-04T20:00:16.176Z",
+    "modified": "2022-11-12T11:47:25.373Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "{{token}}"
+      },
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"id\": \"244e757c-9d58-4be3-bc21-ac46953be644\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "97c5ffc3-d96c-4669-a2ec-a3594ca92715",
+    "colId": "c649faf7-e93d-4916-95b0-aa572d7aa6d2",
+    "containerId": "",
+    "name": "localhost:3001/schedule/all",
+    "url": "localhost:3001/schedule/all",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2022-11-05T10:21:40.222Z",
+    "modified": "2022-11-12T11:47:39.632Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "{{token}}"
+      },
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"start\": \"2022-10-01 00:00:00\",\n  \"end\": \"2022-12-31 23:59:59\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "666832a9-0dc1-4e07-8ea2-9eaaa637c8f7",
+    "colId": "c649faf7-e93d-4916-95b0-aa572d7aa6d2",
+    "containerId": "",
+    "name": "localhost:3001/schedule",
+    "url": "localhost:3001/schedule",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2022-11-05T10:25:33.623Z",
+    "modified": "2022-11-12T11:49:49.770Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "{{token}}"
+      },
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"start\": \"2022-12-02 08:00:00\",\n  \"end\": \"2022-12-02 16:00:00\",\n  \"userId\": \"634dc798-9608-405e-8e95-94095d91fb73\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "49830e83-9ff4-49ec-a3fc-5033a2f7e1ec",
+    "colId": "c649faf7-e93d-4916-95b0-aa572d7aa6d2",
+    "containerId": "",
+    "name": "localhost:3001/schedule",
+    "url": "localhost:3001/schedule",
+    "method": "DELETE",
+    "sortNum": 30000,
+    "created": "2022-11-05T10:31:12.739Z",
+    "modified": "2022-11-12T11:51:07.641Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "{{token}}"
+      },
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"id\": \"b5926670-6e3b-4c84-8a14-d907ca072d07\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "021b5598-c5ce-4378-8dda-86bcb0d67781",
+    "colId": "c649faf7-e93d-4916-95b0-aa572d7aa6d2",
+    "containerId": "",
+    "name": "localhost:3001/schedule",
+    "url": "localhost:3001/schedule",
+    "method": "PATCH",
+    "sortNum": 25000,
+    "created": "2022-11-05T11:15:36.712Z",
+    "modified": "2022-11-12T11:58:12.712Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "{{token}}"
+      },
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"id\": \"b5926670-6e3b-4c84-8a14-d907ca072d07\",\n  \"start\": \"2022-12-01 08:00:00\",\n  \"end\": \"2022-12-01 12:00:00\",\n  \"userId\": \"634dc798-9608-405e-8e95-94095d91fb73\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "7230235e-dfc6-4166-9987-8273e1ba3164",
+    "colId": "c649faf7-e93d-4916-95b0-aa572d7aa6d2",
+    "containerId": "",
+    "name": "localhost:3001/schedule",
+    "url": "localhost:3001/schedule",
+    "method": "GET",
+    "sortNum": 22500,
+    "created": "2022-11-05T11:20:29.217Z",
+    "modified": "2022-11-12T11:50:13.739Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "{{token}}"
+      },
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"id\": \"b5926670-6e3b-4c84-8a14-d907ca072d07\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "026fabd9-4cc0-4f63-80e4-3160785828f5",
+    "colId": "2c163172-3c4c-4ed6-aed4-5474f108419b",
+    "containerId": "",
+    "name": "localhost:3001/visit",
+    "url": "localhost:3001/visit",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2022-11-05T11:26:41.928Z",
+    "modified": "2022-11-12T11:52:06.872Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "{{token}}"
+      },
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"start\": \"2022-12-01 9:40:00\",\n  \"type\": \"haircut\",\n  \"servicedBy\": \"634dc798-9608-405e-8e95-94095d91fb73\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "12965f2d-f6b0-473d-881c-16ff3b37b388",
+    "colId": "2c163172-3c4c-4ed6-aed4-5474f108419b",
+    "containerId": "",
+    "name": "localhost:3001/visit",
+    "url": "localhost:3001/visit",
+    "method": "DELETE",
+    "sortNum": 30000,
+    "created": "2022-11-05T12:17:40.242Z",
+    "modified": "2022-11-12T11:56:37.227Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "{{token}}"
+      },
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"id\": \"a88987c1-59ab-4e0e-a205-9de7c0458b0e\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "60278ccb-3d60-481c-a26b-fb74ddd43777",
+    "colId": "2c163172-3c4c-4ed6-aed4-5474f108419b",
+    "containerId": "",
+    "name": "localhost:3001/visit",
+    "url": "localhost:3001/visit",
+    "method": "GET",
+    "sortNum": 25000,
+    "created": "2022-11-05T12:20:40.730Z",
+    "modified": "2022-11-12T11:52:36.191Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "{{token}}"
+      },
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"id\": \"a88987c1-59ab-4e0e-a205-9de7c0458b0e\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "d07c2496-16a7-46e1-952b-0deb53736231",
+    "colId": "2c163172-3c4c-4ed6-aed4-5474f108419b",
+    "containerId": "",
+    "name": "localhost:3001/visit",
+    "url": "localhost:3001/visit",
+    "method": "PATCH",
+    "sortNum": 27500,
+    "created": "2022-11-05T12:47:03.122Z",
+    "modified": "2022-11-12T11:58:24.226Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "{{token}}"
+      },
+      {
+        "name": "Accept",
+        "value": "*/*",
+        "isDisabled": true
+      },
+      {
+        "name": "User-Agent",
+        "value": "Thunder Client (https://www.thunderclient.com)",
+        "isDisabled": true
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"id\": \"a88987c1-59ab-4e0e-a205-9de7c0458b0e\",\n  \"start\": \"2022-12-01 08:10:00\",\n  \"type\": \"haircut\",\n  \"servicedBy\": \"634dc798-9608-405e-8e95-94095d91fb73\"\n}",
+      "form": []
+    },
+    "tests": []
+  }
+]
