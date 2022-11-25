@@ -10,6 +10,9 @@ const usr1Token = process.env.TOKEN_USR1 || "";
 
 beforeAll(async () => {
   await initializeDatabase("user_test");
+  dataSource.setOptions({
+    database: "user_test",
+  });
   await dataSource.initialize();
 });
 
@@ -84,8 +87,8 @@ describe("/user", () => {
         expect(response.body).toEqual([
           {
             id: "a88987c1-59ab-4e0e-a205-9de7c0458b0e",
-            start: "2022-12-01T07:00:00.000Z",
-            end: "2022-12-01T08:00:00.000Z",
+            start: "2022-12-01T08:00:00.000Z",
+            end: "2022-12-01T09:00:00.000Z",
             servicedBy: {
               firstName: "Jolanta",
               lastName: "Rutkowska",

@@ -2,14 +2,16 @@ import "../src/config/dotenv.js";
 import request from "supertest";
 import app from "../src/app.js";
 import { dataSource } from "../src/config/database.js";
-import { User } from "../src/entity/User.js";
-import { initializeDatabase } from "./initializeDatabase.js";
 import { Schedule } from "../src/entity/Schedule.js";
+import { initializeDatabase } from "./initializeDatabase.js";
 
 const mngToken = process.env.TOKEN_MNG || "";
 
 beforeAll(async () => {
   await initializeDatabase("schedule_test");
+  dataSource.setOptions({
+    database: "schedule_test",
+  });
   await dataSource.initialize();
 });
 
@@ -139,12 +141,12 @@ describe("/schedule", () => {
         .set("Authorization", mngToken)
         .send({ id: "b5926670-6e3b-4c84-8a14-d907ca072d07" });
 
-      const user = await Schedule.findOneBy({
+      const schedule = await Schedule.findOneBy({
         id: "b5926670-6e3b-4c84-8a14-d907ca072d07",
       });
 
       expect(response.status).toEqual(200);
-      expect(user).toEqual(null);
+      expect(schedule).toEqual(null);
     });
   });
 });

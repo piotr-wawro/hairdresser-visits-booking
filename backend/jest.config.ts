@@ -7,6 +7,9 @@ const config: Config = {
   moduleNameMapper: {
     "^(\\.{1,2}/.*)\\.js$": "$1",
   },
+  testTimeout: 10000,
+  setupFiles: ["<rootDir>/test/setEnvVars.ts"],
+  setupFilesAfterEnv: ["<rootDir>/test/initializeDatabase.ts"],
 };
 
 export default config;

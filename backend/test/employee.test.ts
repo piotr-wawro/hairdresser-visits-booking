@@ -6,10 +6,12 @@ import { User } from "../src/entity/User.js";
 import { initializeDatabase } from "./initializeDatabase.js";
 
 const mngToken = process.env.TOKEN_MNG || "";
-const usr1Token = process.env.TOKEN_USR1 || "";
 
 beforeAll(async () => {
-  await initializeDatabase("user_employee");
+  await initializeDatabase("employee_test");
+  dataSource.setOptions({
+    database: "employee_test",
+  });
   await dataSource.initialize();
 });
 
