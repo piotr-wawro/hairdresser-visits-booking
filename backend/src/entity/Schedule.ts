@@ -13,10 +13,10 @@ export class Schedule extends BaseEntity {
   @PrimaryGeneratedColumn("uuid")
   id!: string;
 
-  @Column()
+  @Column({ type: "timestamptz" })
   start!: Date;
 
-  @Column()
+  @Column({ type: "timestamptz" })
   end!: Date;
 
   @Column({ nullable: true })
