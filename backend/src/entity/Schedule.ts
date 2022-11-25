@@ -22,6 +22,6 @@ export class Schedule extends BaseEntity {
   @Column({ nullable: true })
   forId!: string;
 
-  @ManyToOne(() => User, (user) => user.visits)
+  @ManyToOne(() => User, (user) => user.visits, { onDelete: "CASCADE" })
   for!: Relation<User>;
 }
