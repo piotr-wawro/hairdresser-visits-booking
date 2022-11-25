@@ -5,9 +5,11 @@ EXPOSE 3001
 
 COPY ./backend/dist /code/backend/dist
 COPY ./backend/package.json /code/backend/package.json
+COPY ./backend/.env /code/backend/.env
 COPY ./package.json /code
 
 WORKDIR /code
 RUN npm install
 
-CMD [ "node", "/code/backend/dist/index.js" ]
+WORKDIR /code/backend
+CMD [ "node", "./dist/index.js" ]
