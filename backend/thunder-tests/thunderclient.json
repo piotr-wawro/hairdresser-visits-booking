@@ -97,11 +97,11 @@
     "method": "GET",
     "sortNum": 10000,
     "created": "2022-10-23T10:26:29.097Z",
-    "modified": "2022-11-12T11:58:48.546Z",
+    "modified": "2022-11-25T13:07:51.594Z",
     "headers": [
       {
         "name": "Authorization",
-        "value": "{{token}}"
+        "value": "{{token-usr1}}"
       },
       {
         "name": "Accept",
@@ -353,11 +353,11 @@
     "method": "POST",
     "sortNum": 15000,
     "created": "2022-11-04T12:50:18.922Z",
-    "modified": "2022-11-12T11:41:12.493Z",
+    "modified": "2022-11-25T20:19:07.145Z",
     "headers": [
       {
         "name": "Authorization",
-        "value": "{{token}}"
+        "value": "{{token-mng}}"
       },
       {
         "name": "Accept",
@@ -450,11 +450,11 @@
     "method": "POST",
     "sortNum": 20000,
     "created": "2022-11-04T19:05:35.649Z",
-    "modified": "2022-11-12T11:46:17.342Z",
+    "modified": "2022-11-25T20:00:36.398Z",
     "headers": [
       {
         "name": "Authorization",
-        "value": "{{token}}"
+        "value": "{{token-mng}}"
       },
       {
         "name": "Accept",
@@ -756,11 +756,11 @@
     "method": "POST",
     "sortNum": 20000,
     "created": "2022-11-05T11:26:41.928Z",
-    "modified": "2022-11-12T11:52:06.872Z",
+    "modified": "2022-11-25T16:30:32.757Z",
     "headers": [
       {
         "name": "Authorization",
-        "value": "{{token}}"
+        "value": "{{token-usr1}}"
       },
       {
         "name": "Accept",
