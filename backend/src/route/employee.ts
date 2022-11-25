@@ -1,6 +1,7 @@
 import express from "express";
 import {
   deleteEmpoyee,
+  getAllEmployees,
   getAllEmpoyeesAsManager,
   getEmpoyee,
   patchEmpoyee,
@@ -21,7 +22,7 @@ router.get(
   routeUnauthorized
 );
 
-router.get("/all", getEmpoyee);
+router.get("/all", getAllEmployees);
 
 router.post("/", authenticate, verifyRole(Roles.MANAGER), postEmpoyee);
 

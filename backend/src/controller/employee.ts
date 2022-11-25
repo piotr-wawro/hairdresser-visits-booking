@@ -14,7 +14,7 @@ export const getAllEmpoyeesAsManager: RequestHandler = async (
   next
 ) => {
   try {
-    const employes = getAllEmployeesAsManager();
+    const employes = await getAllEmployeesAsManager();
     res.status(200).send(employes);
   } catch (error) {
     next(error);
@@ -23,7 +23,7 @@ export const getAllEmpoyeesAsManager: RequestHandler = async (
 
 export const getAllEmployees: RequestHandler = async (req, res, next) => {
   try {
-    const employes = findAllEmployees();
+    const employes = await findAllEmployees();
     res.status(200).send(employes);
   } catch (error) {
     next(error);
@@ -56,7 +56,7 @@ export const patchEmpoyee: RequestHandler = async (req, res, next) => {
   const { id, firstName, lastName, email, phoneNumber } = req.body;
 
   try {
-    updateEmployee(id, firstName, lastName, email, phoneNumber);
+    await updateEmployee(id, firstName, lastName, email, phoneNumber);
     res.status(200).send();
   } catch (error) {
     next(error);
