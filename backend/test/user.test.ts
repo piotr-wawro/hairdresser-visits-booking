@@ -58,12 +58,16 @@ describe("/user", () => {
         });
 
         expect(response.status).toEqual(200);
-        expect(user).toMatchObject({
+        expect(user).toEqual({
           id: "c9c70c2c-ca36-498c-91e4-d51b67f3c1dd",
           firstName: "Aralk",
           lastName: "Akslawok",
           email: "mng@EKRABSCSBIJIUEDPXVVK.com",
           phoneNumber: "108768706",
+          role: "manager",
+          schedules: undefined,
+          services: undefined,
+          visits: undefined,
         });
       });
     });
