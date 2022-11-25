@@ -4,11 +4,12 @@ import app from "../src/app.js";
 import { dataSource } from "../src/config/database.js";
 import { User } from "../src/entity/User.js";
 import { initializeDatabase } from "./initializeDatabase.js";
+import { Schedule } from "../src/entity/Schedule.js";
 
 const mngToken = process.env.TOKEN_MNG || "";
 
 beforeAll(async () => {
-  await initializeDatabase("employee_test");
+  await initializeDatabase("schedule_test");
   await dataSource.initialize();
 });
 
@@ -22,64 +23,37 @@ afterAll(async () => {
   await dataSource.destroy();
 });
 
-describe("/employee", () => {
+describe("/schedule", () => {
   describe("/all", () => {
     describe("get", () => {
-      test("return all employees full data if manager", async () => {
-        const response = await request(app)
-          .get("/employee/all")
-          .set("Authorization", mngToken);
+      test("return all schedules", async () => {
+        const response = await request(app).get("/schedule/all");
 
         expect(response.status).toEqual(200);
         expect(response.body).toEqual([
           {
-            id: "c9c70c2c-ca36-498c-91e4-d51b67f3c1dd",
-            firstName: "Klara",
-            lastName: "Kowalska",
-            email: "mng@EKRABSCSBIJIUEDPXVVK.com",
-            phoneNumber: "607867801",
-            role: "manager",
+            id: "b5926670-6e3b-4c84-8a14-d907ca072d07",
+            start: "2022-12-01T08:00:00.000Z",
+            end: "2022-12-01T11:00:00.000Z",
+            forId: "634dc798-9608-405e-8e95-94095d91fb73",
           },
           {
-            id: "634dc798-9608-405e-8e95-94095d91fb73",
-            firstName: "Jolanta",
-            lastName: "Rutkowska",
-            email: "emp1@EKRABSCSBIJIUEDPXVVK.com",
-            phoneNumber: "676043415",
-            role: "employee",
+            id: "6f11ef42-515f-4a26-8a52-730e0f64d529",
+            start: "2022-12-01T13:00:00.000Z",
+            end: "2022-12-01T16:00:00.000Z",
+            forId: "634dc798-9608-405e-8e95-94095d91fb73",
           },
           {
-            id: "244e757c-9d58-4be3-bc21-ac46953be644",
-            firstName: "Krystyn",
-            lastName: "Jaworski",
-            email: "emp2@EKRABSCSBIJIUEDPXVVK.com",
-            phoneNumber: "727388602",
-            role: "employee",
-          },
-        ]);
-      });
-    });
-
-    describe("get", () => {
-      test("return all employees simple data if anonym", async () => {
-        const response = await request(app).get("/employee/all");
-
-        expect(response.status).toEqual(200);
-        expect(response.body).toEqual([
-          {
-            id: "c9c70c2c-ca36-498c-91e4-d51b67f3c1dd",
-            firstName: "Klara",
-            lastName: "Kowalska",
+            id: "e6cfbc8e-bd07-4a8d-a360-429b67e61d1f",
+            start: "2022-12-01T10:00:00.000Z",
+            end: "2022-12-01T18:00:00.000Z",
+            forId: "244e757c-9d58-4be3-bc21-ac46953be644",
           },
           {
-            id: "634dc798-9608-405e-8e95-94095d91fb73",
-            firstName: "Jolanta",
-            lastName: "Rutkowska",
-          },
-          {
-            id: "244e757c-9d58-4be3-bc21-ac46953be644",
-            firstName: "Krystyn",
-            lastName: "Jaworski",
+            id: "b52d6d44-214c-448c-80f4-5966536bd5a9",
+            start: "2022-12-02T08:00:00.000Z",
+            end: "2022-12-02T16:00:00.000Z",
+            forId: "244e757c-9d58-4be3-bc21-ac46953be644",
           },
         ]);
       });
@@ -87,99 +61,86 @@ describe("/employee", () => {
   });
 
   describe("post", () => {
-    test("add new employee", async () => {
+    test("add new schedule", async () => {
       const response = await request(app)
-        .post("/employee")
+        .post("/schedule")
         .set("Authorization", mngToken)
         .send({
-          firstName: "Wioletta",
-          lastName: "Kwiatkowska",
-          email: "emp3@EKRABSCSBIJIUEDPXVVK.com",
-          phoneNumber: "675740849",
+          start: "2022-12-02T08:00:00.000Z",
+          end: "2022-12-02T16:00:00.000Z",
+          userId: "634dc798-9608-405e-8e95-94095d91fb73",
         });
 
-      const emp = await User.findOneByOrFail({
-        email: "emp3@EKRABSCSBIJIUEDPXVVK.com",
+      const schedule = await Schedule.findOneByOrFail({
+        start: new Date("2022-12-02T08:00:00.000Z"),
+        end: new Date("2022-12-02T16:00:00.000Z"),
+        forId: "634dc798-9608-405e-8e95-94095d91fb73",
       });
 
       expect(response.status).toEqual(200);
-      expect(emp).toEqual({
+      expect(schedule).toEqual({
         id: expect.any(String),
-        firstName: "Wioletta",
-        lastName: "Kwiatkowska",
-        email: "emp3@EKRABSCSBIJIUEDPXVVK.com",
-        phoneNumber: "675740849",
-        role: "employee",
-        schedules: undefined,
-        services: undefined,
-        visits: undefined,
+        start: new Date("2022-12-02T08:00:00.000Z"),
+        end: new Date("2022-12-02T16:00:00.000Z"),
+        forId: "634dc798-9608-405e-8e95-94095d91fb73",
+        for: undefined,
       });
     });
   });
 
   describe("get", () => {
-    test("return single employee", async () => {
+    test("return single schedule", async () => {
       const response = await request(app)
-        .get("/employee")
+        .get("/schedule")
         .set("Authorization", mngToken)
-        .send({ id: "634dc798-9608-405e-8e95-94095d91fb73" });
+        .send({ id: "b5926670-6e3b-4c84-8a14-d907ca072d07" });
 
       expect(response.status).toEqual(200);
       expect(response.body).toEqual({
-        id: "634dc798-9608-405e-8e95-94095d91fb73",
-        firstName: "Jolanta",
-        lastName: "Rutkowska",
-        email: "emp1@EKRABSCSBIJIUEDPXVVK.com",
-        phoneNumber: "676043415",
-        role: "employee",
-        schedules: undefined,
-        services: undefined,
-        visits: undefined,
+        id: "b5926670-6e3b-4c84-8a14-d907ca072d07",
+        start: "2022-12-01T08:00:00.000Z",
+        end: "2022-12-01T11:00:00.000Z",
+        forId: "634dc798-9608-405e-8e95-94095d91fb73",
       });
     });
   });
 
   describe("patch", () => {
-    test("update employee data", async () => {
+    test("update schedule data", async () => {
       const response = await request(app)
-        .patch("/employee")
+        .patch("/schedule")
         .set("Authorization", mngToken)
         .send({
-          id: "634dc798-9608-405e-8e95-94095d91fb73",
-          firstName: "Katarzyna",
-          lastName: "Nowakowska",
-          email: "emp3@EKRABSCSBIJIUEDPXVVK.com",
-          phoneNumber: "676043415",
+          id: "b5926670-6e3b-4c84-8a14-d907ca072d07",
+          start: "2022-12-01T08:00:00.000Z",
+          end: "2022-12-01T12:00:00.000Z",
+          userId: "634dc798-9608-405e-8e95-94095d91fb73",
         });
 
-      const user = await User.findOneByOrFail({
-        email: "emp3@EKRABSCSBIJIUEDPXVVK.com",
+      const schedule = await Schedule.findOneByOrFail({
+        id: "b5926670-6e3b-4c84-8a14-d907ca072d07",
       });
 
       expect(response.status).toEqual(200);
-      expect(user).toEqual({
-        id: "634dc798-9608-405e-8e95-94095d91fb73",
-        firstName: "Katarzyna",
-        lastName: "Nowakowska",
-        email: "emp3@EKRABSCSBIJIUEDPXVVK.com",
-        phoneNumber: "676043415",
-        role: "employee",
-        schedules: undefined,
-        services: undefined,
-        visits: undefined,
+      expect(schedule).toEqual({
+        id: "b5926670-6e3b-4c84-8a14-d907ca072d07",
+        start: new Date("2022-12-01T08:00:00.000Z"),
+        end: new Date("2022-12-01T12:00:00.000Z"),
+        forId: "634dc798-9608-405e-8e95-94095d91fb73",
+        for: undefined,
       });
     });
   });
 
   describe("delete", () => {
-    test("remove employee", async () => {
+    test("remove schedule", async () => {
       const response = await request(app)
-        .delete("/employee")
+        .delete("/schedule")
         .set("Authorization", mngToken)
-        .send({ id: "244e757c-9d58-4be3-bc21-ac46953be644" });
+        .send({ id: "b5926670-6e3b-4c84-8a14-d907ca072d07" });
 
-      const user = await User.findOneBy({
-        id: "244e757c-9d58-4be3-bc21-ac46953be644",
+      const user = await Schedule.findOneBy({
+        id: "b5926670-6e3b-4c84-8a14-d907ca072d07",
       });
 
       expect(response.status).toEqual(200);
