@@ -13,10 +13,10 @@ export class Visit extends BaseEntity {
   @PrimaryGeneratedColumn("uuid")
   id!: string;
 
-  @Column()
+  @Column({ type: "timestamptz" })
   start!: Date;
 
-  @Column()
+  @Column({ type: "timestamptz" })
   end!: Date;
 
   @Column({ nullable: true })
@@ -25,9 +25,9 @@ export class Visit extends BaseEntity {
   @Column({ nullable: true })
   servicedById!: string;
 
-  @ManyToOne(() => User, (user) => user.visits)
+  @ManyToOne(() => User, (user) => user.visits, { onDelete: "CASCADE" })
   bookedBy!: Relation<User>;
 
-  @ManyToOne(() => User, (user) => user.services)
+  @ManyToOne(() => User, (user) => user.services, { onDelete: "CASCADE" })
   servicedBy!: Relation<User>;
 }

@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import "./dotenv.js";
 
 export const transporter = nodemailer.createTransport({
   host: "email-smtp.eu-central-1.amazonaws.com",

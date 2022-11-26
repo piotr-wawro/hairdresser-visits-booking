@@ -2,8 +2,8 @@ import { RequestHandler } from "express";
 import { findUserVisits, updateUser } from "../service/user.js";
 
 export const getUserProfile: RequestHandler = async (req, res) => {
-  const { firstName, lastName, email, phoneNumber } = req.user;
-  res.status(200).send({ firstName, lastName, email, phoneNumber });
+  const { id, firstName, lastName, email, phoneNumber } = req.user;
+  res.status(200).send({ id, firstName, lastName, email, phoneNumber });
 };
 
 export const patchUserProfile: RequestHandler = async (req, res, next) => {

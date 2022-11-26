@@ -1,17 +1,16 @@
+import app from "./app.js";
+import { dataSource } from "./config/database.js";
+import { logger } from "./utils/logger.js";
 import "./config/dotenv.js";
-import "./config/database.js";
-import "./config/email.js";
 
-import express from "express";
-import route from "./route/index.js";
-import errorHandlers from "./middleware/errorHandlers/index.js";
+const port = process.env.BACKEND_PORT;
 
-const app = express();
-const port = 3001;
-
-app.use("/", route);
-
-app.use(errorHandlers);
+try {
+  await dataSource.initialize();
+  await dataSource.runMigrations();
+} catch (error) {
+  logger(error as Error);
+}
 
 app.listen(port, () => {
   console.log(

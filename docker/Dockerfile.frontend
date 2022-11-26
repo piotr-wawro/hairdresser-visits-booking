@@ -11,4 +11,5 @@ COPY ./package.json /code
 WORKDIR /code
 RUN npm install
 
-CMD [ "node", "/code/frontend/server/index.js" ]
+WORKDIR /code/frontend
+CMD [ "node", "./server/index.js" ]
