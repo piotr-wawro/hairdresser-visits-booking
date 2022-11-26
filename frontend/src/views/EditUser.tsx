@@ -120,7 +120,7 @@ const EditUser = () => {
 
   return (
     <EditUserBox>
-      <EditUserHeader>Edytuj użytkownika:</EditUserHeader>
+      <EditUserHeader>Edytuj informacje</EditUserHeader>
 
       <EditNameTextField
         label="Zmień imię:"

@@ -161,7 +161,7 @@ const MainMenu = () => {
         <Logo src={logo}></Logo>
         <Header1>Zapisz się do fryzjera już dziś!</Header1>
 
-        <NavbarButton onClick={() => navigate("/profile-user")}>
+        <NavbarButton onClick={() => navigate("/edit-user")}>
           Profil
         </NavbarButton>
       </Navbar>
@@ -248,9 +248,9 @@ const MainMenu = () => {
             Dodaj pracownika
           </MainMenuAddWorkerButton>
 
-          <MainMenuEditWorkerButton onClick={() => navigate("/edit-user")}>
+          {/*<MainMenuEditWorkerButton onClick={() => navigate("/edit-user")}>
             Edytuj pracownika
-          </MainMenuEditWorkerButton>
+          </MainMenuEditWorkerButton>*/}
         </MainMenuButtonBox>
       </Card>
     </Container>
