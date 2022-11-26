@@ -2,7 +2,7 @@ import { TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import React, { useState } from "react";
-import { useLazyPostUserVisitDataQuery } from "../api/user.js";
+import { useLazyPostEmployeeQuery } from "../api/employee.js";
 const AddUserBox = styled.div`
   margin-top: 50px;
   justify-content: center;
@@ -64,14 +64,13 @@ const AddUser = () => {
   const [userNumber, setUserNumber] = useState("");
   const [userMail, setUserMail] = useState("");
 
-  const [usePostUserVisitDataQuery, { status }] =
-    useLazyPostUserVisitDataQuery();
+  const [usePostEmployeeQuery, { status }] = useLazyPostEmployeeQuery();
 
   console.log(userFirstName, userLastName, userNumber, userMail);
 
   const onSave = async () => {
     try {
-      const payload = await usePostUserVisitDataQuery({
+      const payload = await usePostEmployeeQuery({
         firstName: userFirstName,
         lastName: userLastName,
         email: userMail,
