@@ -12,6 +12,7 @@ import ProfileOfUser from "./views/ProfileOfUser.js";
 import EditUser from "./views/EditUser.js";
 import DoReservation from "./views/DoReservation.js";
 import EditReservation from "./views/EditReservation.js";
+import MainMenuForUser from "./views/MainMenuForUser.js";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/profile-user" element={<ProfileOfUser />} />
         <Route path="/do-reservation" element={<DoReservation />} />
         <Route path="/edit-reservation" element={<EditReservation />} />
+        <Route path="/main-menu-for-user" element={<MainMenuForUser />} />
       </Routes>
     </div>
   );

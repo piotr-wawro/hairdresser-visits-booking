@@ -150,7 +150,7 @@ const DivsReserved = styled.div`
 
 const HoursLabel = styled.label``;
 
-const MainMenu = () => {
+const MainMenuForUser = () => {
   const navigate = useNavigate();
 
   const [startDate, setStartDate] = useState(new Date());
@@ -161,8 +161,8 @@ const MainMenu = () => {
         <Logo src={logo}></Logo>
         <Header1>Zapisz się do fryzjera już dziś!</Header1>
 
-        <NavbarButton onClick={() => navigate("/profile-user")}>
-          Profil
+        <NavbarButton onClick={() => navigate("/log-in")}>
+          Logowanie
         </NavbarButton>
       </Navbar>
 
@@ -183,62 +183,47 @@ const MainMenu = () => {
         >
           <Grid item>
             <DivsReserved>
-              <HoursLabel onClick={() => navigate("/edit-reservation")}>
-                Godzina: 8:00-9:00
-              </HoursLabel>
+              <HoursLabel>Godzina: 8:00-9:00</HoursLabel>
             </DivsReserved>
           </Grid>
           <Grid item>
             <DivsReserved>
-              <HoursLabel onClick={() => navigate("/edit-reservation")}>
-                Godzina: 9:00-10:00
-              </HoursLabel>
+              <HoursLabel>Godzina: 9:00-10:00</HoursLabel>
             </DivsReserved>
           </Grid>
           <Grid item>
             <DivsReserved>
-              <HoursLabel onClick={() => navigate("/edit-reservation")}>
-                Godzina: 10:00-11:00
-              </HoursLabel>
+              <HoursLabel>Godzina: 10:00-11:00</HoursLabel>
             </DivsReserved>
           </Grid>
           <Grid item>
             <DivsReserved>
-              <HoursLabel onClick={() => navigate("/edit-reservation")}>
-                Godzina: 11:00-12:00
-              </HoursLabel>
+              <HoursLabel>Godzina: 11:00-12:00</HoursLabel>
             </DivsReserved>
           </Grid>
           <Grid item>
             <DivsReserved style={{ background: "red" }}>
-              <HoursLabel onClick={() => navigate("/edit-reservation")}>
-                Godzina: 12:00-13:00
-              </HoursLabel>
+              <HoursLabel>Godzina: 12:00-13:00</HoursLabel>
             </DivsReserved>
           </Grid>
           <Grid item>
             <DivsReserved>
-              <HoursLabel onClick={() => navigate("/edit-reservation")}>
-                Godzina: 13:00-14:00
-              </HoursLabel>
+              <HoursLabel>Godzina: 13:00-14:00</HoursLabel>
             </DivsReserved>
           </Grid>
           <Grid item>
             <DivsReserved style={{ background: "red" }}>
-              <HoursLabel onClick={() => navigate("/edit-reservation")}>
-                Godzina: 14:00-15:00
-              </HoursLabel>
+              <HoursLabel>Godzina: 14:00-15:00</HoursLabel>
             </DivsReserved>
           </Grid>
           <Grid item>
             <DivsReserved>
-              <HoursLabel onClick={() => navigate("/edit-reservation")}>
-                Godzina: 15:00-16:00
-              </HoursLabel>
+              <HoursLabel>Godzina: 15:00-16:00</HoursLabel>
             </DivsReserved>
           </Grid>
         </Grid>
 
+        {/*
         <DoReservationButton onClick={() => navigate("/do-reservation")}>
           Dodaj rezerwację
         </DoReservationButton>
@@ -252,9 +237,11 @@ const MainMenu = () => {
             Edytuj pracownika
           </MainMenuEditWorkerButton>
         </MainMenuButtonBox>
+        
+        */}
       </Card>
     </Container>
   );
 };
 
-export default MainMenu;
+export default MainMenuForUser;
