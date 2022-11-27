@@ -38,13 +38,17 @@ export const createEmployee = (
   return repeat(() => addUser(employee), 3);
 };
 
-export const findEmployee = (id: string) => {
-  return User.findOne({
-    where: [
-      { id, role: Roles.EMPLOYEE },
-      { id, role: Roles.MANAGER },
-    ],
-  });
+export const findEmployee = (id?: string) => {
+  if (id) {
+    return User.findOne({
+      where: [
+        { id, role: Roles.EMPLOYEE },
+        { id, role: Roles.MANAGER },
+      ],
+    });
+  } else {
+    throw ApiError.badRequset("No id provided.");
+  }
 };
 
 export const updateEmployee = async (

@@ -58,7 +58,7 @@ const LogIn = () => {
         label="Podaj e-mail..."
       ></EmailTextField>
 
-      <AddMailUserButton onClick={() => navigate("/manager-screen")}>
+      <AddMailUserButton onClick={() => navigate("/main-menu")}>
         Dodaj
       </AddMailUserButton>
     </LoginBoxDiv>

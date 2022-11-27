@@ -68,7 +68,7 @@ const user = hvbApi.injectEndpoints({
       query: ({ start, end }) => ({
         url: `/user/visit`,
         method: "GET",
-        body: { start, end },
+        params: { start, end },
       }),
     }),
     postUserVisitData: build.query<void, PostUserVisitData>({

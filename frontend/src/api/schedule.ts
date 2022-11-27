@@ -39,7 +39,7 @@ const schedule = hvbApi.injectEndpoints({
       query: ({ start, end }) => ({
         url: `/schedule/all`,
         method: "GET",
-        body: { start, end },
+        params: { start, end },
       }),
     }),
     postSchedule: build.query<void, PostSchedule>({
@@ -53,7 +53,7 @@ const schedule = hvbApi.injectEndpoints({
       query: ({ id }) => ({
         url: `/schedule`,
         method: "GET",
-        body: { id },
+        params: { id },
       }),
     }),
     patchSchedule: build.query<void, PatchSchedule>({
@@ -74,7 +74,7 @@ const schedule = hvbApi.injectEndpoints({
 });
 
 export const {
-  useGetAllSchedulesQuery,
+  useLazyGetAllSchedulesQuery,
   useLazyPostScheduleQuery,
   useGetScheduleQuery,
   useLazyPatchScheduleQuery,

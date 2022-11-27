@@ -40,7 +40,7 @@ const visit = hvbApi.injectEndpoints({
       query: ({ start, end }) => ({
         url: `/visit/all`,
         method: "GET",
-        body: { start, end },
+        params: { start, end },
       }),
     }),
     postVisit: build.query<void, PostVisit>({
@@ -54,7 +54,7 @@ const visit = hvbApi.injectEndpoints({
       query: ({ id }) => ({
         url: `/visit`,
         method: "GET",
-        body: { id },
+        params: { id },
       }),
     }),
     patchVisit: build.query<void, PatchVisit>({
@@ -75,7 +75,7 @@ const visit = hvbApi.injectEndpoints({
 });
 
 export const {
-  useAllVisitsQuery,
+  useLazyAllVisitsQuery,
   useLazyPostVisitQuery,
   useGetVisitQuery,
   useLazyPatchVisitQuery,

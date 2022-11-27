@@ -6,7 +6,8 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useLazyPostVisitQuery } from "../api/visit.js";
-import { useGetEmployeeQuery } from "../api/employee.js";
+import { useGetEmployeeQuery, useAllEmployeesQuery } from "../api/employee.js";
+import { useLazyGetAllSchedulesQuery } from "../api/schedule.js";
 
 const Header1 = styled.h1`
   margin-top: 30px;
@@ -101,6 +102,8 @@ const DoReservation = () => {
   const [postVisitQuery, { status }] = useLazyPostVisitQuery();
   //const [getEmployeeQuery, { status }] = useGetEmployeeQuery();
 
+  const { data } = useAllEmployeesQuery();
+
   console.log(workerChoice);
 
   const onSave = async () => {
@@ -158,6 +161,7 @@ const DoReservation = () => {
         <option value="Strzyżenie damskie">Strzyżenie damskie</option>
         <option value="Farbowanie">Farbowanie</option>
       </TypeChoice>
+
       <Header3>Pracownik:</Header3>
       <WorkerChoice
         id="workerChoice"
@@ -166,12 +170,13 @@ const DoReservation = () => {
           setWorkerChoice(element.target.value);
         }}
       >
-        <option value=""></option>
-        <option value="634dc798-9608-405e-8e95-94095d91fb73">
-          Pracownik nr.1
-        </option>
-        <option value="Pracownik nr.2">Pracownik nr.2</option>
-        <option value="Pracownik nr.3">Pracownik nr.3</option>
+        {data?.map((e, i) => {
+          return (
+            <option key={i} value={e.id}>
+              {e.firstName} {e.lastName}
+            </option>
+          );
+        })}
       </WorkerChoice>
 
       <ReservationButtonBox>

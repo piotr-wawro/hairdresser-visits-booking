@@ -9,9 +9,12 @@ import "./Style.css";
 import logo from "../assets/logo1.jpg";
 import styled from "styled-components";
 import DateTimePicker from "react-datetime-picker";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useGetEmployeeQuery, useAllEmployeesQuery } from "../api/employee.js";
+import { useLazyAllVisitsQuery } from "../api/visit.js";
+import { useLazyGetAllSchedulesQuery } from "../api/schedule.js";
 
 const Header1 = styled.h1``;
 
@@ -150,10 +153,36 @@ const DivsReserved = styled.div`
 
 const HoursLabel = styled.label``;
 
+const WorkerChoice = styled.select``;
+
 const MainMenu = () => {
   const navigate = useNavigate();
 
+  const { data: employees } = useAllEmployeesQuery();
+
+  const [allVisitsQuery, { data: visits }] = useLazyAllVisitsQuery();
+
+  const [allSchedulesQuery, { data: schedules }] =
+    useLazyGetAllSchedulesQuery();
+
   const [startDate, setStartDate] = useState(new Date());
+  const [workerChoice, setWorkerChoice] = useState("");
+
+  useEffect(() => {
+    allVisitsQuery({
+      start: startDate.toISOString(),
+      end: startDate.toISOString().split("T")[0] + "T23:59:00.000Z",
+    });
+  }, [startDate]);
+
+  useEffect(() => {
+    allSchedulesQuery({
+      start: startDate.toISOString(),
+      end: startDate.toISOString().split("T")[0] + "T23:59:00.000Z",
+    });
+  }, [startDate]);
+
+  //console.log(startDate);
 
   return (
     <Container>
@@ -173,6 +202,22 @@ const MainMenu = () => {
             selected={startDate}
             onChange={(date: Date) => setStartDate(date)}
           />
+          <Header2>Wybierz pracownika:</Header2>
+          <WorkerChoice
+            id="workerChoice"
+            value={workerChoice}
+            onChange={(element) => {
+              setWorkerChoice(element.target.value);
+            }}
+          >
+            {employees?.map((e, i) => {
+              return (
+                <option key={i} value={e.id}>
+                  {e.firstName} {e.lastName}
+                </option>
+              );
+            })}
+          </WorkerChoice>
         </DateOfReservationBox>
         <Grid
           container
@@ -244,9 +289,9 @@ const MainMenu = () => {
         </DoReservationButton>
 
         <MainMenuButtonBox>
-          <MainMenuAddWorkerButton onClick={() => navigate("/add-user")}>
+          {/*<MainMenuAddWorkerButton onClick={() => navigate("/add-user")}>
             Dodaj pracownika
-          </MainMenuAddWorkerButton>
+  </MainMenuAddWorkerButton>*/}
 
           {/*<MainMenuEditWorkerButton onClick={() => navigate("/edit-user")}>
             Edytuj pracownika

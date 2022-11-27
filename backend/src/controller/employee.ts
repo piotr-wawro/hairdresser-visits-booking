@@ -42,7 +42,7 @@ export const postEmpoyee: RequestHandler = async (req, res, next) => {
 };
 
 export const getEmpoyee: RequestHandler = async (req, res, next) => {
-  const { id } = req.body;
+  const { id }: { id?: string } = req.query;
 
   try {
     const employee = await findEmployee(id);

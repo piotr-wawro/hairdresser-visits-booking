@@ -50,7 +50,7 @@ const employee = hvbApi.injectEndpoints({
       query: ({ id }) => ({
         url: `/employee`,
         method: "GET",
-        body: { id },
+        params: { id },
       }),
     }),
     patchEmployee: build.query<void, PatchEmployee>({

@@ -1,8 +1,11 @@
 import { TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import React, { useState } from "react";
-import { useLazyPatchUserProfileQuery } from "../api/user.js";
+import React, { useEffect, useState } from "react";
+import {
+  useLazyPatchUserProfileQuery,
+  useUserProfileQuery,
+} from "../api/user.js";
 
 const EditUserBox = styled.div`
   margin-top: 50px;
@@ -101,8 +104,17 @@ const EditUser = () => {
   const [userLastName, setUserLastName] = useState("");
   const [userNumber, setUserNumber] = useState("");
   //const [userMail, setUserMail] = useState("");
+  const { data } = useUserProfileQuery();
 
-  console.log(userFirstName, userLastName, userNumber);
+  useEffect(() => {
+    if (data) {
+      setUserFirstName(data.firstName);
+      setUserLastName(data.lastName);
+      setUserNumber(data.phoneNumber);
+    }
+  }, [data]);
+
+  //console.log(userFirstName, userLastName, userNumber);
   const [usePatchUserVisitInfoQuery, { status }] =
     useLazyPatchUserProfileQuery();
   const onSave = async () => {
@@ -124,6 +136,7 @@ const EditUser = () => {
       <EditUserHeader>Edytuj informacje</EditUserHeader>
 
       <EditNameTextField
+        value={userFirstName}
         label="Zmień imię:"
         variant="outlined"
         onChange={(element) => {
@@ -132,6 +145,7 @@ const EditUser = () => {
       ></EditNameTextField>
 
       <EditSurnameTextField
+        value={userLastName}
         style={{ marginTop: 40 }}
         label="Zmień nazwisko:"
         variant="outlined"
@@ -141,6 +155,7 @@ const EditUser = () => {
       ></EditSurnameTextField>
 
       <EditPhoneTextField
+        value={userNumber}
         style={{ marginTop: 40 }}
         label="Zmień numer telefonu:"
         variant="outlined"

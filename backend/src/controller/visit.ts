@@ -8,7 +8,7 @@ import {
 } from "../service/visit.js";
 
 export const getAllVisits: RequestHandler = async (req, res, next) => {
-  const { start, end } = req.body;
+  const { start, end }: { start?: string; end?: string } = req.query;
 
   try {
     const visits = await findAllVisits(start, end);
@@ -31,7 +31,7 @@ export const postVisit: RequestHandler = async (req, res, next) => {
 };
 
 export const getVisit: RequestHandler = async (req, res, next) => {
-  const { id } = req.body;
+  const { id }: { id?: string } = req.query;
 
   try {
     const visits = await findVisit(id);

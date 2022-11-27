@@ -8,7 +8,7 @@ import {
 } from "../service/schedule.js";
 
 export const getAllSchedules: RequestHandler = async (req, res, next) => {
-  const { start, end } = req.body;
+  const { start, end }: { start?: string; end?: string } = req.query;
 
   try {
     const schedule = await findAllSchedules(start, end);
@@ -30,7 +30,7 @@ export const postSchedule: RequestHandler = async (req, res, next) => {
 };
 
 export const getSchedule: RequestHandler = async (req, res, next) => {
-  const { id } = req.body;
+  const { id }: { id?: string } = req.query;
 
   try {
     const schedule = await findSchedule(id);

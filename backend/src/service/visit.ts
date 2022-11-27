@@ -14,13 +14,10 @@ export const serviceToTime = (type: string) => {
   }
 };
 
-export const findAllVisits = (start: string, end: string) => {
-  const startDate = new Date(start);
-  const endDate = new Date(end);
-
+export const findAllVisits = (start?: string, end?: string) => {
   return Visit.findBy({
-    ...(end && { start: LessThan(new Date(endDate)) }),
-    ...(start && { end: MoreThan(new Date(startDate)) }),
+    ...(end && { start: LessThan(new Date(end)) }),
+    ...(start && { end: MoreThan(new Date(start)) }),
   });
 };
 
@@ -55,8 +52,12 @@ export const createVisit = async (
   return repeat(() => addVisit(newVisit), 3);
 };
 
-export const findVisit = (id: string) => {
-  return Visit.findOneBy({ id });
+export const findVisit = (id?: string) => {
+  if (id) {
+    return Visit.findOneBy({ id });
+  } else {
+    throw ApiError.badRequset("No id provided.");
+  }
 };
 
 export const updateVisit = async (
