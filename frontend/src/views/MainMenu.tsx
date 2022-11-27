@@ -161,6 +161,7 @@ const MainMenu = () => {
   const { data: employees } = useAllEmployeesQuery();
 
   const [allVisitsQuery, { data: visits }] = useLazyAllVisitsQuery();
+  
 
   const [allSchedulesQuery, { data: schedules }] =
     useLazyGetAllSchedulesQuery();
@@ -181,8 +182,10 @@ const MainMenu = () => {
       end: startDate.toISOString().split("T")[0] + "T23:59:00.000Z",
     });
   }, [startDate]);
-
+  //const [useGetAllSchedulesQuery,setGetAllSchedulesQuery ]=useLazyGetAllSchedulesQuery(startDate);
   //console.log(startDate);
+  var first= startDate.toISOString().split("T")[0] + "T08:00:00.000Z"
+  console.log(first);
 
   return (
     <Container>
