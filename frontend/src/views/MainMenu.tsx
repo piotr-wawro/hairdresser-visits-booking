@@ -174,26 +174,52 @@ const MainMenu = () => {
       start: startDate.toISOString().split("T")[0] + "T08:00:00.000Z",
       end: startDate.toISOString().split("T")[0] + "T23:59:00.000Z",
     })
-
-
-    //console.log(visits.filter(visits => visits.id === workerChoice))
-  }, [startDate]);
-
-  useEffect(() => {
     allSchedulesQuery({
       start: startDate.toISOString().split("T")[0] + "T08:00:00.000Z",
       end: startDate.toISOString().split("T")[0] + "T23:59:00.000Z",
     });
+    //console.log(visits?.filter(visits => visits.servicedById === workerChoice));
+    //console.log(visits.filter(visits => visits.id === workerChoice))
   }, [startDate]);
- 
-  //const [useGetAllSchedulesQuery,setGetAllSchedulesQuery ]=useLazyGetAllSchedulesQuery(startDate);
- // console.log( visits);
-  //console.log(visits?.filter(visits => visits.servicedById === workerChoice));
-  //console.log(schedules)
-  console.log(schedules?.filter(schedules => schedules.forId=== workerChoice));
-  var first= startDate.toISOString().split("T")[0] + "T08:00:00.000Z"
- // console.log(first);
 
+  //useEffect(() => {}, [startDate]);
+    
+
+ 
+  
+ // console.log( visits);
+  var todayVisits=visits?.filter(visits => visits.servicedById === workerChoice)
+  //console.log(schedules)
+  //console.log(schedules?.filter(schedules => schedules.forId=== workerChoice));
+  var todaySchedules=schedules?.filter(schedules => schedules.forId=== workerChoice)
+  var scheduleBegin: string[]=[];
+  var scheduleEnd: string[]=[];
+  var visitBegin: string[]=[];
+  var visitEnd: string[]=[];
+  var all: string[]=[];
+  var avaible: string[]=[];
+  //todaySchedules?.forEach(element => begin.push(element.start.slice(11, 13)))
+  todaySchedules?.forEach(element => {
+    //all.push(element.start.slice(11, 16))
+    //all.push(element.end.slice(11, 16))
+    
+    //all.push(element.start.slice(11, 13))
+    //all.push(element.end.slice(11, 13))
+    visitBegin.push(element.start.slice(11, 16))
+    visitEnd.push(element.end.slice(11, 16))
+    scheduleBegin.push(element.start.slice(11, 16))
+    scheduleEnd.push(element.end.slice(11, 16))
+  }
+    )
+    
+
+
+
+
+
+
+  //todaySchedules?.forEach(element => end.push(element.end.slice(11, 13)))
+  console.log(visitBegin)
   return (
     <Container>
       <Navbar>
