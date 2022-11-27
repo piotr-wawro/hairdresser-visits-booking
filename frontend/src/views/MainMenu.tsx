@@ -168,14 +168,14 @@ const MainMenu = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [workerChoice, setWorkerChoice] = useState("");
 
+  //console.log("visits: ", visits);
+  //console.log("schedules:", schedules);
+
   useEffect(() => {
     allVisitsQuery({
       start: startDate.toISOString(),
       end: startDate.toISOString().split("T")[0] + "T23:59:00.000Z",
     });
-  }, [startDate]);
-
-  useEffect(() => {
     allSchedulesQuery({
       start: startDate.toISOString(),
       end: startDate.toISOString().split("T")[0] + "T23:59:00.000Z",
@@ -219,6 +219,7 @@ const MainMenu = () => {
             })}
           </WorkerChoice>
         </DateOfReservationBox>
+
         <Grid
           container
           spacing={1}
@@ -283,10 +284,11 @@ const MainMenu = () => {
             </DivsReserved>
           </Grid>
         </Grid>
-
+        {/*
         <DoReservationButton onClick={() => navigate("/do-reservation")}>
           Dodaj rezerwację
         </DoReservationButton>
+        */}
 
         <MainMenuButtonBox>
           {/*<MainMenuAddWorkerButton onClick={() => navigate("/add-user")}>

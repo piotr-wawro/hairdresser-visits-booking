@@ -125,7 +125,10 @@ const DoReservation = () => {
     <DoReservationBox>
       <Header1>Zarezerwuj termin!</Header1>
       <Header3>Data:</Header3>
-      <DatePicker
+      <label>15.11.2022</label>
+      <Header3>Godzina:</Header3>
+      <label>10:00</label>
+      {/*<DatePicker
         selected={startDate}
         onChange={(date: Date) => setStartDate(date)}
       />
@@ -160,10 +163,10 @@ const DoReservation = () => {
         <option value="haircut">Strzyżenie męskie</option>
         <option value="Strzyżenie damskie">Strzyżenie damskie</option>
         <option value="Farbowanie">Farbowanie</option>
-      </TypeChoice>
-
+      </TypeChoice>*/}
       <Header3>Pracownik:</Header3>
-      <WorkerChoice
+      Pracownik 1
+      {/* <WorkerChoice
         id="workerChoice"
         value={workerChoice}
         onChange={(element) => {
@@ -177,17 +180,16 @@ const DoReservation = () => {
             </option>
           );
         })}
-      </WorkerChoice>
-
+      </WorkerChoice>*/}
       <ReservationButtonBox>
         <DoReservationButton onClick={() => onSave()}>
           Zapisz
         </DoReservationButton>
-        <EditReservationButton onClick={() => navigate("/main-menu")}>
+        {/*<EditReservationButton onClick={() => navigate("/main-menu")}>
           Edytuj
-        </EditReservationButton>
+      </EditReservationButton>*/}
         <CancelReservationButton onClick={() => navigate("/main-menu")}>
-          Usuń
+          Anuluj
         </CancelReservationButton>
       </ReservationButtonBox>
     </DoReservationBox>

@@ -121,8 +121,8 @@ const EditReservation = () => {
       <Header3>Godzina:</Header3>
       <label>10:00</label>
 
-      <Header3>Typ wizyty:</Header3>
-
+      {/*<Header3>Typ wizyty:</Header3>
+      
       <TypeChoice
         id="typeChoice"
         defaultValue={typeChoice}
@@ -133,7 +133,8 @@ const EditReservation = () => {
         <option value="Strzyżenie męskie">Strzyżenie męskie</option>
         <option value="Strzyżenie damskie">Strzyżenie damskie</option>
         <option value="Farbowanie">Farbowanie</option>
-      </TypeChoice>
+      </TypeChoice>*/}
+
       <Header3>Pracownik:</Header3>
 
       <WorkerChoice
