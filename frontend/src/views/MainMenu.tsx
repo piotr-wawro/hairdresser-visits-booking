@@ -9,7 +9,7 @@ import "./Style.css";
 import logo from "../assets/logo1.jpg";
 import styled from "styled-components";
 import DateTimePicker from "react-datetime-picker";
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useGetEmployeeQuery, useAllEmployeesQuery } from "../api/employee.js";
@@ -171,21 +171,28 @@ const MainMenu = () => {
 
   useEffect(() => {
     allVisitsQuery({
-      start: startDate.toISOString(),
+      start: startDate.toISOString().split("T")[0] + "T08:00:00.000Z",
       end: startDate.toISOString().split("T")[0] + "T23:59:00.000Z",
-    });
+    })
+
+
+    //console.log(visits.filter(visits => visits.id === workerChoice))
   }, [startDate]);
 
   useEffect(() => {
     allSchedulesQuery({
-      start: startDate.toISOString(),
+      start: startDate.toISOString().split("T")[0] + "T08:00:00.000Z",
       end: startDate.toISOString().split("T")[0] + "T23:59:00.000Z",
     });
   }, [startDate]);
+ 
   //const [useGetAllSchedulesQuery,setGetAllSchedulesQuery ]=useLazyGetAllSchedulesQuery(startDate);
-  //console.log(startDate);
+ // console.log( visits);
+  //console.log(visits?.filter(visits => visits.servicedById === workerChoice));
+  //console.log(schedules)
+  console.log(schedules?.filter(schedules => schedules.forId=== workerChoice));
   var first= startDate.toISOString().split("T")[0] + "T08:00:00.000Z"
-  console.log(first);
+ // console.log(first);
 
   return (
     <Container>
