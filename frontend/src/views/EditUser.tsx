@@ -101,6 +101,7 @@ const EditUser = () => {
   const [userLastName, setUserLastName] = useState("");
   const [userNumber, setUserNumber] = useState("");
   //const [userMail, setUserMail] = useState("");
+
   console.log(userFirstName, userLastName, userNumber);
   const [usePatchUserVisitInfoQuery, { status }] =
     useLazyPatchUserProfileQuery();

@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useLazyPostVisitQuery } from "../api/visit.js";
+import { useGetEmployeeQuery } from "../api/employee.js";
 
 const Header1 = styled.h1`
   margin-top: 30px;
@@ -98,6 +99,7 @@ const DoReservation = () => {
   const [workerChoice, setWorkerChoice] = useState("");
 
   const [postVisitQuery, { status }] = useLazyPostVisitQuery();
+  //const [getEmployeeQuery, { status }] = useGetEmployeeQuery();
 
   console.log(workerChoice);
 
@@ -106,7 +108,7 @@ const DoReservation = () => {
       const payload = await postVisitQuery({
         servicedBy: workerChoice,
         start: new Date(
-          startDate.toISOString().split("T")[0] + " " + timeChoice + ":00"
+          startDate.toISOString().split("T")[0] + "T" + timeChoice + ":00.000Z"
         ).toISOString(),
         type: typeChoice,
       }).unwrap();

@@ -484,11 +484,11 @@
     "method": "GET",
     "sortNum": 30000,
     "created": "2022-11-04T19:37:36.264Z",
-    "modified": "2022-11-12T11:46:40.590Z",
+    "modified": "2022-11-26T21:08:22.985Z",
     "headers": [
       {
         "name": "Authorization",
-        "value": "{{token}}"
+        "value": "{{token}"
       },
       {
         "name": "Accept",
