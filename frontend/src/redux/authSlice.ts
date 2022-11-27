@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import type { PayloadAction } from "@reduxjs/toolkit";
 import { hvbApi } from "../api/index.js";
 
 type AuthSliceState = { isAuthenticated: boolean; token: null | string };
@@ -13,16 +14,16 @@ const authSlice = createSlice({
   name: "auth",
   initialState: initialState,
   reducers: {
-    loadToken: (state, action) => {
+    login: (state, action: PayloadAction<string>) => {
       state.token = action.payload;
       state.isAuthenticated = true;
     },
     logout: (state) => {
-      state.isAuthenticated = false;
       state.token = null;
+      state.isAuthenticated = false;
     },
   },
 });
 
 export const authReducer = authSlice.reducer;
-export const { loadToken, logout } = authSlice.actions;
+export const { login, logout } = authSlice.actions;

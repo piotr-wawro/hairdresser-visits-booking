@@ -14,6 +14,7 @@ import DoReservation from "./views/DoReservation.js";
 import EditReservation from "./views/EditReservation.js";
 import MainMenuForUser from "./views/MainMenuForUser.js";
 import ManagerScreen from "./views/ManagerScreen.js";
+import LogInToken from "./views/LogInToken.js";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/log-in" element={<LogIn />} />
+        <Route path="/log-in/:token" element={<LogInToken />} />
         <Route path="/main-menu" element={<MainMenu />} />
         <Route path="/add-user" element={<AddUser />} />
         <Route path="/edit-user" element={<EditUser />} />
