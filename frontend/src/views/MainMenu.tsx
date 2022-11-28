@@ -205,21 +205,30 @@ const MainMenu = () => {
     
     //all.push(element.start.slice(11, 13))
     //all.push(element.end.slice(11, 13))
-    visitBegin.push(element.start.slice(11, 16))
-    visitEnd.push(element.end.slice(11, 16))
+    visitBegin.push(element.start.slice(11, 13))
+   visitEnd.push(element.end.slice(11, 16))
     scheduleBegin.push(element.start.slice(11, 16))
     scheduleEnd.push(element.end.slice(11, 16))
   }
     )
     
+var hoursAvaible=[]
+var a=visitBegin?.filter(e=>parseInt(e))
 
+for(let i =0;i<scheduleBegin.length;i++){
+let v=parseInt(scheduleEnd[i])-parseInt(scheduleBegin[i])
 
+//hours.push(parseInt(scheduleBegin[i]))
+for(let j =0;j<=v;j++){
+  hoursAvaible.push(parseInt(scheduleBegin[i])+j)
+}
+//console.log(v)
+}
 
-
-
-
+console.log(hoursAvaible)
   //todaySchedules?.forEach(element => end.push(element.end.slice(11, 13)))
-  console.log(visitBegin)
+ console.log(scheduleBegin)
+ console.log(scheduleEnd)
   return (
     <Container>
       <Navbar>
