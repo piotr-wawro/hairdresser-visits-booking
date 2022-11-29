@@ -15,6 +15,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useGetEmployeeQuery, useAllEmployeesQuery } from "../api/employee.js";
 import { useLazyAllVisitsQuery } from "../api/visit.js";
 import { useLazyGetAllSchedulesQuery } from "../api/schedule.js";
+import Schedule from "../components/Schedule.js";
+import { useUserProfileQuery } from "../api/user.js";
 
 const Header1 = styled.h1``;
 
@@ -158,6 +160,7 @@ const WorkerChoice = styled.select``;
 const MainMenu = () => {
   const navigate = useNavigate();
 
+  const { data: profile } = useUserProfileQuery();
   const { data: employees } = useAllEmployeesQuery();
 
   const [allVisitsQuery, { data: visits }] = useLazyAllVisitsQuery();
@@ -167,6 +170,8 @@ const MainMenu = () => {
 
   const [startDate, setStartDate] = useState(new Date());
   const [workerChoice, setWorkerChoice] = useState("");
+  const [time, setTime] = useState<Date | undefined>(undefined);
+  const [selectedVisit, setSelectedVisit] = useState("");
 
   useEffect(() => {
     allVisitsQuery({
@@ -243,18 +248,10 @@ const MainMenu = () => {
     (hour) => !hoursBooked.includes(hour)
   );
 
-  console.log("Wolne godziny na wizyty: ", fileteredHoursAvaible);
-  //todaySchedules?.forEach(element => end.push(element.end.slice(11, 13)))
-  console.log("Początek pracy:", scheduleBegin);
-  console.log("Koniec pracy:", scheduleEnd);
-  console.log("Początek wizyty:", visitBegin);
-  console.log("Koniec wizyty:", visitEnd);
-
   return (
     <Container>
       <Navbar>
-        <Logo src={logo}></Logo>
-        <Header1>Zapisz się do fryzjera już dziś!</Header1>
+        <Header1></Header1>
 
         <NavbarButton onClick={() => navigate("/edit-user")}>
           Profil
@@ -306,6 +303,16 @@ const MainMenu = () => {
             </Grid>
           ))}
         </Grid>
+
+        <Schedule
+          schedule={schedules?.filter((e) => e.forId === workerChoice)}
+          visits={visits?.filter((e) => e.servicedById === workerChoice)}
+          userId={profile?.id}
+          time={time}
+          setTime={setTime}
+          selectedVisit={selectedVisit}
+          setSelectedVisit={setSelectedVisit}
+        />
 
         <DoReservationButton onClick={() => navigate("/do-reservation")}>
           Dodaj rezerwację

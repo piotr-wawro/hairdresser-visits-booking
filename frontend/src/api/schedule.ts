@@ -5,7 +5,7 @@ interface GetAllSchedules {
   end: string;
 }
 
-interface GetScheduleResponse {
+export interface GetScheduleResponse {
   id: string;
   start: string;
   end: string;
