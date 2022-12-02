@@ -93,7 +93,7 @@ const AddEmployee = () => {
             phoneNumber: userNumber,
           }).unwrap();
 
-          navigate("/manager-screen");
+          navigate("/");
         }
       }
     } catch (error) {
