@@ -140,10 +140,10 @@ const Schedule = ({
       <Block start={startTime} end={endTime} color="green" height="50%" />
 
       {[...Array(23).keys()].map((i) => (
-        <>
+        <div key={i}>
           <Stick n={i + 1} />
           <Time n={i + 1}>{`${i + 1}:00`}</Time>
-        </>
+        </div>
       ))}
     </Container>
   );

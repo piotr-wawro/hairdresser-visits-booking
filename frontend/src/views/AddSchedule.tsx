@@ -95,11 +95,13 @@ const AddSchedule = () => {
           onChange={chagngeEmployee}
           variant="standard"
         >
-          {employeeList?.map((e) => (
-            <MenuItem key={e.id} value={e.id}>
-              {e.firstName} {e.lastName}
-            </MenuItem>
-          ))}
+          {employeeList
+            ?.filter((e) => e.role === "employee")
+            .map((e) => (
+              <MenuItem key={e.id} value={e.id}>
+                {e.firstName} {e.lastName}
+              </MenuItem>
+            ))}
         </TextField>
 
         <TextField
@@ -145,7 +147,13 @@ const AddSchedule = () => {
           <TextField
             label="Start"
             type="time"
-            defaultValue={startTime}
+            value={
+              startTime
+                ? `${("0" + startTime?.getHours()).slice(-2)}:${(
+                    "0" + startTime?.getMinutes()
+                  ).slice(-2)}`
+                : ""
+            }
             onChange={changeStartTime}
             variant="standard"
             InputLabelProps={{
@@ -156,7 +164,13 @@ const AddSchedule = () => {
           <TextField
             label="End"
             type="time"
-            defaultValue={endTime}
+            value={
+              endTime
+                ? `${("0" + endTime?.getHours()).slice(-2)}:${(
+                    "0" + endTime?.getMinutes()
+                  ).slice(-2)}`
+                : ""
+            }
             onChange={changeEndTime}
             variant="standard"
             InputLabelProps={{
