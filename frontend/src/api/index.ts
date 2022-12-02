@@ -15,5 +15,5 @@ export const hvbApi = createApi({
   }),
 
   endpoints: () => ({}),
-  tagTypes: ["User", "Employee"],
+  tagTypes: ["User", "Employee", "Schedule"],
 });
