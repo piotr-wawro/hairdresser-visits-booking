@@ -38,13 +38,15 @@ const employee = hvbApi.injectEndpoints({
         url: `/employee/all`,
         method: "GET",
       }),
+      providesTags: ["Employee"],
     }),
-    postEmployee: build.query<void, PostEmployee>({
+    postEmployee: build.mutation<void, PostEmployee>({
       query: ({ firstName, lastName, email, phoneNumber }) => ({
         url: `/employee`,
         method: "POST",
         body: { firstName, lastName, email, phoneNumber },
       }),
+      invalidatesTags: ["Employee"],
     }),
     getEmployee: build.query<EmployeesResponse, GetEmployee>({
       query: ({ id }) => ({
@@ -72,7 +74,7 @@ const employee = hvbApi.injectEndpoints({
 
 export const {
   useAllEmployeesQuery,
-  useLazyPostEmployeeQuery,
+  usePostEmployeeMutation,
   useGetEmployeeQuery,
   useLazyPatchEmployeeQuery,
   useLazyDeleteEmployeeQuery,

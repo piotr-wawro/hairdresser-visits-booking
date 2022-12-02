@@ -8,9 +8,14 @@ import graphic3 from "../assets/graphic3.jpg";
 import logo from "../assets/logo1.jpg";
 import styled from "styled-components";
 import DateTimePicker from "react-datetime-picker";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useGetEmployeeQuery, useAllEmployeesQuery } from "../api/employee.js";
+import { useLazyAllVisitsQuery } from "../api/visit.js";
+import { useLazyGetAllSchedulesQuery } from "../api/schedule.js";
+import Schedule from "../components/Schedule.js";
+import { useUserProfileQuery } from "../api/user.js";
 
 const Header1 = styled.h1``;
 
@@ -148,17 +153,43 @@ const DivsReserved = styled.div`
 `;
 
 const HoursLabel = styled.label``;
+const WorkerChoice = styled.select``;
 
 const AddSchedule = () => {
   const navigate = useNavigate();
 
   const [startDate, setStartDate] = useState(new Date());
 
+  const { data: profile } = useUserProfileQuery();
+  const { data: employees } = useAllEmployeesQuery();
+
+  const [allVisitsQuery, { data: visits }] = useLazyAllVisitsQuery();
+
+  const [allSchedulesQuery, { data: schedules }] =
+    useLazyGetAllSchedulesQuery();
+
+  const [workerChoice, setWorkerChoice] = useState("");
+  const [time, setTime] = useState<Date | undefined>(undefined);
+  const [selectedVisit, setSelectedVisit] = useState("");
+
+  useEffect(() => {
+    allVisitsQuery({
+      start: startDate.toISOString().split("T")[0] + "T08:00:00.000Z",
+      end: startDate.toISOString().split("T")[0] + "T23:59:00.000Z",
+    });
+    allSchedulesQuery({
+      start: startDate.toISOString().split("T")[0] + "T08:00:00.000Z",
+      end: startDate.toISOString().split("T")[0] + "T23:59:00.000Z",
+    });
+    //console.log(visits?.filter(visits => visits.servicedById === workerChoice));
+    //console.log(visits.filter(visits => visits.id === workerChoice))
+  }, [startDate]);
+
   return (
     <Container>
       <Navbar>
         <Logo src={logo}></Logo>
-        <Header1>Zapisz się do fryzjera już dziś!</Header1>
+        <Header1>Ekran managera:</Header1>
 
         <NavbarButton onClick={() => navigate("/edit-user")}>
           Profil
@@ -172,71 +203,33 @@ const AddSchedule = () => {
             selected={startDate}
             onChange={(date: Date) => setStartDate(date)}
           />
+          <Header2>Wybierz pracownika:</Header2>
+          <WorkerChoice
+            id="workerChoice"
+            value={workerChoice}
+            onChange={(element) => {
+              setWorkerChoice(element.target.value);
+            }}
+          >
+            {employees?.map((e, i) => {
+              return (
+                <option key={i} value={e.id}>
+                  {e.firstName} {e.lastName}
+                </option>
+              );
+            })}
+          </WorkerChoice>
         </DateOfReservationBox>
-        <Grid
-          container
-          spacing={1}
-          direction="row"
-          justifyContent="center"
-          alignItems="center"
-        >
-          <Grid item>
-            <DivsReserved>
-              <HoursLabel onClick={() => navigate("/edit-reservation")}>
-                Godzina: 8:00-9:00
-              </HoursLabel>
-            </DivsReserved>
-          </Grid>
-          <Grid item>
-            <DivsReserved>
-              <HoursLabel onClick={() => navigate("/edit-reservation")}>
-                Godzina: 9:00-10:00
-              </HoursLabel>
-            </DivsReserved>
-          </Grid>
-          <Grid item>
-            <DivsReserved>
-              <HoursLabel onClick={() => navigate("/edit-reservation")}>
-                Godzina: 10:00-11:00
-              </HoursLabel>
-            </DivsReserved>
-          </Grid>
-          <Grid item>
-            <DivsReserved>
-              <HoursLabel onClick={() => navigate("/edit-reservation")}>
-                Godzina: 11:00-12:00
-              </HoursLabel>
-            </DivsReserved>
-          </Grid>
-          <Grid item>
-            <DivsReserved style={{ background: "red" }}>
-              <HoursLabel onClick={() => navigate("/edit-reservation")}>
-                Godzina: 12:00-13:00
-              </HoursLabel>
-            </DivsReserved>
-          </Grid>
-          <Grid item>
-            <DivsReserved>
-              <HoursLabel onClick={() => navigate("/edit-reservation")}>
-                Godzina: 13:00-14:00
-              </HoursLabel>
-            </DivsReserved>
-          </Grid>
-          <Grid item>
-            <DivsReserved style={{ background: "red" }}>
-              <HoursLabel onClick={() => navigate("/edit-reservation")}>
-                Godzina: 14:00-15:00
-              </HoursLabel>
-            </DivsReserved>
-          </Grid>
-          <Grid item>
-            <DivsReserved>
-              <HoursLabel onClick={() => navigate("/edit-reservation")}>
-                Godzina: 15:00-16:00
-              </HoursLabel>
-            </DivsReserved>
-          </Grid>
-        </Grid>
+
+        <Schedule
+          schedule={schedules?.filter((e) => e.forId === workerChoice)}
+          visits={visits?.filter((e) => e.servicedById === workerChoice)}
+          userId={profile?.id}
+          time={time}
+          setTime={setTime}
+          selectedVisit={selectedVisit}
+          setSelectedVisit={setSelectedVisit}
+        />
 
         <MainMenuButtonBox>
           <MainMenuAddWorkerButton onClick={() => navigate("/add-user")}>
