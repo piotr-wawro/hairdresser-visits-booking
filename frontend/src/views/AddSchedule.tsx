@@ -1,248 +1,218 @@
-import { Grid, TextField } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import MainBox from "../components/MainBox.js";
-import background from "../assets/background.jpg";
-import graphic1 from "../assets/graphic1.jpg";
-import graphic2 from "../assets/graphic2.jpg";
-import graphic3 from "../assets/graphic3.jpg";
-import logo from "../assets/logo1.jpg";
+import { useEffect, useState } from "react";
+import {
+  Alert,
+  Button,
+  IconButton,
+  List,
+  ListItem,
+  ListItemText,
+  MenuItem,
+  Snackbar,
+  TextField,
+} from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
 import styled from "styled-components";
-import DateTimePicker from "react-datetime-picker";
-import React, { useEffect, useState } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import { useGetEmployeeQuery, useAllEmployeesQuery } from "../api/employee.js";
-import { useLazyAllVisitsQuery } from "../api/visit.js";
-import { useLazyGetAllSchedulesQuery } from "../api/schedule.js";
+import { useAllEmployeesQuery } from "../api/employee.js";
+import {
+  useDeleteScheduleMutation,
+  useLazyGetAllSchedulesQuery,
+  usePostScheduleMutation,
+} from "../api/schedule.js";
 import Schedule from "../components/Schedule.js";
-import { useUserProfileQuery } from "../api/user.js";
-
-const Header1 = styled.h1``;
-
-const Header2 = styled.h2`
-  color: white;
-  width: 300px;
-`;
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-left: auto;
-  margin-right: auto;
-  width: max-content;
-  width: 100%;
-`;
-
-const Navbar = styled.div`
-  background: #47a8bd;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 0px;
-
-  text-align: center;
-  padding: 25px 0 15px 0;
-  width: 100%;
-`;
-
-const Logo = styled.img`
-  height: 80px;
-  width: 80px;
-  padding-left: 10px;
-`;
-
-const NavbarButton = styled.button`
-  width: 250px;
-  height: 81px;
-  left: 1111px;
-  top: 34px;
-  background: #ff9b71;
-  border-radius: 20px;
-  margin-right: 50px;
-  font-size: 32px;
-`;
-
-const Card = styled.div`
-  margin-top: 50px;
-  background-color: #17567c;
-  border-radius: 24px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 64px;
-  gap: 40px;
-  width: 70vw;
-  height: 60vh;
-  margin-left: auto;
-  margin-right: auto;
-  justify-content: center;
-`;
-const MainMenuButtonBox = styled.div`
-  justify-content: center;
-  height: 50px;
-  display: flex;
-  width: 80%;
-  gap: 10%;
-  margin-top: 50px;
-  margin-right: auto;
-  margin-left: auto;
-`;
-
-const MainMenuAddWorkerButton = styled.button`
-  margin-top: 40px;
-  justify-content: "center";
-  cursor: pointer;
-  height: 40px;
-  width: 250px;
-  font-size: 20px;
-  background: lightgrey;
-  font-weight: bold;
-  text-align: center;
-`;
-
-const MainMenuEditWorkerButton = styled.button`
-  margin-top: 40px;
-  justify-content: "center";
-  cursor: pointer;
-  height: 40px;
-  width: 250px;
-  font-size: 20px;
-  background: lightgrey;
-  font-weight: bold;
-  text-align: center;
-`;
-
-const DoReservationButton = styled.button`
-  margin-top: 40px;
-  justify-content: "center";
-  cursor: pointer;
-  height: 40px;
-  width: 250px;
-  font-size: 20px;
-  background: lightgrey;
-  font-weight: bold;
-  text-align: center;
-`;
-
-const ImageHolder = styled.div`
-  display: flex;
-  margin-left: auto;
-  margin-right: auto;
-  gap: 40px;
-`;
-
-const DateOfReservationBox = styled.div`
-  justify-content: center;
-  height: 50px;
-  margin-top: 5px;
-  display: flex;
-  width: 80%;
-  gap: 10%;
-  margin-right: auto;
-  margin-left: auto;
-`;
-
-const DivsReserved = styled.div`
-  background: white;
-  padding: 10px;
-  width: 80px;
-  height: 50px;
-`;
-
-const HoursLabel = styled.label``;
-const WorkerChoice = styled.select``;
 
 const AddSchedule = () => {
-  const navigate = useNavigate();
-
-  const [startDate, setStartDate] = useState(new Date());
-
-  const { data: profile } = useUserProfileQuery();
-  const { data: employees } = useAllEmployeesQuery();
-
-  const [allVisitsQuery, { data: visits }] = useLazyAllVisitsQuery();
-
+  const { data: employeeList } = useAllEmployeesQuery();
   const [allSchedulesQuery, { data: schedules }] =
     useLazyGetAllSchedulesQuery();
+  const [postScheduleQuery] = usePostScheduleMutation();
+  const [deleteScheduleQuery] = useDeleteScheduleMutation();
 
-  const [workerChoice, setWorkerChoice] = useState("");
-  const [time, setTime] = useState<Date | undefined>(undefined);
-  const [selectedVisit, setSelectedVisit] = useState("");
+  const [employee, setEmployee] = useState("");
+  const [date, setDate] = useState("");
+  const [startTime, setStartTime] = useState<Date | undefined>(undefined);
+  const [endTime, setEndTime] = useState<Date | undefined>(undefined);
+  const [isError, setIsError] = useState(false);
+  const [error, setError] = useState("");
+
+  const chagngeEmployee = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEmployee(event.target.value);
+  };
+
+  const changeDate = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setDate(event.target.value);
+  };
+
+  const changeStartTime = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setStartTime(new Date("1 " + event.target.value));
+  };
+
+  const changeEndTime = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEndTime(new Date("1 " + event.target.value));
+  };
+
+  const closeSnackbar = () => {
+    setIsError(false);
+  };
+
+  const addSchedule = () => {
+    postScheduleQuery({
+      userId: employee,
+      start: `${date}T${startTime?.toISOString().split("T")[1]}`,
+      end: `${date}T${endTime?.toISOString().split("T")[1]}`,
+    })
+      .unwrap()
+      .then(() => {
+        setStartTime(undefined);
+        setEndTime(undefined);
+      })
+      .catch((error) => {
+        setIsError(true);
+        setError(error.data.error);
+      });
+  };
+
+  const deleteSchedule = (id: string) => {
+    deleteScheduleQuery({ id });
+  };
 
   useEffect(() => {
-    allVisitsQuery({
-      start: startDate.toISOString().split("T")[0] + "T08:00:00.000Z",
-      end: startDate.toISOString().split("T")[0] + "T23:59:00.000Z",
-    });
-    allSchedulesQuery({
-      start: startDate.toISOString().split("T")[0] + "T08:00:00.000Z",
-      end: startDate.toISOString().split("T")[0] + "T23:59:00.000Z",
-    });
-    //console.log(visits?.filter(visits => visits.servicedById === workerChoice));
-    //console.log(visits.filter(visits => visits.id === workerChoice))
-  }, [startDate]);
+    if (date) {
+      allSchedulesQuery({
+        start: new Date(date + " 00:00:00.000").toISOString(),
+        end: new Date(date + " 23:59:59.999").toISOString(),
+      });
+    }
+  }, [date]);
 
   return (
     <Container>
-      <Navbar>
-        <Logo src={logo}></Logo>
-        <Header1>Ekran managera:</Header1>
+      <LeftPanel>
+        <TextField
+          select
+          fullWidth
+          label="Employee"
+          value={employee}
+          onChange={chagngeEmployee}
+          variant="standard"
+        >
+          {employeeList?.map((e) => (
+            <MenuItem key={e.id} value={e.id}>
+              {e.firstName} {e.lastName}
+            </MenuItem>
+          ))}
+        </TextField>
 
-        <NavbarButton onClick={() => navigate("/edit-user")}>
-          Profil
-        </NavbarButton>
-      </Navbar>
-
-      <Card>
-        <DateOfReservationBox>
-          <Header2>Wybierz datę:</Header2>
-          <DatePicker
-            selected={startDate}
-            onChange={(date: Date) => setStartDate(date)}
-          />
-          <Header2>Wybierz pracownika:</Header2>
-          <WorkerChoice
-            id="workerChoice"
-            value={workerChoice}
-            onChange={(element) => {
-              setWorkerChoice(element.target.value);
-            }}
-          >
-            {employees?.map((e, i) => {
-              return (
-                <option key={i} value={e.id}>
-                  {e.firstName} {e.lastName}
-                </option>
-              );
-            })}
-          </WorkerChoice>
-        </DateOfReservationBox>
-
-        <Schedule
-          schedule={schedules?.filter((e) => e.forId === workerChoice)}
-          visits={visits?.filter((e) => e.servicedById === workerChoice)}
-          userId={profile?.id}
-          time={time}
-          setTime={setTime}
-          selectedVisit={selectedVisit}
-          setSelectedVisit={setSelectedVisit}
+        <TextField
+          fullWidth
+          label="Day"
+          type="date"
+          defaultValue={date}
+          onChange={changeDate}
+          variant="standard"
+          InputLabelProps={{
+            shrink: true,
+          }}
         />
 
-        <MainMenuButtonBox>
-          <MainMenuAddWorkerButton onClick={() => navigate("/add-user")}>
-            Dodaj pracownika
-          </MainMenuAddWorkerButton>
+        <List>
+          {schedules
+            ?.filter((e) => e.forId === employee)
+            .map((e) => (
+              <ListItem
+                key={e.id}
+                secondaryAction={
+                  <IconButton onClick={() => deleteSchedule(e.id)}>
+                    <DeleteIcon />
+                  </IconButton>
+                }
+              >
+                <ListItemText
+                  primary={`${e.start.slice(11, 16)} - ${e.end.slice(11, 16)}`}
+                />
+              </ListItem>
+            ))}
+        </List>
+      </LeftPanel>
+      <RightPanel>
+        <Schedule
+          schedule={schedules?.filter((e) => e.forId === employee)}
+          endTime={endTime}
+          startTime={startTime}
+          setStarTime={setStartTime}
+        />
 
-          {/*<MainMenuEditWorkerButton onClick={() => navigate("/edit-user")}>
-            Edytuj pracownika
-          </MainMenuEditWorkerButton>*/}
-        </MainMenuButtonBox>
-      </Card>
+        <TimeContainer>
+          <TextField
+            label="Start"
+            type="time"
+            defaultValue={startTime}
+            onChange={changeStartTime}
+            variant="standard"
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+
+          <TextField
+            label="End"
+            type="time"
+            defaultValue={endTime}
+            onChange={changeEndTime}
+            variant="standard"
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+
+          <Button variant="outlined" onClick={addSchedule}>
+            Add
+          </Button>
+        </TimeContainer>
+      </RightPanel>
+
+      <Snackbar
+        open={isError}
+        autoHideDuration={6000}
+        onClose={closeSnackbar}
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+      >
+        <Alert onClose={closeSnackbar} severity="error">
+          {error}
+        </Alert>
+      </Snackbar>
     </Container>
   );
 };
 
 export default AddSchedule;
+
+const Container = styled.div`
+  padding: 16px 0;
+
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+`;
+
+const LeftPanel = styled.div`
+  width: 300px;
+  height: 800px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;
+
+const RightPanel = styled.div`
+  width: 1000px;
+  height: 800px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;
+
+const TimeContainer = styled.div`
+  display: flex;
+  gap: 16px;
+`;
