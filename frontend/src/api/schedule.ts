@@ -41,13 +41,15 @@ const schedule = hvbApi.injectEndpoints({
         method: "GET",
         params: { start, end },
       }),
+      providesTags: ["Schedule"],
     }),
-    postSchedule: build.query<void, PostSchedule>({
+    postSchedule: build.mutation<void, PostSchedule>({
       query: ({ start, end, userId }) => ({
         url: `/schedule`,
         method: "POST",
         body: { start, end, userId },
       }),
+      invalidatesTags: ["Schedule"],
     }),
     getSchedule: build.query<GetScheduleResponse, GetSchedule>({
       query: ({ id }) => ({
@@ -63,20 +65,21 @@ const schedule = hvbApi.injectEndpoints({
         body: { id, start, end, userId },
       }),
     }),
-    deleteSchedule: build.query<void, DeleteSchedule>({
+    deleteSchedule: build.mutation<void, DeleteSchedule>({
       query: ({ id }) => ({
         url: `/schedule`,
         method: "DELETE",
         body: { id },
       }),
+      invalidatesTags: ["Schedule"],
     }),
   }),
 });
 
 export const {
   useLazyGetAllSchedulesQuery,
-  useLazyPostScheduleQuery,
+  usePostScheduleMutation,
   useGetScheduleQuery,
   useLazyPatchScheduleQuery,
-  useLazyDeleteScheduleQuery,
+  useDeleteScheduleMutation,
 } = schedule;

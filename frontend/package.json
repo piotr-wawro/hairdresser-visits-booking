@@ -3,14 +3,15 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "^5.10.16",
     "@mui/material": "^5.10.12",
     "@reduxjs/toolkit": "^1.9.0",
     "@syncfusion/ej2-react-calendars": "^20.3.56",
+    "express": "^4.18.1",
     "react": "^18.2.0",
     "react-datepicker": "^4.8.0",
     "react-datetime-picker": "^4.1.1",
     "react-dom": "^18.2.0",
-    "express": "^4.18.1",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.4.2",
     "styled-components": "^5.3.6"

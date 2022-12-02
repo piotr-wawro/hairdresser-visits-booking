@@ -20,25 +20,6 @@ const Stick = styled.div<{ n: number }>`
   background-color: black;
 `;
 
-const ChosenTime = styled.div<{ t?: Date | undefined }>`
-  position: absolute;
-  height: 50%;
-  width: ${100 / 24}%;
-
-  ${(props) =>
-    props.t
-      ? css`
-          left: ${((props.t?.getHours() * 60 + props.t?.getMinutes()) /
-            (24 * 60)) *
-          100}%;
-        `
-      : css`
-          display: none;
-        `};
-  bottom: 0px;
-  background-color: green;
-`;
-
 const Time = styled.div<{ n: number }>`
   position: absolute;
   font-size: 12px;
@@ -50,24 +31,31 @@ const Time = styled.div<{ n: number }>`
 `;
 
 const Block = styled.div<{
-  start: Date;
-  end: Date;
+  start: Date | undefined;
+  end: Date | undefined;
   color: string;
   animate?: boolean;
+  height?: string;
 }>`
   position: absolute;
-  height: 70%;
+  height: ${(props) => props.height || "70%"};
 
-  left: ${(props) =>
-    `${
-      ((props.start.getHours() * 60 + props.start.getMinutes()) / (24 * 60)) *
-      100
-    }%`};
-  right: ${(props) =>
-    `${
-      100 -
-      ((props.end.getHours() * 60 + props.end.getMinutes()) / (24 * 60)) * 100
-    }%`};
+  ${(props) =>
+    props.start &&
+    css`
+      left: ${((props.start.getHours() * 60 + props.start.getMinutes()) /
+        (24 * 60)) *
+      100}%;
+    `}
+
+  ${(props) =>
+    props.end &&
+    css`
+      right: ${100 -
+      ((props.end.getHours() * 60 + props.end.getMinutes()) / (24 * 60)) *
+        100}%;
+    `}
+
   bottom: 0px;
   background-color: ${(props) => props.color};
 
@@ -88,21 +76,23 @@ const Block = styled.div<{
 `;
 
 type ScheduleProps = {
-  schedule: GetScheduleResponse[] | undefined;
-  visits: GetVisitResponse[] | undefined;
-  userId: string | undefined;
-  time: Date | undefined;
-  setTime: React.Dispatch<React.SetStateAction<Date | undefined>>;
-  selectedVisit: string | undefined;
-  setSelectedVisit: React.Dispatch<React.SetStateAction<string>>;
+  schedule?: GetScheduleResponse[] | undefined;
+  visits?: GetVisitResponse[] | undefined;
+  userId?: string | undefined;
+  endTime?: Date | undefined;
+  startTime?: Date | undefined;
+  setStarTime?: React.Dispatch<React.SetStateAction<Date | undefined>>;
+  selectedVisit?: string | undefined;
+  setSelectedVisit?: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const Schedule = ({
   schedule,
   visits,
   userId,
-  time,
-  setTime,
+  endTime,
+  startTime,
+  setStarTime,
   selectedVisit,
   setSelectedVisit,
 }: ScheduleProps) => {
@@ -115,8 +105,8 @@ const Schedule = ({
     const newTime = new Date();
     newTime.setHours(Math.floor(minutes / 60));
     newTime.setMinutes(Math.floor(minutes % 60));
-    setTime(newTime);
-    setSelectedVisit("");
+    setStarTime?.(newTime);
+    setSelectedVisit?.("");
   };
 
   return (
@@ -139,21 +129,21 @@ const Schedule = ({
             color={e.bookedById === userId ? "yellow" : "red"}
             animate={selectedVisit === e.id}
             onClick={(event) => {
-              setTime(undefined);
-              setSelectedVisit(e.id);
+              setStarTime?.(undefined);
+              setSelectedVisit?.(e.id);
               event.stopPropagation();
             }}
           />
         );
       })}
 
-      <ChosenTime t={time} />
+      <Block start={startTime} end={endTime} color="green" height="50%" />
 
       {[...Array(23).keys()].map((i) => (
-        <>
+        <div key={i}>
           <Stick n={i + 1} />
           <Time n={i + 1}>{`${i + 1}:00`}</Time>
-        </>
+        </div>
       ))}
     </Container>
   );
