@@ -6,6 +6,7 @@ interface Profile {
   lastName: string;
   email: string;
   phoneNumber: string;
+  role: string;
 }
 
 interface PatchProfileProps {
@@ -57,6 +58,7 @@ const user = hvbApi.injectEndpoints({
         url: `/user/profile`,
         method: "GET",
       }),
+      providesTags: ["User"],
     }),
     patchUserProfile: build.query<void, PatchProfileProps>({
       query: ({ firstName, lastName, phoneNumber }) => ({

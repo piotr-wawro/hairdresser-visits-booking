@@ -5,7 +5,6 @@ import background from "../assets/background.jpg";
 import graphic1 from "../assets/graphic1.jpg";
 import graphic2 from "../assets/graphic2.jpg";
 import graphic3 from "../assets/graphic3.jpg";
-import "./Style.css";
 import logo from "../assets/logo1.jpg";
 import styled from "styled-components";
 import DateTimePicker from "react-datetime-picker";
@@ -150,7 +149,7 @@ const DivsReserved = styled.div`
 
 const HoursLabel = styled.label``;
 
-const ManagerScreen = () => {
+const AddSchedule = () => {
   const navigate = useNavigate();
 
   const [startDate, setStartDate] = useState(new Date());
@@ -253,4 +252,4 @@ const ManagerScreen = () => {
   );
 };
 
-export default ManagerScreen;
+export default AddSchedule;

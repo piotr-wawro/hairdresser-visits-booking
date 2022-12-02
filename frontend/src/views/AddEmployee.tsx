@@ -57,7 +57,7 @@ const AddUserButton = styled.button`
   font-weight: bold;
 `;
 
-const AddUser = () => {
+const AddEmployee = () => {
   const navigate = useNavigate();
   const [userFirstName, setUserFirstName] = useState("");
   const [userLastName, setUserLastName] = useState("");
@@ -126,4 +126,4 @@ const AddUser = () => {
   );
 };
 
-export default AddUser;
+export default AddEmployee;
