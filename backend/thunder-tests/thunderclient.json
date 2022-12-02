@@ -353,11 +353,11 @@
     "method": "POST",
     "sortNum": 15000,
     "created": "2022-11-04T12:50:18.922Z",
-    "modified": "2022-11-25T20:19:07.145Z",
+    "modified": "2022-12-02T12:00:47.596Z",
     "headers": [
       {
         "name": "Authorization",
-        "value": "{{token-mng}}"
+        "value": "{{token}}"
       },
       {
         "name": "Accept",
@@ -450,11 +450,11 @@
     "method": "POST",
     "sortNum": 20000,
     "created": "2022-11-04T19:05:35.649Z",
-    "modified": "2022-11-25T20:00:36.398Z",
+    "modified": "2022-12-02T12:03:18.660Z",
     "headers": [
       {
         "name": "Authorization",
-        "value": "{{token-mng}}"
+        "value": "{{TOKEN_MNG}}"
       },
       {
         "name": "Accept",
@@ -518,7 +518,7 @@
     "method": "PATCH",
     "sortNum": 40000,
     "created": "2022-11-04T19:59:11.109Z",
-    "modified": "2022-11-12T11:47:05.070Z",
+    "modified": "2022-12-02T12:00:27.461Z",
     "headers": [
       {
         "name": "Authorization",
@@ -536,11 +536,6 @@
       }
     ],
     "params": [],
-    "body": {
-      "type": "json",
-      "raw": "{\n  \"id\": \"244e757c-9d58-4be3-bc21-ac46953be644\",\n  \"firstName\": \"Kaja\",\n  \"lastName\": \"Sobczak\",\n  \"phoneNumber\": \"537267514\"\n}",
-      "form": []
-    },
     "tests": []
   },
   {

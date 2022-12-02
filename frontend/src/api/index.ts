@@ -3,6 +3,7 @@ import { RootState } from "../redux/store";
 
 export const hvbApi = createApi({
   reducerPath: "HVBApi",
+  tagTypes: ["Employee"],
   baseQuery: fetchBaseQuery({
     baseUrl: "http://127.0.0.1:3001",
     prepareHeaders: (headers, { getState }) => {
@@ -13,6 +14,7 @@ export const hvbApi = createApi({
       return headers;
     },
   }),
+
   endpoints: () => ({}),
   tagTypes: ["User"],
 });

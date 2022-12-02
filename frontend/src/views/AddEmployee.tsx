@@ -1,8 +1,10 @@
-import { TextField } from "@mui/material";
+import { Alert, Snackbar, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import React, { useState } from "react";
-import { useLazyPostEmployeeQuery } from "../api/employee.js";
+import React, { forwardRef, useState } from "react";
+import { usePostEmployeeMutation } from "../api/employee.js";
+import { handleBreakpoints } from "@mui/system";
+import { error } from "console";
 const AddUserBox = styled.div`
   margin-top: 50px;
   justify-content: center;
@@ -64,27 +66,46 @@ const AddEmployee = () => {
   const [userNumber, setUserNumber] = useState("");
   const [userMail, setUserMail] = useState("");
 
-  const [usePostEmployeeQuery, { status }] = useLazyPostEmployeeQuery();
+  const [usePostEmployeeQuery, { status }] = usePostEmployeeMutation();
 
   console.log(userFirstName, userLastName, userNumber, userMail);
 
+  const [isFaultMail, setIsFaultMail] = useState(false);
+  const [isDataGood, setIsDatGood] = useState(true);
+
   const onSave = async () => {
     try {
-      const payload = await usePostEmployeeQuery({
-        firstName: userFirstName,
-        lastName: userLastName,
-        email: userMail,
-        phoneNumber: userNumber,
-      }).unwrap();
-      navigate("/main-menu");
+      if (
+        userFirstName == "" ||
+        userLastName == "" ||
+        userNumber == "" ||
+        userMail == ""
+      ) {
+        alert("Błąd wypełniania danych");
+      } else {
+        if (!userNumber.match("[0-9]{9}")) {
+          alert("Nieprawidłowe wypełnienie telefonu");
+        } else {
+          const payload = await usePostEmployeeQuery({
+            firstName: userFirstName,
+            lastName: userLastName,
+            email: userMail,
+            phoneNumber: userNumber,
+          }).unwrap();
+
+          navigate("/manager-screen");
+        }
+      }
     } catch (error) {
       console.log(error);
+
+      setIsFaultMail(true);
     }
   };
 
   return (
     <AddUserBox>
-      <AddUserHeader>Nowy użytkownik:</AddUserHeader>
+      <AddUserHeader>Nowy pracownik:</AddUserHeader>
       <AddNameTextField
         style={{ marginBottom: 40 }}
         label="Podaj imię:"
@@ -93,7 +114,6 @@ const AddEmployee = () => {
           setUserFirstName(element.target.value);
         }}
       ></AddNameTextField>
-
       <AddSurnameTextField
         style={{ marginBottom: 40 }}
         label="Podaj nazwisko:"
@@ -102,7 +122,6 @@ const AddEmployee = () => {
           setUserLastName(element.target.value);
         }}
       ></AddSurnameTextField>
-
       <AddPhoneTextField
         style={{ marginBottom: 40 }}
         label="Podaj numer telefonu:"
@@ -111,15 +130,21 @@ const AddEmployee = () => {
           setUserNumber(element.target.value);
         }}
       ></AddPhoneTextField>
-
       <AddEmailTextField
-        style={{ marginTop: 40 }}
-        label="Zmień e-mail:"
+        label="Podaj e-mail:"
         variant="outlined"
         onChange={(element) => {
           setUserMail(element.target.value);
         }}
       ></AddEmailTextField>
+
+      <Snackbar
+        open={isFaultMail}
+        autoHideDuration={6000}
+        onClose={() => setIsFaultMail(false)}
+      >
+        <Alert severity="error">Podano nieprawidłową formę maila</Alert>
+      </Snackbar>
 
       <AddUserButton onClick={() => onSave()}>Dodaj</AddUserButton>
     </AddUserBox>
