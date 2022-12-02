@@ -19,7 +19,7 @@ export const patchUserProfile: RequestHandler = async (req, res, next) => {
 };
 
 export const getUserVisits: RequestHandler = async (req, res, next) => {
-  const { start, end } = req.body;
+  const { start, end }: { start?: string; end?: string } = req.query;
   const user = req.user;
 
   try {

@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import { logIn } from "../controller/session.js";
 import employee from "./employee.js";
 import schedule from "./schedule.js";
@@ -8,6 +9,7 @@ import visit from "./visit.js";
 const router = express.Router();
 
 router.use(express.json());
+router.use(cors());
 
 router.get("/log-in", logIn);
 

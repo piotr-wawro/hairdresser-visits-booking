@@ -27,10 +27,8 @@ export const updateUser = (
   return user.save();
 };
 
-export const findUserVisits = (user: User, start: string, end: string) => {
+export const findUserVisits = (user: User, start?: string, end?: string) => {
   const userId = user.id;
-  const startDate = new Date(start);
-  const endDate = new Date(end);
 
   return Visit.find({
     select: {
@@ -47,8 +45,8 @@ export const findUserVisits = (user: User, start: string, end: string) => {
     },
     where: {
       bookedById: userId,
-      ...(end && { start: LessThan(endDate) }),
-      ...(start && { end: MoreThan(startDate) }),
+      ...(end && { start: LessThan(new Date(end)) }),
+      ...(start && { end: MoreThan(new Date(start)) }),
     },
   });
 };

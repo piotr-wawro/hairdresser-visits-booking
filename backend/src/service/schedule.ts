@@ -4,13 +4,10 @@ import { Roles, User } from "../entity/User.js";
 import { ApiError } from "../utils/ApiError.js";
 import { addSchedule, repeat } from "../lib/serializableRequest.js";
 
-export const findAllSchedules = (start: string, end: string) => {
-  const startDate = new Date(start);
-  const endDate = new Date(end);
-
+export const findAllSchedules = (start?: string, end?: string) => {
   return Schedule.findBy({
-    ...(end && { start: LessThan(new Date(endDate)) }),
-    ...(start && { end: MoreThan(new Date(startDate)) }),
+    ...(end && { start: LessThan(new Date(end)) }),
+    ...(start && { end: MoreThan(new Date(start)) }),
   });
 };
 
@@ -33,8 +30,12 @@ export const createSchedule = async (
   return repeat(() => addSchedule(schedule), 3);
 };
 
-export const findSchedule = (id: string) => {
-  return Schedule.findOneByOrFail({ id });
+export const findSchedule = (id?: string) => {
+  if (id) {
+    return Schedule.findOneByOrFail({ id });
+  } else {
+    throw ApiError.badRequset("No id provided.");
+  }
 };
 
 export const updateSchedule = async (
