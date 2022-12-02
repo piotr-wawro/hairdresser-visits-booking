@@ -5,7 +5,7 @@ interface GetAllVisit {
   end: string;
 }
 
-interface GetVisitResponse {
+export interface GetVisitResponse {
   id: string;
   start: string;
   end: string;
