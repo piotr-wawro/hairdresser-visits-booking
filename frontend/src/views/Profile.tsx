@@ -94,7 +94,7 @@ const ProfileUserApplyButton = styled.button`
   font-weight: bold;
 `;
 
-const ProfileOfUser = () => {
+const Profile = () => {
   const navigate = useNavigate();
   const [userFirstName, setUserFirstName] = useState("");
   const [userLastName, setUserLastName] = useState("");
@@ -145,4 +145,4 @@ const ProfileOfUser = () => {
   );
 };
 
-export default ProfileOfUser;
+export default Profile;
