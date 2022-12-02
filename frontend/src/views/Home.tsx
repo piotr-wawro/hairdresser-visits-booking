@@ -303,8 +303,9 @@ const Home = () => {
           schedule={schedules?.filter((e) => e.forId === workerChoice)}
           visits={visits?.filter((e) => e.servicedById === workerChoice)}
           userId={profile?.id}
-          time={time}
-          setTime={setTime}
+          endTime={time && new Date(time.getTime() + 60 * 60 * 1000)}
+          startTime={time}
+          setStarTime={setTime}
           selectedVisit={selectedVisit}
           setSelectedVisit={setSelectedVisit}
         />
