@@ -1,7 +1,11 @@
 import { TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import {
+  useLazyPatchUserProfileQuery,
+  useUserProfileQuery,
+} from "../api/user.js";
 
 const ProfileUserBox = styled.div`
   margin-top: 50px;
@@ -100,11 +104,38 @@ const Profile = () => {
   const [userLastName, setUserLastName] = useState("");
   const [userNumber, setUserNumber] = useState("");
   const [userMail, setUserMail] = useState("");
+  const { data } = useUserProfileQuery();
+
+  useEffect(() => {
+    if (data) {
+      setUserFirstName(data.firstName);
+      setUserLastName(data.lastName);
+      setUserNumber(data.phoneNumber);
+    }
+  }, [data]);
+
+  const [usePatchUserVisitInfoQuery, { status }] =
+    useLazyPatchUserProfileQuery();
+
+  const onSave = async () => {
+    try {
+      const payload = await usePatchUserVisitInfoQuery({
+        firstName: userFirstName,
+        lastName: userLastName,
+        phoneNumber: userNumber,
+        //email: userMail,
+      }).unwrap();
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <ProfileUserBox>
       <ProfileUserHeader>Profil:</ProfileUserHeader>
       <ProfileNameTextField
+        value={userFirstName}
         label="Podaj imię:"
         variant="outlined"
         onChange={(element) => {
@@ -114,6 +145,7 @@ const Profile = () => {
 
       <ProfileSurnameTextField
         style={{ marginTop: 40 }}
+        value={userLastName}
         label="Podaj nazwisko:"
         variant="outlined"
         onChange={(element) => {
@@ -123,21 +155,28 @@ const Profile = () => {
 
       <ProfilePhoneTextField
         style={{ marginTop: 40 }}
+        value={userNumber}
         label="Podaj numer telefonu:"
         variant="outlined"
+        onChange={(element) => {
+          setUserNumber(element.target.value);
+        }}
       ></ProfilePhoneTextField>
 
-      <ProfileEmailTextField
+      {/* <ProfileEmailTextField
         style={{ marginTop: 40 }}
         label="Podaj e-mail:"
         variant="outlined"
-      ></ProfileEmailTextField>
+        onChange={(element) => {
+          setUserMail(element.target.value);
+        }}
+      ></ProfileEmailTextField>*/}
 
       <ProfileButtonBox>
-        <ProfileUserApplyButton onClick={() => navigate("/main-menu")}>
+        <ProfileUserApplyButton onClick={() => onSave()}>
           Edytuj
         </ProfileUserApplyButton>
-        <ProfileUserCancelButton onClick={() => navigate("/main-menu")}>
+        <ProfileUserCancelButton onClick={() => navigate("/")}>
           Anuluj
         </ProfileUserCancelButton>
       </ProfileButtonBox>
