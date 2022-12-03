@@ -4,16 +4,6 @@ import { Visit } from "../entity/Visit.js";
 import { ApiError } from "../utils/ApiError.js";
 import { addVisit, patchVisit, repeat } from "../lib/serializableRequest.js";
 
-export const serviceToTime = (type: string) => {
-  if (type === "haircut") {
-    return 60 * 60 * 1000;
-  } else if (type === "hair-dyeing") {
-    return 2 * 60 * 60 * 1000;
-  } else {
-    return 30 * 60 * 1000;
-  }
-};
-
 export const findAllVisits = (start?: string, end?: string) => {
   return Visit.findBy({
     ...(end && { start: LessThan(new Date(end)) }),
@@ -24,7 +14,6 @@ export const findAllVisits = (start?: string, end?: string) => {
 export const createVisit = async (
   user: User,
   start: string,
-  type: string,
   servicedBy: string
 ) => {
   const employee = await User.findOneByOrFail({ id: servicedBy });
@@ -35,7 +24,7 @@ export const createVisit = async (
   const newVisit = new Visit();
   newVisit.bookedBy = user;
   newVisit.start = new Date(start);
-  newVisit.end = new Date(newVisit.start.getTime() + serviceToTime(type));
+  newVisit.end = new Date(newVisit.start.getTime() + 60 * 60 * 1000);
   newVisit.servicedById = servicedBy;
 
   return repeat(() => addVisit(newVisit), 3);
@@ -53,12 +42,11 @@ export const updateVisit = async (
   user: User,
   id: string,
   start: string,
-  type: string,
   servicedBy: string
 ) => {
   const patch = {
     start: new Date(start),
-    end: new Date(new Date(start).getTime() + serviceToTime(type)),
+    end: new Date(new Date(start).getTime() + 60 * 60 * 1000),
     servicedById: servicedBy,
   };
 
