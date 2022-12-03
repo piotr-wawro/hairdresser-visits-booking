@@ -201,7 +201,7 @@ const AddSchedule = () => {
 export default AddSchedule;
 
 const Container = styled.div`
-  padding: 16px 0;
+  padding: 16px;
 
   display: flex;
   justify-content: center;

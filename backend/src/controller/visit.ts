@@ -19,11 +19,11 @@ export const getAllVisits: RequestHandler = async (req, res, next) => {
 };
 
 export const postVisit: RequestHandler = async (req, res, next) => {
-  const { start, type, servicedBy } = req.body;
+  const { start, servicedBy } = req.body;
   const user = req.user;
 
   try {
-    await createVisit(user, start, type, servicedBy);
+    await createVisit(user, start, servicedBy);
     res.status(200).send();
   } catch (error) {
     next(error);
@@ -42,11 +42,11 @@ export const getVisit: RequestHandler = async (req, res, next) => {
 };
 
 export const patchVisit: RequestHandler = async (req, res, next) => {
-  const { id, start, type, servicedBy } = req.body;
+  const { id, start, servicedBy } = req.body;
   const user = req.user;
 
   try {
-    await updateVisit(user, id, start, type, servicedBy);
+    await updateVisit(user, id, start, servicedBy);
     res.status(200).send();
   } catch (error) {
     next(error);

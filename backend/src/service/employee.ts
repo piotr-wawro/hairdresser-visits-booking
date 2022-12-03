@@ -15,6 +15,7 @@ export const findAllEmployees = () => {
       id: true,
       firstName: true,
       lastName: true,
+      role: true,
     },
     where: [{ role: Roles.EMPLOYEE }, { role: Roles.MANAGER }],
   });
