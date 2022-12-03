@@ -1,331 +1,228 @@
-import { Grid, TextField } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import MainBox from "../components/MainBox.js";
-import background from "../assets/background.jpg";
-import graphic1 from "../assets/graphic1.jpg";
-import graphic2 from "../assets/graphic2.jpg";
-import graphic3 from "../assets/graphic3.jpg";
-import logo from "../assets/logo1.jpg";
+import { useEffect, useState } from "react";
+import {
+  Alert,
+  Button,
+  IconButton,
+  List,
+  ListItem,
+  ListItemText,
+  MenuItem,
+  Snackbar,
+  TextField,
+} from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
 import styled from "styled-components";
-import DateTimePicker from "react-datetime-picker";
-import React, { useEffect, useState } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import { useGetEmployeeQuery, useAllEmployeesQuery } from "../api/employee.js";
-import { useLazyAllVisitsQuery } from "../api/visit.js";
+import { useAllEmployeesQuery } from "../api/employee.js";
 import { useLazyGetAllSchedulesQuery } from "../api/schedule.js";
-import Schedule from "../components/Schedule.js";
+import {
+  useDeleteVisitMutation,
+  useLazyAllVisitsQuery,
+  usePostVisitMutation,
+} from "../api/visit.js";
 import { useUserProfileQuery } from "../api/user.js";
-
-const Header1 = styled.h1``;
-
-const Header2 = styled.h2`
-  color: white;
-  width: 300px;
-`;
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-left: auto;
-  margin-right: auto;
-  width: max-content;
-  width: 100%;
-`;
-
-const Navbar = styled.div`
-  background: #47a8bd;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 0px;
-
-  text-align: center;
-  padding: 25px 0 15px 0;
-  width: 100%;
-`;
-
-const Logo = styled.img`
-  height: 80px;
-  width: 80px;
-  padding-left: 10px;
-`;
-
-const NavbarButton = styled.button`
-  width: 250px;
-  height: 81px;
-  left: 1111px;
-  top: 34px;
-  background: #ff9b71;
-  border-radius: 20px;
-  margin-right: 50px;
-  font-size: 32px;
-`;
-
-const Card = styled.div`
-  margin-top: 50px;
-  background-color: #17567c;
-  border-radius: 24px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 64px;
-  gap: 40px;
-  width: 70vw;
-  height: 60vh;
-  margin-left: auto;
-  margin-right: auto;
-  justify-content: center;
-`;
-const MainMenuButtonBox = styled.div`
-  justify-content: center;
-  height: 50px;
-  display: flex;
-  width: 80%;
-  gap: 10%;
-  margin-top: 50px;
-  margin-right: auto;
-  margin-left: auto;
-`;
-
-const MainMenuAddWorkerButton = styled.button`
-  margin-top: 40px;
-  justify-content: "center";
-  cursor: pointer;
-  height: 40px;
-  width: 250px;
-  font-size: 20px;
-  background: lightgrey;
-  font-weight: bold;
-  text-align: center;
-`;
-
-const MainMenuEditWorkerButton = styled.button`
-  margin-top: 40px;
-  justify-content: "center";
-  cursor: pointer;
-  height: 40px;
-  width: 250px;
-  font-size: 20px;
-  background: lightgrey;
-  font-weight: bold;
-  text-align: center;
-`;
-
-const DoReservationButton = styled.button`
-  margin-top: 40px;
-  justify-content: "center";
-  cursor: pointer;
-  height: 40px;
-  width: 250px;
-  font-size: 20px;
-  background: lightgrey;
-  font-weight: bold;
-  text-align: center;
-`;
-
-const ImageHolder = styled.div`
-  display: flex;
-  margin-left: auto;
-  margin-right: auto;
-  gap: 40px;
-`;
-
-const DateOfReservationBox = styled.div`
-  justify-content: center;
-  height: 50px;
-  margin-top: 5px;
-  display: flex;
-  width: 80%;
-  gap: 10%;
-  margin-right: auto;
-  margin-left: auto;
-`;
-
-const DivsReserved = styled.div<{ background?: string }>`
-  background: ${(props) => props.background || "white"};
-  padding: 10px;
-  width: 80px;
-  height: 50px;
-`;
-
-const HoursLabel = styled.label``;
-
-const WorkerChoice = styled.select``;
+import Schedule from "../components/Schedule.js";
 
 const Home = () => {
-  const navigate = useNavigate();
-
   const { data: profile } = useUserProfileQuery();
-  const { data: employees } = useAllEmployeesQuery();
-
   const [allVisitsQuery, { data: visits }] = useLazyAllVisitsQuery();
-
+  const { data: employeeList } = useAllEmployeesQuery();
   const [allSchedulesQuery, { data: schedules }] =
     useLazyGetAllSchedulesQuery();
+  const [postVisitMutation] = usePostVisitMutation();
+  const [deleteVisitMutation] = useDeleteVisitMutation();
 
-  const [startDate, setStartDate] = useState(new Date());
-  const [workerChoice, setWorkerChoice] = useState("");
-  const [time, setTime] = useState<Date | undefined>(undefined);
+  const [employee, setEmployee] = useState("");
+  const [date, setDate] = useState("");
+  const [startTime, setStartTime] = useState<Date | undefined>(undefined);
+  const [endTime, setEndTime] = useState<Date | undefined>(undefined);
   const [selectedVisit, setSelectedVisit] = useState("");
+  const [isError, setIsError] = useState(false);
+  const [error, setError] = useState("");
 
-  //console.log("visits: ", visits);
-  //console.log("schedules:", schedules);
+  const chagngeEmployee = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEmployee(event.target.value);
+  };
+
+  const changeDate = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setDate(event.target.value);
+  };
+
+  const changeStartTime = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setStartTime(new Date("1 " + event.target.value));
+  };
+
+  const addVisit = () => {
+    postVisitMutation({
+      servicedBy: employee,
+      start: `${date}T${startTime?.toISOString().split("T")[1]}`,
+    })
+      .unwrap()
+      .then(() => {
+        setStartTime(undefined);
+        setEndTime(undefined);
+      })
+      .catch((error) => {
+        setIsError(true);
+        setError(error.data.error);
+      });
+  };
+
+  const deleteVisit = (id: string) => {
+    deleteVisitMutation({ id })
+      .unwrap()
+      .catch((error) => {
+        setIsError(true);
+        setError(error.data.error);
+      });
+  };
+
+  const closeSnackbar = () => {
+    setIsError(false);
+  };
 
   useEffect(() => {
-    allVisitsQuery({
-      start: startDate.toISOString().split("T")[0] + "T08:00:00.000Z",
-      end: startDate.toISOString().split("T")[0] + "T23:59:00.000Z",
-    });
-    allSchedulesQuery({
-      start: startDate.toISOString().split("T")[0] + "T08:00:00.000Z",
-      end: startDate.toISOString().split("T")[0] + "T23:59:00.000Z",
-    });
-    //console.log(visits?.filter(visits => visits.servicedById === workerChoice));
-    //console.log(visits.filter(visits => visits.id === workerChoice))
-  }, [startDate]);
-
-  //useEffect(() => {}, [startDate]);
-
-  // console.log( visits);
-  const todayVisits = visits?.filter(
-    (visits) => visits.servicedById === workerChoice
-  );
-  //console.log(schedules)
-  //console.log(schedules?.filter(schedules => schedules.forId=== workerChoice));
-  const todaySchedules = schedules?.filter(
-    (schedules) => schedules.forId === workerChoice
-  );
-  const scheduleBegin: string[] = [];
-  const scheduleEnd: string[] = [];
-  const visitBegin: string[] = [];
-  const visitEnd: string[] = [];
-  const all: string[] = [];
-  const avaible: string[] = [];
-  //todaySchedules?.forEach(element => begin.push(element.start.slice(11, 13)))
-  todaySchedules?.forEach((element) => {
-    //all.push(element.start.slice(11, 16))
-    //all.push(element.end.slice(11, 16))
-
-    //all.push(element.start.slice(11, 13))
-    //all.push(element.end.slice(11, 13))
-
-    scheduleBegin.push(element.start.slice(11, 16));
-    scheduleEnd.push(element.end.slice(11, 16));
-  });
-
-  todayVisits?.forEach((element) => {
-    visitBegin.push(element.start.slice(11, 13));
-    visitEnd.push(element.end.slice(11, 16));
-  });
-
-  const hoursAvaible = [];
-  const hoursBooked: number[] = [];
-  //var a=visitBegin?.filter(e=>parseInt(e))
-
-  for (let i = 0; i < scheduleBegin.length; i++) {
-    // marking avaible hours
-    const v = parseInt(scheduleEnd[i]) - parseInt(scheduleBegin[i]);
-
-    for (let j = 0; j <= v; j++) {
-      hoursAvaible.push(parseInt(scheduleBegin[i]) + j);
+    if (date) {
+      allSchedulesQuery({
+        start: new Date(date + " 00:00:00.000").toISOString(),
+        end: new Date(date + " 23:59:59.999").toISOString(),
+      });
+      allVisitsQuery({
+        start: new Date(date + " 00:00:00.000").toISOString(),
+        end: new Date(date + " 23:59:59.999").toISOString(),
+      });
     }
-    //console.log(v)
-  }
-
-  for (let i = 0; i < visitBegin.length; i++) {
-    // marking booked hours
-    const v = parseInt(visitEnd[i]) - parseInt(visitBegin[i]);
-
-    for (let j = 0; j <= v; j++) {
-      hoursBooked.push(parseInt(visitBegin[i]) + j);
-    }
-    //console.log(v)
-  }
-
-  const fileteredHoursAvaible = hoursAvaible.filter(
-    (hour) => !hoursBooked.includes(hour)
-  );
+  }, [date]);
 
   return (
     <Container>
-      <Card>
-        <DateOfReservationBox>
-          <Header2>Wybierz datę:</Header2>
-          <DatePicker
-            selected={startDate}
-            onChange={(date: Date) => setStartDate(date)}
-          />
-          <Header2>Wybierz pracownika:</Header2>
-          <WorkerChoice
-            id="workerChoice"
-            value={workerChoice}
-            onChange={(element) => {
-              setWorkerChoice(element.target.value);
-            }}
-          >
-            {employees?.map((e, i) => {
-              return (
-                <option key={i} value={e.id}>
-                  {e.firstName} {e.lastName}
-                </option>
-              );
-            })}
-          </WorkerChoice>
-        </DateOfReservationBox>
-
-        <Grid
-          container
-          spacing={1}
-          direction="row"
-          justifyContent="center"
-          alignItems="center"
+      <LeftPanel>
+        <TextField
+          select
+          fullWidth
+          label="Employee"
+          value={employee}
+          onChange={chagngeEmployee}
+          variant="standard"
         >
-          {[...Array(8).keys()].map((i) => (
-            <Grid key={i} item>
-              <DivsReserved
-                background={
-                  fileteredHoursAvaible.includes(8 + i) ? "green" : "red"
+          {employeeList
+            ?.filter((e) => e.role === "employee")
+            .map((e) => (
+              <MenuItem key={e.id} value={e.id}>
+                {e.firstName} {e.lastName}
+              </MenuItem>
+            ))}
+        </TextField>
+
+        <TextField
+          fullWidth
+          label="Day"
+          type="date"
+          defaultValue={date}
+          onChange={changeDate}
+          variant="standard"
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
+
+        <List>
+          {visits
+            ?.filter((e) => e.bookedById === profile?.id)
+            .map((e) => (
+              <ListItem
+                key={e.id}
+                secondaryAction={
+                  <IconButton onClick={() => deleteVisit(e.id)}>
+                    <DeleteIcon />
+                  </IconButton>
                 }
               >
-                <HoursLabel onClick={() => navigate("/edit-reservation")}>
-                  {`Godzina: ${8 + i}:00-${9 + i}:00`}
-                </HoursLabel>
-              </DivsReserved>
-            </Grid>
-          ))}
-        </Grid>
-
+                <ListItemText
+                  primary={`${e.start.slice(11, 16)} - ${e.end.slice(11, 16)}`}
+                />
+              </ListItem>
+            ))}
+        </List>
+      </LeftPanel>
+      <RightPanel>
         <Schedule
-          schedule={schedules?.filter((e) => e.forId === workerChoice)}
-          visits={visits?.filter((e) => e.servicedById === workerChoice)}
+          schedule={schedules}
+          visits={visits}
           userId={profile?.id}
-          endTime={time && new Date(time.getTime() + 60 * 60 * 1000)}
-          startTime={time}
-          setStarTime={setTime}
+          endTime={startTime && new Date(startTime.getTime() + 60 * 60 * 1000)}
+          startTime={startTime}
+          setStarTime={setStartTime}
           selectedVisit={selectedVisit}
           setSelectedVisit={setSelectedVisit}
         />
 
-        <DoReservationButton onClick={() => navigate("/do-reservation")}>
-          Dodaj rezerwację
-        </DoReservationButton>
+        <TimeContainer>
+          <TextField
+            label="Start"
+            type="time"
+            value={
+              startTime
+                ? `${("0" + startTime?.getHours()).slice(-2)}:${(
+                    "0" + startTime?.getMinutes()
+                  ).slice(-2)}`
+                : ""
+            }
+            onChange={changeStartTime}
+            variant="standard"
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
 
-        <MainMenuButtonBox>
-          {/*<MainMenuAddWorkerButton onClick={() => navigate("/add-user")}>
-            Dodaj pracownika
-  </MainMenuAddWorkerButton>*/}
+          <Button variant="outlined" onClick={addVisit}>
+            Add
+          </Button>
+        </TimeContainer>
+      </RightPanel>
 
-          {/*<MainMenuEditWorkerButton onClick={() => navigate("/edit-user")}>
-            Edytuj pracownika
-          </MainMenuEditWorkerButton>*/}
-        </MainMenuButtonBox>
-      </Card>
+      <Snackbar
+        open={isError}
+        autoHideDuration={6000}
+        onClose={closeSnackbar}
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+      >
+        <Alert onClose={closeSnackbar} severity="error">
+          {error}
+        </Alert>
+      </Snackbar>
     </Container>
   );
 };
 
 export default Home;
+
+const Container = styled.div`
+  padding: 16px;
+
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+`;
+
+const LeftPanel = styled.div`
+  width: 300px;
+  height: 800px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;
+
+const RightPanel = styled.div`
+  width: 1000px;
+  height: 800px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;
+
+const TimeContainer = styled.div`
+  display: flex;
+  gap: 16px;
+`;

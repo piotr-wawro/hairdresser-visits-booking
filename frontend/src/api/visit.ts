@@ -15,7 +15,6 @@ export interface GetVisitResponse {
 
 interface PostVisit {
   start: string;
-  type: string;
   servicedBy: string;
 }
 
@@ -26,7 +25,6 @@ interface GetVisit {
 interface PatchVisit {
   id: string;
   start: string;
-  type: string;
   servicedBy: string;
 }
 
@@ -42,13 +40,15 @@ const visit = hvbApi.injectEndpoints({
         method: "GET",
         params: { start, end },
       }),
+      providesTags: ["Visit"],
     }),
-    postVisit: build.query<void, PostVisit>({
-      query: ({ start, type, servicedBy }) => ({
+    postVisit: build.mutation<void, PostVisit>({
+      query: ({ start, servicedBy }) => ({
         url: `/visit`,
         method: "POST",
-        body: { start, type, servicedBy },
+        body: { start, servicedBy },
       }),
+      invalidatesTags: ["Visit"],
     }),
     getVisit: build.query<GetVisitResponse, GetVisit>({
       query: ({ id }) => ({
@@ -58,26 +58,27 @@ const visit = hvbApi.injectEndpoints({
       }),
     }),
     patchVisit: build.query<void, PatchVisit>({
-      query: ({ id, start, type, servicedBy }) => ({
+      query: ({ id, start, servicedBy }) => ({
         url: `/visit`,
         method: "PATCH",
-        body: { id, start, type, servicedBy },
+        body: { id, start, servicedBy },
       }),
     }),
-    deleteVisit: build.query<void, DeleteVisit>({
+    deleteVisit: build.mutation<void, DeleteVisit>({
       query: ({ id }) => ({
         url: `/visit`,
         method: "DELETE",
         body: { id },
       }),
+      invalidatesTags: ["Visit"],
     }),
   }),
 });
 
 export const {
   useLazyAllVisitsQuery,
-  useLazyPostVisitQuery,
+  usePostVisitMutation,
   useGetVisitQuery,
   useLazyPatchVisitQuery,
-  useLazyDeleteVisitQuery,
+  useDeleteVisitMutation,
 } = visit;
