@@ -1,16 +1,13 @@
 import app from "./app.js";
 import { dataSource } from "./config/database.js";
-import { logger } from "./utils/logger.js";
+import { transporter } from "./config/email.js";
 import "./config/dotenv.js";
 
 const port = process.env.BACKEND_PORT;
 
-try {
-  await dataSource.initialize();
-  await dataSource.runMigrations();
-} catch (error) {
-  logger(error as Error);
-}
+await dataSource.initialize();
+await dataSource.runMigrations();
+await transporter.verify();
 
 app.listen(port, () => {
   console.log(
