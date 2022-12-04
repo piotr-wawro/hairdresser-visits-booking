@@ -95,7 +95,7 @@ describe("/schedule", () => {
       const response = await request(app)
         .get("/schedule")
         .set("Authorization", mngToken)
-        .send({ id: "b5926670-6e3b-4c84-8a14-d907ca072d07" });
+        .query({ id: "b5926670-6e3b-4c84-8a14-d907ca072d07" });
 
       expect(response.status).toEqual(200);
       expect(response.body).toEqual({
