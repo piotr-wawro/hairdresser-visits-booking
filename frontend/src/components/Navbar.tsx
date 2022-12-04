@@ -1,8 +1,11 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useUserProfileQuery } from "../api/user.js";
+import { useAppDispatch } from "../redux/hooks.js";
+import { logout } from "../redux/authSlice.js";
 
 function Navbar() {
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { data: profile } = useUserProfileQuery();
 
@@ -12,6 +15,10 @@ function Navbar() {
 
   const onLogIn = () => {
     navigate("log-in");
+  };
+
+  const onLogOut = () => {
+    dispatch(logout);
   };
 
   const onAddEmployee = () => {
@@ -39,7 +46,13 @@ function Navbar() {
         )}
 
         {profile && <Button onClick={onProfile}>Profile</Button>}
-        {!profile && <Button onClick={onLogIn}>Log In</Button>}
+
+        {!profile && (
+          <>
+            <Button onClick={onLogIn}>Log In</Button>
+            <Button onClick={onLogOut}>Log Out</Button>
+          </>
+        )}
       </ButtonContainer>
     </Container>
   );
