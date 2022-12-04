@@ -18,7 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/log-in" element={<LogIn />} />
-        <Route path="/log-in/:token" element={<LogInToken />} />
+        <Route path="/log-in/token" element={<LogInToken />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/manager/add-employee" element={<AddEmployee />} />
         <Route path="/manager/add-schedule" element={<AddSchedule />} />

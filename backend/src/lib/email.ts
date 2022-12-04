@@ -9,6 +9,6 @@ export const loginEmail = (user: User) => {
     from: "example.company.834@gmail.com",
     to: email,
     subject: "Login to hairdresser visits booking",
-    text: token,
+    text: `http://localhost:3000/log-in/token?t=${token}`,
   };
 };

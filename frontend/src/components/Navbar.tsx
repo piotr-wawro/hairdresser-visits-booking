@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useUserProfileQuery } from "../api/user.js";
 import { useAppDispatch } from "../redux/hooks.js";
 import { logout } from "../redux/authSlice.js";
+import { hvbApi } from "../api/index.js";
 
 function Navbar() {
   const dispatch = useAppDispatch();
@@ -18,7 +19,9 @@ function Navbar() {
   };
 
   const onLogOut = () => {
-    dispatch(logout);
+    dispatch(logout());
+    dispatch(hvbApi.util.resetApiState());
+    navigate("/");
   };
 
   const onAddEmployee = () => {
@@ -45,14 +48,14 @@ function Navbar() {
           </>
         )}
 
-        {profile && <Button onClick={onProfile}>Profile</Button>}
-
-        {!profile && (
+        {profile && (
           <>
-            <Button onClick={onLogIn}>Log In</Button>
-            <Button onClick={onLogOut}>Log Out</Button>
+            <Button onClick={onLogOut}>Log Out</Button>{" "}
+            <Button onClick={onProfile}>Profile</Button>
           </>
         )}
+
+        {!profile && <Button onClick={onLogIn}>Log In</Button>}
       </ButtonContainer>
     </Container>
   );

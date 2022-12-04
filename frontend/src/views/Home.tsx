@@ -146,8 +146,8 @@ const Home = () => {
       </LeftPanel>
       <RightPanel>
         <Schedule
-          schedule={schedules}
-          visits={visits}
+          schedule={schedules?.filter((e) => e.forId === employee)}
+          visits={visits?.filter((e) => e.servicedById === employee)}
           userId={profile?.id}
           endTime={startTime && new Date(startTime.getTime() + 60 * 60 * 1000)}
           startTime={startTime}

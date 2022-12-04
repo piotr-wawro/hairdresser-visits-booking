@@ -4,10 +4,10 @@ import { loginEmail } from "../lib/email.js";
 import { findUserOrCreate } from "../service/user.js";
 
 export const logIn: RequestHandler = async (req, res, next) => {
-  const email = req.body.email;
+  const { email }: { email?: string } = req.query;
 
   try {
-    const user = await findUserOrCreate(email);
+    const user = await findUserOrCreate(email || "");
 
     if (process.env.ENVIRONMENT === "prod") {
       transporter.sendMail(loginEmail(user));

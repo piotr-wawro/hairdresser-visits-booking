@@ -1,8 +1,11 @@
 import { LessThan, MoreThan } from "typeorm";
 import { User } from "../entity/User.js";
 import { Visit } from "../entity/Visit.js";
+import { isEmailValid } from "../lib/validateEmail.js";
+import { ApiError } from "../utils/ApiError.js";
 
 export const findUserOrCreate = async (email: string) => {
+  if (!isEmailValid(email)) throw ApiError.badRequset("Invalid email.");
   let user = await User.findOneBy({ email });
 
   if (!user) {
