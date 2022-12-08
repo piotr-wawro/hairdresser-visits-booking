@@ -22,8 +22,9 @@ import Schedule from "../components/Schedule.js";
 
 const AddSchedule = () => {
   const { data: employeeList } = useAllEmployeesQuery();
-  const [allSchedulesQuery, { data: schedules }] =
-    useLazyGetAllSchedulesQuery();
+  const [allSchedulesQuery, { data: schedules }] = useLazyGetAllSchedulesQuery({
+    pollingInterval: 1000,
+  });
   const [postScheduleQuery] = usePostScheduleMutation();
   const [deleteScheduleQuery] = useDeleteScheduleMutation();
 

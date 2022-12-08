@@ -24,10 +24,13 @@ import Schedule from "../components/Schedule.js";
 
 const Home = () => {
   const { data: profile } = useUserProfileQuery();
-  const [allVisitsQuery, { data: visits }] = useLazyAllVisitsQuery();
+  const [allVisitsQuery, { data: visits }] = useLazyAllVisitsQuery({
+    pollingInterval: 1000,
+  });
   const { data: employeeList } = useAllEmployeesQuery();
-  const [allSchedulesQuery, { data: schedules }] =
-    useLazyGetAllSchedulesQuery();
+  const [allSchedulesQuery, { data: schedules }] = useLazyGetAllSchedulesQuery({
+    pollingInterval: 1000,
+  });
   const [postVisitMutation] = usePostVisitMutation();
   const [deleteVisitMutation] = useDeleteVisitMutation();
 
