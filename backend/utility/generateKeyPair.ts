@@ -17,5 +17,5 @@ if (!fs.existsSync("./key")) {
   fs.mkdirSync("./key");
 }
 
-fs.writeFileSync("./key/id_rsa_pub.pem", keyPair.publicKey);
-fs.writeFileSync("./key/id_rsa_priv.pem", keyPair.privateKey);
+fs.writeFileSync(process.env.PUB_KEY || "", keyPair.publicKey);
+fs.writeFileSync(process.env.PRIV_KEY || "", keyPair.privateKey);

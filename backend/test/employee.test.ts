@@ -73,16 +73,19 @@ describe("/employee", () => {
             id: "c9c70c2c-ca36-498c-91e4-d51b67f3c1dd",
             firstName: "Klara",
             lastName: "Kowalska",
+            role: "manager",
           },
           {
             id: "634dc798-9608-405e-8e95-94095d91fb73",
             firstName: "Jolanta",
             lastName: "Rutkowska",
+            role: "employee",
           },
           {
             id: "244e757c-9d58-4be3-bc21-ac46953be644",
             firstName: "Krystyn",
             lastName: "Jaworski",
+            role: "employee",
           },
         ]);
       });
@@ -125,7 +128,7 @@ describe("/employee", () => {
       const response = await request(app)
         .get("/employee")
         .set("Authorization", mngToken)
-        .send({ id: "634dc798-9608-405e-8e95-94095d91fb73" });
+        .query({ id: "634dc798-9608-405e-8e95-94095d91fb73" });
 
       expect(response.status).toEqual(200);
       expect(response.body).toEqual({

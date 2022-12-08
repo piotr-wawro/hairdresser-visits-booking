@@ -24,10 +24,13 @@ import Schedule from "../components/Schedule.js";
 
 const Home = () => {
   const { data: profile } = useUserProfileQuery();
-  const [allVisitsQuery, { data: visits }] = useLazyAllVisitsQuery();
+  const [allVisitsQuery, { data: visits }] = useLazyAllVisitsQuery({
+    pollingInterval: 1000,
+  });
   const { data: employeeList } = useAllEmployeesQuery();
-  const [allSchedulesQuery, { data: schedules }] =
-    useLazyGetAllSchedulesQuery();
+  const [allSchedulesQuery, { data: schedules }] = useLazyGetAllSchedulesQuery({
+    pollingInterval: 1000,
+  });
   const [postVisitMutation] = usePostVisitMutation();
   const [deleteVisitMutation] = useDeleteVisitMutation();
 
@@ -146,8 +149,8 @@ const Home = () => {
       </LeftPanel>
       <RightPanel>
         <Schedule
-          schedule={schedules}
-          visits={visits}
+          schedule={schedules?.filter((e) => e.forId === employee)}
+          visits={visits?.filter((e) => e.servicedById === employee)}
           userId={profile?.id}
           endTime={startTime && new Date(startTime.getTime() + 60 * 60 * 1000)}
           startTime={startTime}

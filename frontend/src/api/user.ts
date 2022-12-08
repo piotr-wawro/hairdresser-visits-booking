@@ -53,6 +53,13 @@ interface DeleteUserVisit {
 
 const user = hvbApi.injectEndpoints({
   endpoints: (build) => ({
+    logIn: build.query<void, { email: string }>({
+      query: ({ email }) => ({
+        url: `/log-in`,
+        method: "GET",
+        params: { email },
+      }),
+    }),
     userProfile: build.query<Profile, void>({
       query: () => ({
         url: `/user/profile`,
@@ -106,6 +113,7 @@ const user = hvbApi.injectEndpoints({
 });
 
 export const {
+  useLazyLogInQuery,
   useUserProfileQuery,
   useLazyPatchUserProfileQuery,
   useGetUserVisitQuery,

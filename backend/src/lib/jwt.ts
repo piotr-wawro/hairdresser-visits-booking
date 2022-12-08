@@ -8,7 +8,7 @@ export const signJwt = (user: User) => {
       sub: user.id,
       iat: Date.now(),
     },
-    fs.readFileSync("key/id_rsa_priv.pem", "utf8"),
+    fs.readFileSync(process.env.PRIV_KEY || "", "utf8"),
     {
       expiresIn: "1w",
       algorithm: "RS256",
@@ -21,7 +21,7 @@ export const signJwt = (user: User) => {
 export const verifyJwt = (token: string) => {
   const payload = jwt.verify(
     token,
-    fs.readFileSync("key/id_rsa_pub.pem", "utf8")
+    fs.readFileSync(process.env.PUB_KEY || "", "utf8")
   );
   return payload;
 };

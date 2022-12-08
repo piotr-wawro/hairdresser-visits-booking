@@ -41,6 +41,7 @@ describe("/user", () => {
           lastName: "Kowalska",
           email: "mng@EKRABSCSBIJIUEDPXVVK.com",
           phoneNumber: "607867801",
+          role: "manager",
         });
       });
     });

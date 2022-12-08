@@ -1,4 +1,4 @@
-import { LessThan, MoreThan } from "typeorm";
+import { LessThan, LessThanOrEqual, MoreThan, MoreThanOrEqual } from "typeorm";
 import { dataSource } from "../config/database.js";
 import { Schedule } from "../entity/Schedule.js";
 import { User } from "../entity/User.js";
@@ -53,6 +53,7 @@ export const addVisit = (newVisit: Visit) => {
       where: {
         start: LessThan(newVisit.end),
         end: MoreThan(newVisit.start),
+        servicedById: newVisit.servicedById,
       },
     });
 
@@ -62,8 +63,8 @@ export const addVisit = (newVisit: Visit) => {
 
     const schedules = await manager.count(Schedule, {
       where: {
-        start: LessThan(newVisit.start),
-        end: MoreThan(newVisit.end),
+        start: LessThanOrEqual(newVisit.start),
+        end: MoreThanOrEqual(newVisit.end),
         forId: newVisit.servicedById,
       },
     });

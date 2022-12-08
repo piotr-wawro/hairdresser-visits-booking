@@ -100,7 +100,7 @@ describe("/schedule", () => {
       const response = await request(app)
         .get("/visit")
         .set("Authorization", usr1Token)
-        .send({ id: "a88987c1-59ab-4e0e-a205-9de7c0458b0e" });
+        .query({ id: "a88987c1-59ab-4e0e-a205-9de7c0458b0e" });
 
       expect(response.status).toEqual(200);
       expect(response.body).toEqual({
