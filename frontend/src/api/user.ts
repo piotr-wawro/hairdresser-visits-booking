@@ -67,12 +67,13 @@ const user = hvbApi.injectEndpoints({
       }),
       providesTags: ["User"],
     }),
-    patchUserProfile: build.query<void, PatchProfileProps>({
+    patchUserProfile: build.mutation<void, PatchProfileProps>({
       query: ({ firstName, lastName, phoneNumber }) => ({
         url: `/user/profile`,
         method: "PATCH",
         body: { firstName, lastName, phoneNumber },
       }),
+      invalidatesTags: ["User"],
     }),
     getUserVisit: build.query<GetUserVisitDataResponse[], GetUserVisitData>({
       query: ({ start, end }) => ({
@@ -115,7 +116,7 @@ const user = hvbApi.injectEndpoints({
 export const {
   useLazyLogInQuery,
   useUserProfileQuery,
-  useLazyPatchUserProfileQuery,
+  usePatchUserProfileMutation,
   useGetUserVisitQuery,
   useLazyPostUserVisitDataQuery,
   useLazyPostUserVisitInfoQuery,

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import React, { useEffect, useState } from "react";
 import {
-  useLazyPatchUserProfileQuery,
+  usePatchUserProfileMutation,
   useUserProfileQuery,
 } from "../api/user.js";
 
@@ -115,7 +115,7 @@ const Profile = () => {
   }, [data]);
 
   const [usePatchUserVisitInfoQuery, { status }] =
-    useLazyPatchUserProfileQuery();
+    usePatchUserProfileMutation();
 
   const onSave = async () => {
     try {
